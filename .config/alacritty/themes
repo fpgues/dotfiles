@@ -1,0 +1,61 @@
+
+##SONOKAI THEME
+[colors.bright]
+black = "0x7f8490"
+blue = "0x76cce0"
+cyan = "0xf39660"
+green = "0x9ed072"
+magenta = "0xb39df3"
+red = "0xfc5d7c"
+white = "0xe2e2e3"
+yellow = "0xe7c664"
+
+[colors.cursor]
+cursor = "0xd0d0d0"
+text = "0x151515"
+
+[colors.normal]
+black = "0x181819"
+blue = "0x76cce0"
+cyan = "0xf39660"
+green = "0x9ed072"
+magenta = "0xb39df3"
+red = "0xfc5d7c"
+white = "0xe2e2e3"
+yellow = "0xe7c664"
+
+
+[colors.primary]
+background = "0x151515"
+foreground = "0xd0d0d0"
+
+
+##MONOKAI THEME
+[colors.bright]
+black = "#75715e"
+blue = "#66d9ef"
+cyan = "#a1efe4"
+green = "#a6e22e"
+magenta = "#ae81ff"
+red = "#f92672"
+white = "#f9f8f5"
+yellow = "#f4bf75"
+
+[colors.cursor]
+cursor = "#f8f8f2"
+text = "#272822"
+
+[colors.normal]
+black = "#272822"
+blue = "#66d9ef"
+cyan = "#a1efe4"
+green = "#a6e22e"
+magenta = "#ae81ff"
+red = "#f92672"
+white = "#f8f8f2"
+yellow = "#f4bf75"
+
+[colors.primary]
+background = "#272822"
+foreground = "#f8f8f2"
+
