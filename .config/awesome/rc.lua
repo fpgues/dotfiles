@@ -136,7 +136,7 @@ end)
     terminal = "alacritty"
     editor = os.getenv("EDITOR") or "nvim"
     editor_cmd = terminal .. " -e " .. "nvim"
-    browser = "firefox"
+    browser = "google-chrome"
     fm = "thunar"
 
 -- Default modkey.
@@ -522,10 +522,10 @@ end)
 globalkeys = gears.table.join(
 
     -- Standard Program
-    awful.key({ modkey,           }, "F1" , function () awful.spawn(browser) end,
+    awful.key({ modkey,           }, "BackSpace" , function () awful.spawn(browser) end,
     	      {description = "open a browser", group = "launcher"}),
 
-    awful.key({ modkey,           }, "F2" , function () awful.spawn(fm) end,
+    awful.key({ modkey,           }, "Delete" , function () awful.spawn(fm) end,
     	      {description = "open a file manager", group = "launcher"}),
 
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
