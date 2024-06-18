@@ -1,3 +1,34 @@
+#PERSONALIZADO
+
+[colors.bright]
+black = "0x505050"
+blue = "0xb0b0b0"
+cyan = "0x8f5536"
+green = "0x202020"
+magenta = "0xe0e0e0"
+red = "0xd28445"
+white = "0xf5f5f5"
+yellow = "0x303030"
+
+[colors.cursor]
+cursor = "0xd0d0d0"
+text = "0x151515"
+
+[colors.normal]
+black = "0x151515"
+blue = "0x6a9fb5"
+cyan = "0x75b5aa"
+green = "0x90a959"
+magenta = "0xaa759f"
+red = "0xac4142"
+white = "0xd0d0d0"
+yellow = "0xf4bf75"
+
+[colors.primary]
+background = "0x151515"
+foreground = "0xd0d0d0"
+
+
 
 ##SONOKAI THEME
 [colors.bright]

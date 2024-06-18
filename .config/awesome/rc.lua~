@@ -1,22 +1,10 @@
--- If LuaRocks is installed, make sure that packages installed through it are
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
-    pcall(require, "luarocks.loader")
-
-------------------------------------------------
-------------------WALLPAPER-LIVE----------------
-------------------------------------------------
-    --awful.spawn.with_shell("/home/filipe/wlive.sh")
-
-
-
-
-
-
-
+pcall(require, "luarocks.loader")
 
 ------------------------------------------------
 ------------------ LIBRARIES -------------------
 ------------------------------------------------
+
 
 -- Standard awesome library
     local gears = require("gears")
@@ -27,39 +15,57 @@
 
 -- Widget and layout library
     local watch = require("awful.widget.watch")
- --   local lain = require("lain")
+
+--   local lain = require("lain")
     local wibox = require("wibox")
 
 --Theme handling library
     local beautiful = require("beautiful")
     --Themes define colours, icons, font and wallpapers.
         beautiful.init(gears.filesystem.get_themes_dir() .. "My/theme.lua")
-       --beautiful.init(gears.filesystem.get_themes_dir() .. "Nord/theme.lua")
+        --beautiful.init(gears.filesystem.get_themes_dir() .. "sky/theme.lua")
+        --beautiful.init(gears.filesystem.get_themes_dir() .. "Nord/theme.lua")
+        --beautiful.init(gears.filesystem.get_themes_dir() .. "TokyoNight/theme.lua")
 
     local corner_radius = 4000
 
 -- Adicione uma regra para aplicar cantos arredondados a todas as janelas
     awful.rules.rules = {
     -- outras regras existentes
-    -- ...
     -- Regra para adicionar cantos arredondados a todas as janelas
 
--- Função para executar sempre que uma nova janela (cliente) for criada
-    client.connect_signal("manage", function (c)
+    -- Função para executar sempre que uma nova janela (cliente) for criada
+        client.connect_signal("manage", function (c)
     -- Verifica se o cliente corresponde ao aplicativo que queremos em modo float
-        if c.instance == "knotes" then
+
+            client.connect_signal("manage", function(c)
+            local screen = awful.screen.focused()
+            local workarea = screen.workarea
+            local width = c.width
+            local height = c.height
+
+                c:geometry({
+                    x = workarea.x + (workarea.width - width) / 2,
+                    y = workarea.y + (workarea.height - height) / 2,
+                    width = width,
+                    height = height
+                })
+end)
+
+
+            if c.instance == "knotes" then
         -- Define o cliente como flutuante
-            c.floating = true
-        end
+                c.floating = true
+            end
 
-         if c.instance == "pavucontrol" then
+             if c.instance == "pavucontrol" then
         -- Define o cliente como flutuante
-            c.floating = true
-        end
+                c.floating = true
+            end
 
-    end)
+        end)
 
-    -- Regra para o aplicativo abrir sempre em modo float
+-- Regra para o aplicativo abrir sempre em modo float
 
   --  {
     --    rule = {},
@@ -71,17 +77,27 @@
             --end,
         --},
     --},
-}
+    }
 
 -- Notification library
     local naughty = require("naughty")
     local menubar = require("menubar")
     local hotkeys_popup = require("awful.hotkeys_popup")
-    require("awful.hotkeys_popup.keys")
+        require("awful.hotkeys_popup.keys")
 
 -- Load Debian menu entries
     local debian = require("debian.menu")
     local has_fdo, freedesktop = pcall(require, "freedesktop")
+
+-- Widgets https://github.com/streetturtle/awesome-wm-widgets
+    local net_speed_widget = require("awesome-wm-widgets.net-speed-widget.net-speed")
+    local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
+    local ram_widget = require("awesome-wm-widgets.ram-widget.ram-widget")
+    local calendar_widget = require("awesome-wm-widgets.calendar-widget.calendar")
+    local fs_widget = require("awesome-wm-widgets.fs-widget.fs-widget")
+    local volume_widget = require('awesome-wm-widgets.volume-widget.volume')
+    local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
+    local todo_widget = require("awesome-wm-widgets.todo-widget.todo")
 
 ------------------------------------------------
 ------------------- ERRORS ---------------------
@@ -110,19 +126,17 @@
             in_error = false
         end)
     end
--- }}}
 
 ------------------------------------------------
 ------------------- OPTIONS --------------------
 ------------------------------------------------
-
 -- {{{ Variable definitions
 
 -- This is used later as the default terminal and editor to run.
     terminal = "alacritty"
     editor = os.getenv("EDITOR") or "nvim"
     editor_cmd = terminal .. " -e " .. "nvim"
-    browser = "firefox"
+    browser = "google-chrome"
     fm = "thunar"
 
 -- Default modkey.
@@ -131,86 +145,97 @@
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
     awful.layout.layouts = {
-        awful.layout.suit.tile.left,
         awful.layout.suit.floating,
-    --    awful.layout.suit.tile,
-    --    awful.layout.suit.tile.bottom,
-    --    awful.layout.suit.tile.top,
-    --    awful.layout.suit.fair,
-    --    awful.layout.suit.fair.horizontal,
-    --    awful.layout.suit.spiral,
-    --    awful.layout.suit.spiral.dwindle,
-    --    awful.layout.suit.max,
-    --    awful.layout.suit.max.fullscreen,
-    --    awful.layout.suit.magnifier,
-    --    awful.layout.suit.corner.nw,
-    --    awful.layout.suit.corner.ne,
-    --    awful.layout.suit.corner.sw,
-    --    awful.layout.suit.corner.se,
+        awful.layout.suit.tile.left,
+        awful.layout.suit.fair,
+--      awful.layout.suit.tile,
+--      awful.layout.suit.tile.bottom,
+--      awful.layout.suit.tile.top,
+--      awful.layout.suit.fair.horizontal,
+--      awful.layout.suit.spiral,
+--      awful.layout.suit.spiral.dwindle,
+--      awful.layout.suit.max,
+--      awful.layout.suit.max.fullscreen,
+--      awful.layout.suit.magnifier,
+--      awful.layout.suit.corner.nw,
+--      awful.layout.suit.corner.ne,
+--      awful.layout.suit.corner.sw,
+--      awful.layout.suit.corner.se,
     }
--- }}}
-
 
 ------------------------------------------------
 ---------------WIBAR - WIDGETS -----------------
 ------------------------------------------------
 -- Separator Blanc
-
-    sep = wibox.widget.textbox("     ")
-    sep1 = wibox.widget.textbox(" ⏽ ")
+    sep = wibox.widget.textbox(" ")
+    sep1 = wibox.widget.textbox("") -- ("⏽")
     sep2 = wibox.widget.textbox("  ")
-    sep3 = wibox.widget.textbox(" ")
-
-
+    sep3 = wibox.widget.textbox("󰇘")
 -- Keyboard map indicator and switcher
     mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- Create a textclock widget
-    local date = awful.widget.watch('/home/filipe/.config/scripts/wibar/date-bar')
+    local date = awful.widget.watch('/home/fr/.config/scripts/wibar/date-bar')
 
-    mytextclock = wibox.widget.textclock("%H:%M:%S", 1)
-    local clock = wibox.widget.background()
-    clock:set_widget(mytextclock)
-    clock:set_bg("#1a1a1a")
-    clock:set_shape(gears.shape.rectangle)
+--Clock Widget
+    mytextclock = wibox.widget.textclock()
+    -- or customized
+        local cw = calendar_widget({
+            theme = 'dark',
+            placement = 'bottom', --bottom, center, top_right, top_left
+            start_sunday = true,
+            radius = 5,
+-- with customized next/previous (see table above)
+            previous_month_button = 1,
+            next_month_button = 3,
+})
+        mytextclock:connect_signal("button::press",
+            function(_, _, _, button)
+                if button == 1 then cw.toggle() end
+            end)
 
+   -- mytextclock = wibox.widget.textclock("%H:%M:%S", 1)
+    --local clock = wibox.widget.background()
+    --clock:set_widget(mytextclock)
+    --clock:set_bg("#1a1a1a")
+    --clock:set_shape(gears.shape.rectangle)
 
 -- Volume
-    local volume = awful.widget.watch('/home/filipe/.config/scripts/wibar/volume-wibox')
+    local volume = awful.widget.watch('/home/fr/.config/scripts/wibar/volume-wibox')
     local volumew = wibox.widget.background()
     volumew:set_widget(volume)
     volumew:set_bg("#1a1a1a")
     volumew:set_shape(gears.shape.rectangle)
 
 -- Cpu
-    local cpu = awful.widget.watch('/home/filipe/.config/scripts/wibar/cpu-wibox')
---local cpuw = wibox.widget.background()
---cpuw:set_widget(cpu)
---cpuw:set_bg("#1a1a1a")
---cpuw:set_shape(gears.shape.rectangle)
+    local cpu = awful.widget.watch('/home/fr/.config/scripts/wibar/cpu-wibox')
+    --local cpuw = wibox.widget.background()
+    --cpuw:set_widget(cpu)
+    --cpuw:set_bg("#1a1a1a")
+    --cpuw:set_shape(gears.shape.rectangle)
 
 -- Disk
-    local disk = awful.widget.watch('/home/filipe/.config/scripts/wibar/disk-bar')
+    local disk = awful.widget.watch('/home/fr/.config/scripts/wibar/disk-bar')
 
 -- Updates
-    local updates = awful.widget.watch('/home/filipe/.config/scripts/wibar/debian-updates')
+    local updates = awful.widget.watch('/home/fr/.config/scripts/wibar/debian-updates')
 
 -- Ram
-    local ram = awful.widget.watch('/home/filipe/.config/scripts/wibar/ram-wibox')
---local ramw = wibox.widget.background()
---ramw:set_widget(ram)
---ramw:set_bg("#1a1a1a")
---ramw:set_shape(gears.shape.rectangle)
+    local ram = awful.widget.watch('/home/fr/.config/scripts/wibar/ram-wibox')
+    --local ramw = wibox.widget.background()
+    --ramw:set_widget(ram)
+    --ramw:set_bg("#1a1a1a")
+    --ramw:set_shape(gears.shape.rectangle)
 
 -- Wheather
-    local weather = awful.widget.watch('/home/filipe/.config/scripts/wibar/weather-wibox')
---local weatherw = wibox.widget.background()
---weatherw:set_widget(weather)
---weatherw:set_bg("#1a1a1a")
---weatherw:set_shape(gears.shape.rectangle)
+    local weather = awful.widget.watch('/home/fr/.config/scripts/wibar/weather-wibox')
+    --local weatherw = wibox.widget.background()
+    --weatherw:set_widget(weather)
+    --weatherw:set_bg("#1a1a1a")
+    --weatherw:set_shape(gears.shape.rectangle)
 
 -- Updates
-    local update = awful.widget.watch('/home/filipe/.config/scripts/wibar/updates-wibox')
+    local update = awful.widget.watch('/home/fr/.config/scripts/wibar/updates-wibox')
     local updatew = wibox.widget.background()
     updatew:set_widget(update)
     updatew:set_bg("#1a1a1a")
@@ -260,7 +285,7 @@
 
 -- {{{ Wibar
 -- Create a textclock widget
-    mytextclock = wibox.widget.textclock("%H:%M:%S", 1)
+    --mytextclock = wibox.widget.textclock("%H:%M:%S", 1)
 
 -- Create a wibox for each screen and add it
     local taglist_buttons = gears.table.join(
@@ -282,25 +307,28 @@
 
     local tasklist_buttons = gears.table.join(
                      awful.button({ }, 1, function (c)
-                                              if c == client.focus then
-                                                  c.minimized = false
-                                              else
-                                                  c:emit_signal(
-                                                      "request::activate",
-                                                      "tasklist",
-                                                      {raise = true}
-                                                  )
-                                              end
-                                          end),
-                     awful.button({ }, 3, function()
-                                              awful.menu.client_list({ theme = { width = 250 } })
-                                          end),
-                     awful.button({ }, 4, function ()
-                                              awful.client.focus.byidx(1)
-                                          end),
-                     awful.button({ }, 5, function ()
-                                              awful.client.focus.byidx(-1)
-                                          end))
+                        if c == client.focus then
+                            c.minimized = false
+                        else
+                            c:emit_signal(
+                                "request::activate",
+                                "tasklist",
+                                {raise = true}
+                            )
+                        end
+                     end),
+
+                    awful.button({ }, 3, function()
+                        awful.menu.client_list({ theme = { width = 250 } })
+                    end),
+
+                    awful.button({ }, 4, function ()
+                        awful.client.focus.byidx(1)
+                    end),
+
+                    awful.button({ }, 5, function ()
+                        awful.client.focus.byidx(-1)
+                    end))
 -- Wallpaper
     local function set_wallpaper(s)
 
@@ -322,7 +350,8 @@
     set_wallpaper(s)
 
 -- Each screen has its own tag table.
-    awful.tag({"I","II","III","IV"}, s, awful.layout.layouts[1])
+    awful.tag({"󱡶","󱡶","󱡶","󱡶","󱡶","󱡶",}, s, awful.layout.layouts[1])
+--    awful.tag({"I","II","III","IV","V"}, s, awful.layout.layouts[1])
 
 -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -334,66 +363,153 @@
                            awful.button({ }, 3, function () awful.layout.inc(-1) end),
                            awful.button({ }, 4, function () awful.layout.inc( 1) end),
                            awful.button({ }, 5, function () awful.layout.inc(-1) end)))
--- Create a taglist widget
+ --Create a taglist widget
     s.mytaglist = awful.widget.taglist {
         screen  = s,
         filter  = awful.widget.taglist.filter.all,
         buttons = taglist_buttons
     }
 
+
+
+
+
+
+
+
+
+-- Configuração da taglist
+awful.screen.connect_for_each_screen(function(s)
+    -- Outras configurações...
+
+    -- Configuração da taglist
+    s.mytaglist = awful.widget.taglist {
+        screen  = s,
+        filter  = awful.widget.taglist.filter.all,
+        buttons = taglist_buttons,
+        style   = {
+            shape = gears.shape.triangle, -- Define o formato como um círculo
+            shape_border_width = 5, -- Ajusta a largura da borda do círculo (opcional)
+        },
+        layout   = {
+            spacing = 1,
+            layout  = wibox.layout.fixed.horizontal
+        },
+        widget_template = {
+            {
+                {
+                    {
+                        {
+                            {
+                                forced_width = 15 ,
+                                forced_height = 50,
+                                id     = 'text_role',
+                                widget = wibox.widget.textbox,
+                            },
+                            layout = wibox.layout.fixed.horizontal,
+                        },
+                        halign = 'bottom',
+                        valign = 'bottom',
+                        widget = wibox.container.place,
+                    },
+                    widget = wibox.container.margin,
+                },
+                bg     = '#00000000', -- transparent background
+                widget = wibox.container.background,
+            },
+            id     = 'background_role',
+            widget = wibox.container.background,
+        },
+        position = "bottom_right", -- Posição da bolinha da taglist
+    }
+
+    -- Outras configurações...
+end)
+
+
+
 -- Create a tasklist widget
     s.mytasklist = awful.widget.tasklist {
         screen  = s,
         filter  = awful.widget.tasklist.filter.focused,
-        --filter  = awful.widget.tasklist.filter.currenttags,
+        filter  = awful.widget.tasklist.filter.currenttags,
         --buttons = tasklist_buttons
     }
 
 -- Create the wibox
--- "top" em cima
--- "bottom" em baixo
-    s.mywibox = awful.wibar({ position = "top", screen = s, visible = true })
+-- "top" em cima e "bottom" em baixo
+    s.mywibox = awful.wibar({ position = "bottom", screen = s, visible = true })
 
 -- Add widgets to the wibox
+    --s.mywibox:setup {
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
-
-
+        expand = "none",
+----------------------------------------------------------
          { -- Left widgets
-            layout = wibox.layout.fixed.horizontal,
-             s.mylayoutbox,
-             sep1,
-            --mylauncher,
-            cpu,
-            sep1,
-            ram,
-            sep1,
-            disk,
-            sep1,
+           layout = wibox.layout.fixed.horizontal,
+
+           logout_menu_widget(),
+           sep1,sep,
+           s.mylayoutbox,sep,
+           --mylauncher, sep,
+           sep1,sep,
+           s.mytaglist,
+            --fs_widget(),sep,
+            --disk,sep,
+                        --cpu,
+            --cpu_widget(),
+            --cpu_widget({
+              --  width = 100,
+                --step_width = 3,
+                --step_spacing = 0,
+                --color = '#434c5e'
+            --}),
+            sep,
             --updates,
             --s.mypromptbox,
-            s.mytaglist,
-
+           --s.mytaglist,
         },
-
-        s.mytasklist, -- Middle widget
+---------------------------------------------------------
+        { -- Middle widget
+            layout = wibox.layout.flex.horizontal,
+            --
+            mytextclock,
+        },
+---------------------------------------------------------
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            --mykeyboardlayout,
-            --volumecfg.widget,
-            volume,
+            todo_widget(),
+            sep1,sep,
+            cpu_widget(),
+            sep,sep1,
+            fs_widget(),
             sep1,
-            weather,
-            date,
-            mytextclock,
-            sep1,
-            {
-               widget = wibox.widget.systray,
-               base_size = 24,
-               horizontal = true,
-            },
+            ram_widget(),ram,sep,
+            --s.mytaglist,sep,
+            --net_speed_widget(),--verificar velocidade da internet
+            sep1,sep,
+            volume_widget{
+                            widget_type = 'icon_and_text'
+                         },
+            sep,sep1,
+            --volume,sep,
+            --weather,
+            --date,
             --wibox.widget.systray(),
+            --mykeyboardlayout,
+            --mytextclock,sep,
+            sep,
+            {
+                widget = wibox.widget.systray(),
+                   base_size = 22,
+                   --horizontal = true,
+                },
+            sep,
+
+            --s.mylayoutbox,
         },
+---------------------------------------------------------
     }
 end)
 -- }}}
@@ -413,6 +529,9 @@ globalkeys = gears.table.join(
     	      {description = "open a file manager", group = "launcher"}),
 
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
+              {description = "open a terminal", group = "launcher"}),
+
+    awful.key({ modkey, "Control"  }, "l", function () awful.spawn('xscreensaver-command -l') end,
               {description = "open a terminal", group = "launcher"}),
 
     awful.key({ "Shift", "Control" }, "z", awesome.restart,
@@ -441,30 +560,30 @@ globalkeys = gears.table.join(
     awful.key({ modkey         },   "t",      function () awful.spawn("alacritty -e htop") end,
         {description = "Open htop", group = "Personal launchers"}),
 
-    awful.key({ modkey         },   "r",        function () awful.spawn("/home/filipe/.config/scripts/rofi/rofi-files") end,
+    awful.key({ modkey         },   "r",        function () awful.spawn("/home/fr/.config/scripts/rofi/rofi-files") end,
         {description = "Search files", group = "Personal launchers"}),
 
-    awful.key({ modkey         },   "p",        function () awful.spawn("/home/filipe/.config/scripts/rofi/rofi-search") end,
+    awful.key({ modkey         },   "p",        function () awful.spawn("/home/fr/.config/scripts/rofi/rofi-search") end,
     	{description = "Rofi-search", group = "Personal launchers"}),
 
- awful.key({ modkey         },   "x",        function () awful.spawn("/home/filipe/.config/scripts/rofi/power-menu.sh") end,
+ awful.key({ modkey         },   "x",        function () awful.spawn("/home/fr/.config/scripts/rofi/power-menu.sh") end,
     	{description = "Power-menu.sh", group = "Personal launchers"}),
 
-    awful.key({ modkey         },   "u",        function () awful.spawn("/home/filipe/.config/scripts/wibar/autoupdate.sh") end,
+    awful.key({ modkey         },   "u",        function () awful.spawn("/home/fr/.config/scripts/wibar/autoupdate.sh") end,
     	{description = "Check Updates", group = "Personal launchers"}),
 
 
-    awful.key({ "Control"         },   "Up",      function () awful.spawn("/home/filipe/.config/scripts/notify/volume+") end,
+    awful.key({ "Control"         },   "Up",      function () awful.spawn("/home/fr/.config/scripts/notify/volume+") end,
         {description = "exec volup", group = "Volume"}),
 
-    awful.key({ "Control"         },   "Down",      function () awful.spawn("/home/filipe/.config/scripts/notify/volume-") end,
+    awful.key({ "Control"         },   "Down",      function () awful.spawn("/home/fr/.config/scripts/notify/volume-") end,
         {descritipn = "exec voldown", group = "Volume"}),
 
 
-    awful.key({ }, "XF86AudioRaiseVolume",      function () awful.spawn("/home/filipe/.config/scripts/notify/volume+") end,
+    awful.key({ }, "XF86AudioRaiseVolume",      function () awful.spawn("/home/fr/.config/scripts/notify/volume+") end,
         {description = "exec volup", group = "Volume"}),
 
-    awful.key({ }, "XF86AudioLowerVolume",      function () awful.spawn("/home/filipe/.config/scripts/notify/volume-") end,
+    awful.key({ }, "XF86AudioLowerVolume",      function () awful.spawn("/home/fr/.config/scripts/notify/volume-") end,
         {descritipn = "exec voldown", group = "Volume"}),
 
 
@@ -498,7 +617,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end,
               {description = "focus the next screen", group = "screen"}),
 
-    awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end,
+    awful.key({ modkey, "Control" }, "0", function () awful.screen.focus_relative(-1) end,
               {description = "focus the previous screen", group = "screen"}),
 
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
@@ -514,11 +633,11 @@ globalkeys = gears.table.join(
         --{description = "go back", group = "client"}),
 
     -- Control Clients
-    awful.key({ "Control",           }, "j",   awful.tag.viewprev,
-              {description = "view previous", group = "tag"}),
+    --awful.key({ "Control",           }, "j",   awful.tag.viewprev,
+    --          {description = "view previous", group = "tag"}),
 
-    awful.key({ "Control",           }, "k",  awful.tag.viewnext,
-              {description = "view next", group = "tag"}),
+    --awful.key({ "Control",           }, "k",  awful.tag.viewnext,
+    --          {description = "view next", group = "tag"}),
 
 
 
@@ -543,8 +662,6 @@ globalkeys = gears.table.join(
 
     awful.key({ modkey, "Control"          }, "Right",     function () awful.tag.incmwfact(-0.05)          end,
               {description = "decrease master width factor", group = "layout"}),
-
-
 
     awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
               {description = "increase the number of master clients", group = "layout"}),
@@ -736,14 +853,16 @@ clientbuttons = gears.table.join(
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },
-      properties = { border_width = beautiful.border_width,
+      properties = { placement = awful.placement.centered,
+                     border_width = beautiful.border_width,
                      border_color = beautiful.border_normal,
                      focus = awful.client.focus.filter,
                      raise = true,
+                     --floating = true,
                      keys = clientkeys,
                      buttons = clientbuttons,
                      screen = awful.screen.preferred,
-                     placement = awful.placement.no_overlap+awful.placement.no_offscreen
+                                          placement = awful.placement.no_overlap+awful.placement.no_offscreen
      }
     },
 
@@ -756,6 +875,7 @@ awful.rules.rules = {
         },
         class = {
           "Arandr",
+          --"Alacritty",
           "Blueman-manager",
           "Gpick",
           "Kruler",
@@ -776,7 +896,8 @@ awful.rules.rules = {
           "ConfigManager",  -- Thunderbird's about:config.
           "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
         }
-      }, properties = { floating = true }},
+      }, properties = { floating = true,
+                        placement = awful.placement.centered }},
 
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
@@ -846,19 +967,21 @@ awful.rules.rules = {
     awful.spawn.with_shell('nitrogen --restore') -- controlador de wallpaper
     awful.spawn.with_shell('xset s off') -- para não desligar a tela
     awful.spawn.with_shell('xset r rate 300 50')
-    awful.spawn.with_shell('xrandr -r 144') -- monitor 144hz
-    awful.spawn.with_shell('xset -dpms') --awful.spawn.with_shell('setxkbmap us alt-intl') -- teclado Ansi
+    awful.spawn.with_shell('xrandr -r 100') -- monitor 100hz
+    awful.spawn.with_shell('xset -dpms')
+    --awful.spawn.with_shell('setxkbmap us alt-intl')
     awful.spawn.with_shell('setxkbmap us intl') -- teclado Ansi
     awful.spawn.with_shell('picom --experimental-backends') --background transluced
     awful.spawn.with_shell('parcellite') --gerenciador de área de transferencia
-    awful.spawn.with_shell('knotes') --gerenciador de área de transferencia
-    awful.spawn.with_shell('/home/filipe/.config/scripts/notify/autoupdate.sh') --verificar atualizações
     awful.spawn.with_shell('blueman-tray') --bluetooth
+    awful.spawn.with_shell('xscreensaver') -- papel de parede na tela de bloqueio
     --awful.spawn.with_shell('localsend_app') --localsend
+    --awful.spawn.with_shell('knotes')
+    --awful.spawn.with_shell('/home/fr/.config/scripts/notify/autoupdate.sh')
 
-
-
-
-
+------------------------------------------------
+------------------WALLPAPER-LIVE----------------
+------------------------------------------------
+--    awful.spawn.with_shell("/home/fr/Downloads/wlive.sh")
 
 

@@ -1,34 +1,43 @@
 [colors]
 draw_bold_text_with_bright_colors = false
 
-[colors.bright]
-black = "0x7f8490"
-blue = "0x76cce0"
-cyan = "0xf39660"
-green = "0x9ed072"
-magenta = "0xb39df3"
-red = "0xfc5d7c"
-white = "0xe2e2e3"
-yellow = "0xe7c664"
-
-[colors.cursor]
-cursor = "0xd0d0d0"
-text = "0x151515"
-
-[colors.normal]
-black = "0x181819"
-blue = "0x76cce0"
-cyan = "0xf39660"
-green = "0x9ed072"
-magenta = "0xb39df3"
-red = "0xfc5d7c"
-white = "0xe2e2e3"
-yellow = "0xe7c664"
 
 
+
+
+
+# Colors (Dracula)
+
+# Default colors
 [colors.primary]
+foreground = '#f8f8f2'
 background = "0x151515"
-foreground = "0xd0d0d0"
+
+# Normal colors
+[colors.normal]
+black   = '#000000'
+red     = '#ff5555'
+green   = '#50fa7b'
+yellow  = '#f1fa8c'
+blue    = '#bd93f9'
+magenta = '#ff79c6'
+cyan    = '#8be9fd'
+white   = '#bbbbbb'
+
+# Bright colors
+[colors.bright]
+black   = '#555555'
+red     = '#ff5555'
+green   = '#50fa7b'
+yellow  = '#f1fa8c'
+blue    = '#caa9fa'
+magenta = '#ff79c6'
+cyan    = '#8be9fd'
+white   = '#ffffff'
+
+
+
+
 
 [cursor.style]
 blinking = "Always"
@@ -160,16 +169,16 @@ save_to_clipboard = true
 [window]
 dynamic_padding = true
 dynamic_title = true
-opacity = 0.9
+opacity = 0.95
 
 [window.class]
 general = "Alacritty"
 instance = "Alacritty"
 
 [window.padding]
-x = 10
-y = 10
+x = 20
+y = 20
 
 [window.dimensions]
-columns = 105
-lines = 40
+columns = 80
+lines = 30

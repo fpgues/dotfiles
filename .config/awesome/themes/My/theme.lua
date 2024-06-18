@@ -11,8 +11,8 @@ local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
---theme.font          = "JetBrainsMono Nerd Font 9"
-theme.font          = "JetBrainsMono Nerd Font SemiBold 10"
+theme.font          = "mononoki Bold 10"
+--theme.font          = "JetBrainsMono Nerd Font SemiBold 10"
 --theme.font          = "FantasqueSansM Nerd Font Bold 10"
 --theme.font          = "ProggyClean CE Nerd Font 12"
 --theme.font          = "Hack Nerd Font Bold 10"
@@ -21,8 +21,8 @@ theme.font          = "JetBrainsMono Nerd Font SemiBold 10"
 
 --- ALTERAR A COR AQUI----------------
 theme.tasklist_bg_focus  = "#000000"--"#282c34"
-theme.bg_normal  = "#000000"--"#282c34"-- BARRA
-theme.bg_focus  = "#000000"-- seleção das janelas
+theme.bg_normal  = "#151515"--"#282c34"-- BARRA
+theme.bg_focus  = "#151515"-- seleção das janelas
 -------------------------------
 theme.bg_urgent     = "#593131"
 theme.bg_minimize   = "#151513"

@@ -201,7 +201,7 @@ font:
 
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
-
+  
 
 
 # Color palette
@@ -210,42 +210,49 @@ font:
 # Template
 # https://github.com/alacritty/alacritty/blob/master/alacritty.yml
 
+
+
 # Base16 Classic Dark - alacritty color config
 # Jason Heeris (http://heeris.id.au)
-
-
 colors:
-  name: Monokai (dark)
-  author: Chris Kempson
+  # Default colors
   primary:
-    background: "#272822"
-    foreground: "#f8f8f2"
+    background: '0x151515'
+    foreground: '0xd0d0d0'
+
+  # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
-    text: "#272822"
-    cursor: "#f8f8f2"
+    text: '0x151515'
+    cursor: '0xd0d0d0'
+
+  # Normal colors
   normal:
-    black: "#272822"
-    red: "#f92672"
-    green: "#a6e22e"
-    yellow: "#f4bf75"
-    blue: "#66d9ef"
-    magenta: "#ae81ff"
-    cyan: "#a1efe4"
-    white: "#f8f8f2"
+    black:   '0x151515'
+    red:     '0xac4142'
+    green:   '0x90a959'
+    yellow:  '0xf4bf75'
+    blue:    '0x6a9fb5'
+    magenta: '0xaa759f'
+    cyan:    '0x75b5aa'
+    white:   '0xd0d0d0'
+
+  # Bright colors
   bright:
-    black: "#75715e"
-    red: "#f92672"
-    green: "#a6e22e"
-    yellow: "#f4bf75"
-    blue: "#66d9ef"
-    magenta: "#ae81ff"
-    cyan: "#a1efe4"
-    white: "#f9f8f5"
-
-
-
+    black:   '0x505050'
+    red:     '0xd28445'
+    green:   '0x202020'
+    yellow:  '0x303030'
+    blue:    '0xb0b0b0'
+    magenta: '0xe0e0e0'
+    cyan:    '0x8f5536'
+    white:   '0xf5f5f5'
 
 draw_bold_text_with_bright_colors: false
+
+
+
+
+
 
   # Normal colors
 selection:
@@ -259,18 +266,16 @@ selection:
 # Allow terminal applications to change Alacritty's window title.
 #dynamic_title: true
 
-
-# Cursor styles
 cursor:
-    style:
-        blinking: Always
-    blink_interval: 750
-
-
+  # Cursor style
+  #
   # Values for `shape`:
   #   - ▇ Block
   #   - _ Underline
   #   - | Beam
+  style:
+    blinking: Always
+    blink_interval: 450
 
   # Vi mode cursor style
   #
@@ -281,6 +286,7 @@ cursor:
   #vi_mode_style: None
 
   # Cursor blinking interval in milliseconds.
+  blink_interval: 750
 
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
