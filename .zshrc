@@ -9,12 +9,16 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 
+
+echo -ne '\e[5 q' #cursor | 5
+
+
 # ----- Themes
 
-#ZSH_THEME="my"
+ZSH_THEME="my"
 #ZSH_THEME="my2"
 #ZSH_THEME="my3"
-ZSH_THEME="gentoo"
+#ZSH_THEME="gentoo"
 #ZSH_THEME="eastwood"
 #ZSH_THEME="clean"
 #ZSH_THEME="kafeitu"

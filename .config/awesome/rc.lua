@@ -110,9 +110,9 @@ pcall(require, "luarocks.loader")
         awful.layout.suit.tile.left,
         --awful.layout.suit.fair,
         --awful.layout.suit.tile,
-        awful.layout.suit.tile.bottom,
+        --awful.layout.suit.tile.bottom,
         --awful.layout.suit.tile.top,
-        awful.layout.suit.fair.horizontal,
+        --awful.layout.suit.fair.horizontal,
         --awful.layout.suit.spiral,
         --awful.layout.suit.spiral.dwindle,
         --awful.layout.suit.max,
@@ -298,7 +298,7 @@ pcall(require, "luarocks.loader")
     set_wallpaper(s)
 
 -- Each screen has its own tag table.
-    awful.tag({"󱡶","󱡶","󱡶","󱡶","󱡶","󱡶",}, s, awful.layout.layouts[1])
+    awful.tag({"󱡶","󱡶","󱡶","󱡶","󱡶",}, s, awful.layout.layouts[1])
 --    awful.tag({"I","II","III","IV","V"}, s, awful.layout.layouts[1])
 
 -- Create a promptbox for each screen
@@ -519,8 +519,8 @@ globalkeys = gears.table.join(
             {description="show help", group="awesome"}),
 
 -- Control Clients
-    awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
-            {description = "go back", group = "tag"}),
+    --awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
+            --{description = "go back", group = "tag"}),
 
     awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
             {description = "show main menu", group = "awesome"}),
@@ -589,7 +589,7 @@ globalkeys = gears.table.join(
             {description = "decrease the number of columns", group = "layout"}),
 
 
-    awful.key({ "Control",           }, "Return", function () awful.layout.inc( 1)                end,
+    awful.key({ modkey,           }, "Escape", function () awful.layout.inc( 1)                end,
             {description = "select next", group = "layout"}),
 
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
