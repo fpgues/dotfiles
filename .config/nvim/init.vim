@@ -39,8 +39,6 @@ filetype indent on   " Load the indent file for the file type, if any
 
 call plug#begin()
 
-
-
 "######## PLUGINS #####################################################
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -58,6 +56,9 @@ Plug 'sainnhe/sonokai'
 Plug 'chriskempson/base16-vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'chriskempson/base16-vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
+
+
 
 call plug#end()
 
@@ -67,11 +68,12 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
-
 colorscheme sonokai
+"colorscheme dracula
 "colorscheme nord
 "colorscheme base16-default-dark
 "colorscheme onehalfdark
+
 
 
 if (has("nvim")) "Transparent background. Only for nvim
@@ -87,8 +89,6 @@ let g:airline_powerline_fonts = 1
 "######## NERDTree #####################################################
 nmap <C-a> :NERDTreeToggle<CR>
 nnoremap <silent> <C-b><C-B> :NERDTreeToggle<CR>
-
-
 
 "######## ALE  #####################################################
 let g:ale_linters = {

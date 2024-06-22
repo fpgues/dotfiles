@@ -14,17 +14,17 @@ DMBROWSER="google-chrome"
 # The url format must allow for the search keywords at the end of the url.
 # For example: https://www.amazon.com/s?k=XXXX searches Amazon for 'XXXX'.
 declare -a options=(
-" google        https://www.google.com/search?q="
-" youtube       https://www.youtube.com/results?search_query="
-" twitter       https://twitter.com/search?q="
-" googleimages  https://www.google.com/search?hl=en&tbm=isch&q="
-" duckduckgo    https://duckduckgo.com/?q="
-" github        https://github.com/search?q="
-" gitlab        https://gitlab.com/search?search="
-" letterboxd    https://letterboxd.com/search/"
-" translate     https://translate.google.com/?sl=auto&tl=en&text="
-" wikipedia     https://en.wikipedia.org/wiki/"
-" drive         https://drive.google.com/drive/search?q="
+" 1) translate     https://translate.google.com/?sl=auto&tl=en&text="
+" 2) google        https://www.google.com/search?q="
+" 3) youtube       https://www.youtube.com/results?search_query="
+" 4) twitter       https://twitter.com/search?q="
+" 5) googleimages  https://www.google.com/search?hl=en&tbm=isch&q="
+" 6) drive         https://drive.google.com/drive/search?q="
+#" duckduckgo    https://duckduckgo.com/?q="
+" 7) github        https://github.com/search?q="
+#" gitlab        https://gitlab.com/search?search="
+#" letterboxd    https://letterboxd.com/search/"
+#" wikipedia     https://en.wikipedia.org/wiki/"
 "quit"
 )
 

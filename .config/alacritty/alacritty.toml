@@ -2,22 +2,26 @@
 draw_bold_text_with_bright_colors = false
 
 # Default colors
+#[colors.primary]
+#foreground = '#f8f8f2'
+#background = "0x151515"
+
+# Default colors
 [colors.primary]
 foreground = '#f8f8f2'
-background = "0x151515"
+background = '#25292f'
 
+# search archives in: /.config/alacritty/themes/themes
 #monokai.toml
 #snazzy.toml
+#dracula.toml
 
 
-
-
-
-
+# this theme is mixing of colors the monokai+dracula.
 [colors.normal]
 black = "#272822"
 red = "#f92672"
-green   = '#50fa7b'
+green = '#50fa7b' #dracula
 #green = "#a6e22e"
 yellow = "#f4bf75"
 blue = "#66d9ef"
@@ -28,7 +32,7 @@ white = "#f8f8f2"
 [colors.bright]
 black = "#75715e"
 red = "#f92672"
-green   = '#50fa7b'
+green = '#50fa7b' #dracula
 #green = "#a6e22e"
 yellow = "#f4bf75"
 blue = "#66d9ef"
@@ -79,7 +83,7 @@ family = "JetBrainsMono Nerd Font"
 style = "Regular"
 
 [font.offset]
-x =-1
+x = -1
 y = 0
 
 [[keyboard.bindings]]
@@ -186,11 +190,11 @@ x = 20
 y = 20
 
 [window.dimensions]
-columns = 80
+columns = 100
 lines = 30
 
 [window]
 dynamic_padding = true
 dynamic_title = true
-opacity = 0.97
+opacity = 0.8
 
