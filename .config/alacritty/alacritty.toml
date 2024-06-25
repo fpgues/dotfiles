@@ -6,51 +6,37 @@ draw_bold_text_with_bright_colors = false
 #foreground = '#f8f8f2'
 #background = "0x151515"
 
-# Default colors
 [colors.primary]
 foreground = '#f8f8f2'
 background = '#25292f'
 
-# search archives in: /.config/alacritty/themes/themes
-#monokai.toml
-#snazzy.toml
-#dracula.toml
 
-
-# this theme is mixing of colors the monokai+dracula.
-[colors.normal]
-black = "#272822"
-red = "#f92672"
-green = '#50fa7b' #dracula
-#green = "#a6e22e"
-yellow = "#f4bf75"
-blue = "#66d9ef"
-magenta = "#ae81ff"
-cyan = "#a1efe4"
-white = "#f8f8f2"
-
+##SONOKAI THEME
 [colors.bright]
-black = "#75715e"
-red = "#f92672"
+black = "0x7f8490"
+blue = "0x76cce0"
+cyan = "0xf39660"
 green = '#50fa7b' #dracula
-#green = "#a6e22e"
-yellow = "#f4bf75"
-blue = "#66d9ef"
-magenta = "#ae81ff"
-cyan = "#a1efe4"
-white = "#f9f8f5"
+#green = "0x9ed072"
+magenta = "0xb39df3"
+red = "0xfc5d7c"
+white = "0xe2e2e3"
+yellow = "0xe7c664"
 
+[colors.cursor]
+cursor = "0xd0d0d0"
+text = "0x151515"
 
-
-
-
-
-
-
-
-
-
-
+[colors.normal]
+black = "0x181819"
+blue = "0x76cce0"
+cyan = "0xf39660"
+#green = "0x9ed072"
+green = '#50fa7b' #dracula
+magenta = "0xb39df3"
+red = "0xfc5d7c"
+white = "0xe2e2e3"
+yellow = "0xe7c664"
 
 
 
@@ -196,5 +182,4 @@ lines = 30
 [window]
 dynamic_padding = true
 dynamic_title = true
-opacity = 0.8
-
+opacity = 1

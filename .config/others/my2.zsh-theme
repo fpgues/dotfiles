@@ -1,6 +1,5 @@
 # smt.zsh-theme, based on dogenpunk by Matthew Nelson.
 
-
 # dashed separator size
 function afmagic_dashes {
   # check either virtualenv or condaenv variables

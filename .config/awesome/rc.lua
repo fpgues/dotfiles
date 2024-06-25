@@ -106,10 +106,11 @@ pcall(require, "luarocks.loader")
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
     awful.layout.layouts = {
-        awful.layout.suit.floating,
-        awful.layout.suit.tile.left,
+
+        --awful.layout.suit.tile.left,
         --awful.layout.suit.fair,
-        --awful.layout.suit.tile,
+        awful.layout.suit.floating,
+        awful.layout.suit.tile,
         --awful.layout.suit.tile.bottom,
         --awful.layout.suit.tile.top,
         --awful.layout.suit.fair.horizontal,
@@ -890,15 +891,16 @@ awful.rules.rules = {
     awful.spawn.with_shell('xset r rate 300 50')
     awful.spawn.with_shell('xrandr -r 100') -- monitor 100hz
     awful.spawn.with_shell('xset -dpms')
-    awful.spawn.with_shell('setxkbmap us intl') -- teclado Ansi
+    --awful.spawn.with_shell('setxkbmap us intl') -- teclado Ansi
     awful.spawn.with_shell('picom --experimental-backends') --background transluced
     awful.spawn.with_shell('parcellite') --gerenciador de área de transferencia
+    awful.spawn.with_shell('blueman-applet') --bluetooth
     awful.spawn.with_shell('blueman-tray') --bluetooth
     awful.spawn.with_shell('xscreensaver') -- papel de parede na tela de bloqueio
     --awful.spawn.with_shell('localsend_app') --localsend
     --awful.spawn.with_shell('knotes')
     --awful.spawn.with_shell('/home/fr/.config/scripts/notify/autoupdate.sh')
-    --awful.spawn.with_shell('setxkbmap us alt-intl')
+    awful.spawn.with_shell('setxkbmap us alt-intl')
 
 ------------------------------------------------
 ------------------WALLPAPER-LIVE----------------

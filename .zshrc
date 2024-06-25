@@ -17,9 +17,9 @@ echo -ne '\e[5 q' #cursor | 5
 
 #ZSH_THEME="my"
 #ZSH_THEME="my2"
-
-#zsh_theme="my3"
+#ZSH_THEME="my3"
 ZSH_THEME="my4"
+#ZSH_THEME="dracula"
 #ZSH_THEME="gentoo"
 #ZSH_THEME="eastwood"
 #ZSH_THEME="clean"
