@@ -2,13 +2,13 @@
 draw_bold_text_with_bright_colors = false
 
 # Default colors
-#[colors.primary]
-#foreground = '#f8f8f2'
-#background = "0x151515"
-
 [colors.primary]
 foreground = '#f8f8f2'
-background = '#25292f'
+background = "0x151515"
+
+#[colors.primary]
+#foreground = '#f8f8f2'
+#background = '#25292f'
 
 
 ##SONOKAI THEME

@@ -8,6 +8,13 @@ okular
 obstudio
 sweethome3d
 color-picker
+unclutter
+libnotify-bin
+
+
+
+
+
 
 
 ###### .deb.
