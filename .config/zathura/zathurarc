@@ -2,6 +2,8 @@ set sandbox none
 set selection-clipboard clipboard
 
 map <Return> navigate next
+map <Left> navigate previous
+map <Right> navigate next
 
 map u scroll half-up
 map d scroll half-down
