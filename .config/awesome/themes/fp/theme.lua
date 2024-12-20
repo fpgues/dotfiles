@@ -28,13 +28,13 @@ theme.font          = "VictorMono                   Bold 9"
 ----------------------------------------------------------
 ---------------BARRA--------------------------------------
 ----------------------------------------------------------
---theme.bg_normal     = "#000000" --100%dark
+theme.bg_normal     = "#000000" --100%dark
 --theme.bg_normal     = "#263238"
 --theme.bg_normal     = "#171f24" --color wallpaper_green
 --theme.bg_normal     = "#1a1b26" --TokyoNight
 --theme.bg_normal     = "#3b4252" --nord
 --theme.bg_normal     = "#2B2E3B" --light1 nord
-theme.bg_normal     = "#2e3440" --light nord
+--theme.bg_normal     = "#2e3440" --light nord
 --theme.bg_normal     = "#2b2e3b" --dark nord
 --theme.bg_normal     = "#27383a" --light green
 --theme.bg_normal     = "#111d20" --dark green

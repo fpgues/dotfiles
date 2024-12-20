@@ -40,6 +40,10 @@ sudo ln -s ~/.dotfiles/.config/lx-themes/icons/* /usr/share/icons
 
 sudo ln -s ~/.dotfiles/.config/others/themes_zsh/* ~/.oh-my-zsh/themes/
 
+sudo ln -s ~/.dotfiles/.Xresources ~/
+
+sudo ln -s ~/.dotfiles/.config/others/cdm_configs/* /etc/X11/xorg.conf.d
+
 #################################################################################
 #####RELOAD FONTS###############################################################
 #################################################################################
