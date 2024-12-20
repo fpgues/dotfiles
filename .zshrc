@@ -156,7 +156,7 @@ alias p="z"
 alias zh="zoxide query"
 alias addz='zoxide add'
 
-alias nvim='v'
+#alias nvim='v'
 
 echo -ne '\e[5 q' #cursor | 5
 eval "$(zoxide init zsh)"

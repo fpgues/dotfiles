@@ -16,11 +16,13 @@ sudo apt -y install mlocate pamixer shotwell xclip curl git htop rofi picom pyth
 
 
 ### apps
-sudo apt -y thunar thunar-volman thunar-archive-plugin duf neofetch flameshot nitrogen qalc network-manager
+sudo apt -y install thunar thunar-volman thunar-archive-plugin duf neofetch zoxide flameshot nitrogen qalc network-manager
 
 
 ## Fonts/icons/themes
-ln -s ~/.dotfiles/.gitconfig ~/ && ln -s ~/.dotfiles/.config/* ~/.config/
+ln -s ~/.dotfiles/.gitconfig ~/
+
+ln -s ~/.dotfiles/.config/* ~/.config/
 
 cd ~/.local/share/ && sudo mkdir rofi
 

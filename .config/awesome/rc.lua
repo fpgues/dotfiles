@@ -1440,5 +1440,5 @@ awful.spawn.with_shell('xdotool')
 
 
 --awful.spawn.with_shell('xrandr --output DP-1 --primary') --via displayport
-awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --rate 75  --output eDP-1 --off')
---awful.spawn.with_shell('xrandr --output eDP-1 --mode 1366x768 --pos 0x386 --rotate normal --output HDMI-1 --off --output DP-1 --primary --mode 2560x1440 --pos 1366x0 --rotate normal')
+--awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --rate 75  --output eDP-1 --off')
+awful.spawn.with_shell('xrandr --output eDP-1 --mode 1366x768 --pos 0x386 --rotate normal --output HDMI-1 --off --output DP-1 --primary --mode 2560x1440 --pos 1366x0 --rotate normal')
