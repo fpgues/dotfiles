@@ -1,8 +1,8 @@
 pcall(require, "luarocks.loader")
 
---####################################################################
---############################# LIBRARIES ############################
---####################################################################
+----------------------------------------------------------------------
+---------------------------- LIBRARIES -------------------------------
+----------------------------------------------------------------------
 local gears = require("gears")
 local awful = require("awful")
               require("awful.autofocus")
@@ -21,15 +21,15 @@ local color = require("gears.color")
 local watch = require("awful.widget.watch")
 
 
---####################################################################
---############################# THEMES ###############################
---####################################################################
+----------------------------------------------------------------------
+---------------------------- THEMES ----------------------------------
+----------------------------------------------------------------------
 beautiful.init(gears.filesystem.get_themes_dir() .. "fp/theme.lua")
 
 
---####################################################################
---####################### MODE_FLOATING ##############################
---####################################################################
+----------------------------------------------------------------------
+---------------------------- MODE_FLOATING ---------------------------
+----------------------------------------------------------------------
 
 awful.rules.rules = {
 -- Função para executar sempre que uma nova janela (cliente) for criada
@@ -92,26 +92,31 @@ awful.rules.rules = {
             c.floating = true
         end
 
+        if c.instance == "flameshot" then
+            c.floating = true
+        end
+
         if c.instance == "" then
             c.floating = true
         end
 
+
+        -- CENTRALIZA OS APPS
         local exclude_classes = {
                 -- Adicione outras classes ou instâncias que deseja excluir
-                "gimp",       -- Nome da classe do GIMP
-                "spotify",    -- Nome da instância do Spotify
-                "xpad",
-                "nitrogen",
-                "blueman-manager",
-                "tilix",
-                --"discord",
-                "color-picker",
-                "iriumwebcam",
-                "amberol",
-                "org.inkscape.Inkscape",
-                "Inkscape",
+               "gimp",       -- Nome da classe do GIMP
+               "spotify",    -- Nome da instância do Spotify
+               "xpad",
+               --"nitrogen",
+               "blueman-manager",
+               "tilix",
+               --"discord",
+               "color-picker",
+               "iriumwebcam",
+               "amberol",
+               "org.inkscape.Inkscape",
+               "Inkscape",
         }
-
 
         -- Função para verificar se a classe ou instância do cliente está na lista de exclusão
         local function is_excluded(client)
@@ -141,9 +146,9 @@ awful.rules.rules = {
     end)
 }
 
---####################################################################
---############################# ERROR ################################
---####################################################################
+----------------------------------------------------------------------
+---------------------------- ERROR -----------------------------------
+----------------------------------------------------------------------
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -169,9 +174,9 @@ do
     end)
 end
 
---####################################################################
---############################# UNCLUTTER ############################
---####################################################################
+----------------------------------------------------------------------
+---------------------------- UNCLUTTER -------------------------------
+----------------------------------------------------------------------
 
 -- {{{ Autostart windowless processes
 -- This function will run once every time Awesome is started
@@ -183,9 +188,9 @@ end
 
 run_once({ "", "unclutter -root" }) -- comma-separated entries
 
---####################################################################
---############################# OPTIONS ##############################
---####################################################################
+----------------------------------------------------------------------
+---------------------------- OPTIONS ---------------------------------
+----------------------------------------------------------------------
 
 -- This is used later as the default terminal and editor to run.
 terminal = "kitty"
@@ -199,10 +204,10 @@ modkey = "Mod1" -- Alt
 modkey1 = "Mod4" -- Win
 
 -- Separator Blanc
-sep = wibox.widget.textbox(" ")
-sep3 = wibox.widget.textbox("")
+sep = wibox.widget.textbox("   ")
 sep1 = wibox.widget.textbox("  ") --("") --("  ") --("⏽") --("") 󰇙
 sep2 = wibox.widget.textbox(" 󱗿 ")
+sep3 = wibox.widget.textbox(" ")
 percent_widget = wibox.widget.textbox("%")
 lay_widget = wibox.widget.textbox("Lay:")
 fs_widget = wibox.widget.textbox("FS:")
@@ -211,17 +216,17 @@ fs_widget = wibox.widget.textbox("FS:")
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    awful.layout.suit.tile,
+    awful.layout.suit.tile.left,
+    --awful.layout.suit.tile,
     awful.layout.suit.floating,
+    --awful.layout.suit.tile.top,
     awful.layout.suit.fair.horizontal,
-    lain.layout.termfair,
-    --lain.layout.termfair.center,
+    --lain.layout.termfair,
 
+    --lain.layout.termfair.center,
     --awful.layout.suit.fair,
     --lain.layout.centerwork,
-    --awful.layout.suit.tile.left,
     --awful.layout.suit.tile.bottom,
-    --awful.layout.suit.tile.top,
     --awful.layout.suit.spiral,
     --awful.layout.suit.spiral.dwindle,
     --awful.layout.suit.max,
@@ -247,9 +252,9 @@ lain.layout.cascade.tile.ncol          = 2
 
 
 
---####################################################################
---############################# WIBAR - WIDGETS ######################
---####################################################################
+----------------------------------------------------------------------
+---------------------------- WIBAR - WIDGETS -------------------------
+----------------------------------------------------------------------
 -- Widgets https://github.com/streetturtle/awesome-wm-widgets
 local net_speed_widget = require("awesome-wm-widgets.net-speed-widget.net-speed")
 local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
@@ -283,11 +288,39 @@ local mem1 = lain.widget.mem({
         widget:set_markup("MEM:" .. mem_now.used .." MB16GB")
     end
 })
+
 local mem2 = lain.widget.mem({
     settings = function()
         widget:set_markup("  " .. mem_now.used .." MB")
     end
 })
+
+local mem2 = lain.widget.mem({
+    settings = function()
+        widget:set_markup("  " .. mem_now.used .." MB")
+    end
+})
+
+local fsroothome = lain.widget.fs({
+    settings  = function()
+        widget:set_text("DISK:/" .. fs_now ["/"].percentage .. "%" .. " ~/" ..  fs_now["/home"].percentage .. "%")
+    end
+})
+
+mysysload = lain.widget.sysload()
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 --WidgetVicious
@@ -299,8 +332,8 @@ vicious.register(wifi_widget, vicious.widgets.wifi,
             --return "No Wi-Fi  "
             --return " No Wi-Fi"
         else
-            --return " "
-            return "  " .. args["{ssid}"]
+            return " "
+            --return "  " .. args["{ssid}"]
             --return args["{ssid}"] .. "  "
         end
     end, 10, "wlp0s20f3")  -- Altere "wlp2s0" para o nome da sua interface Wi-Fi
@@ -336,7 +369,7 @@ watch("acpi -i", 30, update_battery, battery_widget1)
 --mytextclock = wibox.widget.textclock(" %I:%M  %d/%m/%y ", 1)
 --mytextclock = wibox.widget.textclock(" %d/%m/%y %I:%M ", 1)
 --mytextclock = wibox.widget.textclock("%d/%m/%y ~ %H:%M:%S", 1)
-mytextclock = wibox.widget.textclock("%e %B, %H:%M", 1)
+mytextclock = wibox.widget.textclock("%a %e %b %H:%M ", 1)
 
 local cw = calendar_widget({
     theme = 'nord', --default ,nord, dark, tokyonight
@@ -679,10 +712,11 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 
                 {   -- Left widgets
                     layout = wibox.layout.fixed.horizontal,
-                    --mylauncher,
-                    sep,
+                    sep3,
+                    mylauncher,
+                    sep2,
                     s.mytaglist,
-                    sep1,
+                    sep,
                     s.mytasklist,
 
 
@@ -699,25 +733,24 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                 {   -- Middle widget
                     layout = wibox.layout.flex.horizontal,
 
-                    mytextclock,
-                    --s.mytasklist,
-                },
+                                    },
 
                 { -- Right widgets
                     layout = wibox.layout.fixed.horizontal,
 
                     systray,
-                    sep1,
+                    sep,
                     lay_widget,
                     s.mylayoutbox,
-                    sep1,
-                    cpu2,
-                    --cpu1.widget,
-                    --cpu_hz,
-                    sep1,
+                    sep,
+                    --cpu2,
+                    cpu1.widget, cpu_hz,
+                    sep,
                     --ram_widget(),
-                    mem2,
-                    --fs_widget()
+                    mem1,
+                    sep,
+                    fsroothome,
+                    --fs_widget(),
                     --batteryarc_widget({
                     --    show_current_level = true,
                     --    arc_thickness = 1,
@@ -730,19 +763,21 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     --net_speed_widget(),
                     --weather,
                     --date,
-                    sep1,
+                    sep,
                     wifi_widget,
-                    sep1,
+                    sep,
                     volume_widget{widget_type = 'icon_and_text'},percent_widget,
-                    sep1,
+                    sep,
                     battery_widget(),
                     battery_widget1,
                     --sep1,
                     --mykeyboardlayout,
                     --sep1,
                     --mytextclock,
-                    sep1,
+                    sep,
                     logout_menu_widget(),
+                    sep,
+                    mytextclock,
                 },
             }
 
@@ -770,6 +805,7 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 
                 {   -- Middle widget (vazio)
                     layout = wibox.layout.flex.horizontal,
+                    --mytextclock,
                 },
 
                 {   -- Right widgets (apenas relógio)
@@ -783,9 +819,6 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     sep1,
                     battery_widget(),
                     battery_widget1,
-                    sep1,
-                    mytextclock,
-                    sep,sep,
                 },
             }
     end
@@ -796,9 +829,9 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
     end)
 
 
---####################################################################
---############################# KEY_BINDINGS #########################
---####################################################################
+----------------------------------------------------------------------
+---------------------------- KEY_BINDINGS ----------------------------
+----------------------------------------------------------------------
 globalkeys = gears.table.join(
 
     -- Standard Program
@@ -835,7 +868,7 @@ globalkeys = gears.table.join(
     --        {descrption = "Open ranger", group = "Personal launchers"}),
 
     awful.key({ modkey,         },  "o",    function () awful.spawn("xpad -s") end,
-            {descrption = "Show Xpad", group = "Personal launchers"}),
+            {descrption = "show xpad", group = "personal launchers"}),
     awful.key({ modkey,         },  "k",    function () awful.spawn("xpad -h") end,
             {descrption = "Hide Xpad", group = "Personal launchers"}),
     awful.key({ modkey, "Control"      },  "n",    function () awful.spawn("xpad -n") end,
@@ -844,6 +877,9 @@ globalkeys = gears.table.join(
     --         {description = "Rofi-apps", group = "Personal launchers"}),
     --awful.key({ modkey,         },   "l",    function () awful.spawn("tilix -e qalc") end,
     --         {description = "Rofi-apps", group = "Personal launchers"}),
+
+    awful.key({ modkey, "Control"         },   "d",    function () awful.spawn("kitty -e pactl load-module module-combine-sink sink_name=COMBINED_SINK && exit") end,
+             {description = "Combine Sink", group = "Personal launchers"}),
 
     awful.key({ modkey,         },   "l",    function () awful.spawn("kitty -e /home/filipe/.config/scripts/qalc-term.sh") end,
              {description = "Rofi-apps", group = "Personal launchers"}),
@@ -970,6 +1006,12 @@ globalkeys = gears.table.join(
    -- awful.key({ }, "XF86MonBrightnessDown", function () os.execute("xbacklight -dec 10") end,
    --           {description = "-10%", group = "hotkeys"}),
 
+
+   awful.key({"Control","Shift"  }, "Up", function () os.execute("brightnessctl set +10%") end,
+             {description = "+10%", group = "hotkeys"}),
+   awful.key({"Control","Shift"  }, "Down", function () os.execute("brightnessctl set 10%-") end,
+             {description = "-10%", group = "hotkeys"}),
+
    awful.key({ }, "XF86MonBrightnessUp", function () os.execute("brightnessctl set +10%") end,
              {description = "+10%", group = "hotkeys"}),
    awful.key({ }, "XF86MonBrightnessDown", function () os.execute("brightnessctl set 10%-") end,
@@ -1028,7 +1070,7 @@ globalkeys = gears.table.join(
         end
     end, {description = "Alternar visibilidade da barra", group = "custom"}),
 
-    ---- Alternar a visibilidade da barra no primeiro monitor
+    -- Alternar a visibilidade da barra no primeiro monitor
     --awful.key({ modkey }, "w", function()
     --    local s = screen[2] -- Substitua por screen.primary se for usar no monitor principal
     --    if s.mywibox then
@@ -1175,9 +1217,9 @@ globalkeys = gears.table.join(
 
 
 
---####################################################################
---############################# RULES ################################
---####################################################################
+----------------------------------------------------------------------
+---------------------------- RULES -----------------------------------
+----------------------------------------------------------------------
 
 -- Função para bloquear a tela
 --function lock_screen()
@@ -1288,9 +1330,9 @@ awful.rules.rules = {
     },
 }
 
----####################################################################
---############################# SIGNALS ###############################
---####################################################################
+----------------------------------------------------------------------
+---------------------------- SIGNALS ---------------------------------
+----------------------------------------------------------------------
 
 -- Floating windows are `always on top` by default.
 --client.connect_signal("property::floating", function(c) c.ontop = c.floating end)
@@ -1380,9 +1422,9 @@ client.connect_signal("focus", function(c)
 client.connect_signal("unfocus", function(c)
     c.border_color = beautiful.border_normal end)
 
---####################################################################
---############################# GAPS #################################
---####################################################################
+----------------------------------------------------------------------
+---------------------------- GAPS ------------------------------------
+----------------------------------------------------------------------
 
 beautiful.useless_gap = 2,
 
@@ -1400,9 +1442,9 @@ beautiful.useless_gap = 2,
 --    end
 --end)
 
---####################################################################
---############################# AUTOSTART ############################
---####################################################################
+----------------------------------------------------------------------
+---------------------------- AUTOSTART -------------------------------
+----------------------------------------------------------------------
 --system
 --awful.spawn.with_shell('autorandr') --bluetooth
 awful.spawn.with_shell('blueman-applet') --bluetooth
@@ -1428,7 +1470,10 @@ awful.spawn.with_shell('picom --experimental-backends') --background transluced
 awful.spawn.with_shell('parcellite') --gerenciador de área de transferencia
 awful.spawn.with_shell('fusuma -d')
 awful.spawn.with_shell('xdotool')
+awful.spawn.with_shell('xsel')
+awful.spawn.with_shell('xclip')
 --awful.spawn.with_shell('syncthing')
+--awful.spawn.with_shell('pactl load-module module-combine-sink sink_name=COMBINED_SINK')
 
 --awful.spawn.with_shell('flameshot') --bater print
 --awful.spawn.with_shell('cmst -m') --gerenciador de área de transferencia
@@ -1440,5 +1485,5 @@ awful.spawn.with_shell('xdotool')
 
 
 --awful.spawn.with_shell('xrandr --output DP-1 --primary') --via displayport
---awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --rate 75  --output eDP-1 --off')
-awful.spawn.with_shell('xrandr --output eDP-1 --mode 1366x768 --pos 0x386 --rotate normal --output HDMI-1 --off --output DP-1 --primary --mode 2560x1440 --pos 1366x0 --rotate normal')
+awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --rate 75  --output eDP-1 --off')
+--awful.spawn.with_shell('xrandr --output eDP-1 --mode 1366x768 --pos 0x386 --rotate normal --output HDMI-1 --off --output DP-1 --primary --mode 2560x1440 --pos 1366x0 --rotate normal')

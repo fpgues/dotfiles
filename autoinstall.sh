@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo " "       _   _   _ _____ ___ ___ _   _ ____ _____  _    _
+echo "        __  __ ____ ___ ___ ___ _   _ ____ _____  __    __      "
 echo "   / \ | | | |_   _/ _ \_ _| \ | / ___|_   _|/ \  | |   | |     "
 echo "  / _ \| | | | | || | | | ||  \| \___ \ | | / _ \ | |   | |     "
 echo " / ___ \ |_| | | || |_| | || |\  |___) || |/ ___ \| |___| |___  "
@@ -12,12 +12,11 @@ sudo apt -y install build-essential libpam0g-dev libxcb-xkb-dev libncurses5-dev 
 
 
 ### stantard
-sudo apt -y install mlocate pamixer shotwell xclip curl git htop rofi picom python3-pip alsamixergui pavucontrol gcc blueman pulsemixer ranger vim wget lxappearance gimp w3m-img awesome awesome-extra parcellite libnotify-bin i3lock xautolock unclutter thunar kitty brightnessctl
+sudo apt -y install mlocate pamixer shotwell xclip curl git htop rofi picom python3-pip pulseaudio pulsemixer alsamixergui pavucontrol gcc blueman ranger vim wget lxappearance gimp w3m-img awesome awesome-extra parcellite libnotify-bin i3lock xautolock unclutter thunar kitty brightnessctl
 
 
 ### apps
-sudo apt -y install thunar thunar-volman thunar-archive-plugin duf neofetch zoxide flameshot nitrogen qalc network-manager
-
+sudo apt -y install thunar thunar-volman thunar-archive-plugin duf neofetch zoxide flameshot nitrogen qalc network-manager gpick gnome-control-center syncthing zathura-pdf-poppler shotcut localsend kmag
 
 ## Fonts/icons/themes
 ln -s ~/.dotfiles/.gitconfig ~/

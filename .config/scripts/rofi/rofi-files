@@ -26,6 +26,7 @@ declare -a options=(
 "rofi-config         $HOME/.config/rofi/config.rasi"
 "rofi-files          $HOME/.config/scripts/rofi/rofi-files"
 "rofi-search         $HOME/.config/scripts/rofi/rofi-search"
+"autoinstall.sh      $HOME/.dotfiles/autoinstall.sh"
 #"4) bash - $HOME/.bashrc"
     "quit"
 )

@@ -9,10 +9,11 @@
     --font:   "Fira Code 10";
     --font:   "JetBrainsMono Nerd Font 12";
     --font:   "ProggyClean CE Nerd Font Regular 12";
+    --font:      "FantasqueSansMNerdFont Regular 12";
+    font:       "VictorMono                  Bold 9";
 
-    font:      "FantasqueSansMNerdFont Regular 12";
 
-    nord00:    #171f24;
+    nord00:    #2B2E3B;
     nord0:     #2e3440;
     nord1:     #3b4252;
     nord2:     #434c5e;
@@ -55,10 +56,10 @@ mainbox {
 }
 
 inputbar {
-    width:      25%;
-    padding:    4px 8px;
+    width:      10%;
+    padding:    1px 8px;
     spacing:    8px;
-    children:   [ prompt, entry ];
+    children:   [prompt,  entry ];
 }
 
 prompt, entry, element-text, element-icon {
@@ -74,7 +75,7 @@ listview {
 }
 
 element {
-    padding:    1px 8px;
+    padding:    1px 12px;
     spacing:    4px;
 }
 
@@ -103,7 +104,7 @@ element selected active {
 }
 
 element-icon {
-    size:   0.75em;
+    size:   1em;
 }
 
 element-text {

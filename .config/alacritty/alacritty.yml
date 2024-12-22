@@ -56,7 +56,7 @@ window:
   #
   # Window opacity as a floating point number from `0.0` to `1.0`.
   # The value `0.0` is completely transparent and `1.0` is opaque.
-  opacity: 1
+  opacity: .98
 
   # Startup Mode (changes require restart)
   #
@@ -111,11 +111,12 @@ font:
     # family: CodeNewRoman Nerd Font
     # family: RobotoMono Nerd Font
     # family: Hack
-    family: JetBrainsMono Nerd Font
+    #family: JetBrainsMono Nerd Font
     # family: UbuntuMono Nerd Font
     # family: Monofur Nerd Font
     # family: Terminess Nerd Font
     # family: Mononoki Nerd Font
+    family: VictorMono
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -130,11 +131,12 @@ font:
     # family: CodeNewRoman Nerd Font
     # family: RobotoMono Nerd Font
     # family: Hack
-    family: JetBrainsMono Nerd Font
+    #family: JetBrainsMono Nerd Font
     # family: UbuntuMono Nerd Font
     # family: Monofur Nerd Font
     #family: Terminess Nerd Font
     # family: Mononoki Nerd Font
+    family: VictorMono
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -149,11 +151,12 @@ font:
     # family: CodeNewRoman Nerd Font
     # family: RobotoMono Nerd Font
     # family: Hack
-    family: JetBrainsMono Nerd Font
+    # family: JetBrainsMono Nerd Font
     # family: UbuntuMono Nerd Font
     # family: Monofuritalic Nerd Font Mono
     # family: Terminess Nerd Font
     # family: Mononoki Nerd Font
+    family: VictorMono
 
     # The `style` can be specified to pick a specific face.
     style: Italic
@@ -173,12 +176,13 @@ font:
     # family: Monofuritalic Nerd Font Mono
     # family: Terminess Nerd Font
     # family: Mononoki Nerd Font
+    family: VictorMono
 
     # The `style` can be specified to pick a specific face.
     style: Bold Italic
 
   # Point size
-  size: 14.0
+  size: 12.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -201,7 +205,6 @@ font:
 
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
-  
 
 
 # Color palette
@@ -210,49 +213,95 @@ font:
 # Template
 # https://github.com/alacritty/alacritty/blob/master/alacritty.yml
 
+colors:
+  primary:
+    background: "0x2c2e34"
+    foreground: "0x263238"
+    #foreground: "0xe2e2e3"
+
+  normal:
+    black: "0x181819"
+    red: "0xfc5d7c"
+    green: "0x9ed072"
+    yellow: "0xe7c664"
+    blue: "0x76cce0"
+    magenta: "0xb39df3"
+    cyan: "0xf39660"
+    white: "0xe2e2e3"
+
+  bright:
+    black: "0x7f8490"
+    red: "0xfc5d7c"
+    green: "0x9ed072"
+    yellow: "0xe7c664"
+    blue: "0x76cce0"
+    magenta: "0xb39df3"
+    cyan: "0xf39660"
+    white: "0xe2e2e3"
+
+
+#colors:
+#  primary:
+#    background: "0x273136"
+#    foreground: "0xe1e2e3"
+#
+#  normal:
+#    black: "0x1c1e1f"
+#    red: "0xf76c7c"
+#    green: "0x9cd57b"
+#    yellow: "0xe3d367"
+#    blue: "0x78cee9"
+#    magenta: "0xbaa0f8"
+#    cyan: "0xf3a96a"
+#    white: "0xe1e2e3"
+#
+#  bright:
+#    black: "0x82878b"
+#    red: "0xf76c7c"
+#    green: "0x9cd57b"
+#    yellow: "0xe3d367"
+#    blue: "0x78cee9"
+#    magenta: "0xbaa0f8"
+#    cyan: "0xf3a96a"
+#    white: "0xe1e2e3"
 
 
 # Base16 Classic Dark - alacritty color config
 # Jason Heeris (http://heeris.id.au)
-colors:
-  # Default colors
-  primary:
-    background: '0x151515'
-    foreground: '0xd0d0d0'
-
-  # Colors the cursor will use if `custom_cursor_colors` is true
-  cursor:
-    text: '0x151515'
-    cursor: '0xd0d0d0'
-
-  # Normal colors
-  normal:
-    black:   '0x151515'
-    red:     '0xac4142'
-    green:   '0x90a959'
-    yellow:  '0xf4bf75'
-    blue:    '0x6a9fb5'
-    magenta: '0xaa759f'
-    cyan:    '0x75b5aa'
-    white:   '0xd0d0d0'
-
-  # Bright colors
-  bright:
-    black:   '0x505050'
-    red:     '0xd28445'
-    green:   '0x202020'
-    yellow:  '0x303030'
-    blue:    '0xb0b0b0'
-    magenta: '0xe0e0e0'
-    cyan:    '0x8f5536'
-    white:   '0xf5f5f5'
+#colors:
+#  # Default colors
+#  primary:
+#    background: '0x151515'
+#    foreground: '0xd0d0d0'
+#
+#  # Colors the cursor will use if `custom_cursor_colors` is true
+#  cursor:
+#    text: '0x151515'
+#    cursor: '0xd0d0d0'
+#
+#  # Normal colors
+#  normal:
+#    black:   '0x151515'
+#    red:     '0xac4142'
+#    green:   '0x90a959'
+#    yellow:  '0xf4bf75'
+#    blue:    '0x6a9fb5'
+#    magenta: '0xaa759f'
+#    cyan:    '0x75b5aa'
+#    white:   '0xd0d0d0'
+#
+#  # Bright colors
+#  bright:
+#    black:   '0x505050'
+#    red:     '0xd28445'
+#    green:   '0x202020'
+#    yellow:  '0x303030'
+#    blue:    '0xb0b0b0'
+#    magenta: '0xe0e0e0'
+#    cyan:    '0x8f5536'
+#    white:   '0xf5f5f5'
 
 draw_bold_text_with_bright_colors: false
-
-
-
-
-
 
   # Normal colors
 selection:

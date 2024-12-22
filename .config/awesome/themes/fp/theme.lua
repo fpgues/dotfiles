@@ -20,15 +20,20 @@ local theme = {}
 --theme.font          = "Maple Mono NF              Regular 8"
 --theme.font          = "mononoki                   Regular 10"
 --theme.font          = "NovaMono                   Regular 10"
---theme.font          = "ProggyClean CE Nerd Font   Regular 12"
+theme.font          = "ProggyClean CE Nerd Font   Regular 12"
 --theme.font          = "UbuntuSans Nerd Font       SemiBold 10"
-theme.font          = "VictorMono                   Bold 9"
+--theme.font          = "VictorMono                   Bold 9"
 --theme.font          = "ZedmonoNerdFontMono        Bold 10"
 
 ----------------------------------------------------------
 ---------------BARRA--------------------------------------
 ----------------------------------------------------------
-theme.bg_normal     = "#000000" --100%dark
+theme.bg_normal     = "#263238EF" -- material blue-gray
+
+
+--theme.bg_normal     = "#282828DF" --gruvbox
+--theme.bg_normal     = "#14171C"
+--theme.bg_normal     = "#000000DF" --100%dark
 --theme.bg_normal     = "#263238"
 --theme.bg_normal     = "#171f24" --color wallpaper_green
 --theme.bg_normal     = "#1a1b26" --TokyoNight
@@ -80,7 +85,7 @@ theme.fg_minimize   = "#ffffff"
 ----------------------------------------------------------
 ----------------------------------------------------------
 theme.useless_gap   = dpi(0)
-theme.border_width  = dpi(1)
+theme.border_width  = dpi(0)
 
 
 --BORDA DAS JANELAS
@@ -102,8 +107,9 @@ theme.border_normal = "#0000000F"
 --theme.border_focus  = "#6272a4"--dracula
 --theme.border_focus  = "#931508"
 --theme.border_focus  = "#FF79C6" --dracula
-theme.border_focus  = "#88c0d0"
-----------------------------------------------------------
+--theme.border_focus  = "#88c0d0"
+theme.border_focus  = "#00C4F0"
+---------------------------------------------------------
 ----------------------------------------------------------
 ----------------------------------------------------------
 --theme.border_marked = "#91231c"
@@ -194,9 +200,12 @@ theme.menu_width  = dpi(100)
 --theme.layout_cornerse = themes_path.."default/layouts/cornersew.png"
 
 -- Generate Awesome icon:
-theme.awesome_icon = theme_assets.awesome_icon(
-    theme.menu_height, theme.bg_focus, theme.fg_focus
-)
+--theme.awesome_icon = theme_assets.awesome_icon(
+--    theme.menu_height, theme.bg_focus, theme.fg_focus
+--    --theme.icon_theme = "/home/filipe/Downloads/awe.png"
+--)
+
+theme.awesome_icon = "/home/filipe/.dotfiles/.config/others/icons/linux.png"
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.

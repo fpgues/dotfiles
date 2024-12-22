@@ -81,9 +81,10 @@ call plug#end()
 " ##################### SETTINGS-COLOR #####################################
 " ##########################################################################
 
-""colorscheme sonokai
+""colorscheme gruvbox
+colorscheme sonokai
 ""colorscheme dracula
-colorscheme nord
+""colorscheme nord
 ""colorscheme base16-default-dark
 ""colorscheme onehalfdark
 

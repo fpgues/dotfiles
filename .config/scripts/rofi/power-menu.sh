@@ -17,8 +17,8 @@ style="power"
 #rofi_command="rofi -theme ~/.local/share/rofi/themes/squared-nord.rasi"
 #rofi_command="rofi -theme ~/.local/share/rofi/themes/nord-oneline-my-poweroff.rasi"
 #rofi_command="rofi -theme ~/.local/share/rofi/themes/my-spotlight-dark.rasi"
-rofi_command="rofi -theme ~/.local/share/rofi/themes/spotlight-power.rasi"
-#rofi_command="rofi -theme ~/.local/share/rofi/themes/z3.rasi"
+#rofi_command="rofi -theme ~/.local/share/rofi/themes/spotlight-power.rasi"
+rofi_command="rofi -theme ~/.local/share/rofi/themes/z3.rasi"
 #rofi_command="rofi -theme ~/.local/share/rofi/themes/z2.rasi"
 
 #uptime=$(uptime -p)
@@ -31,17 +31,17 @@ rofi_command="rofi -theme ~/.local/share/rofi/themes/spotlight-power.rasi"
 #lock="    lock"
 
 # options
-shutdown="  "
-reboot="  "
-logout="  "
-lock="  "
+#shutdown="  "
+#reboot="  "
+#logout="  "
+#lock="  "
 
 
 ## options
-#shutdown="       Poweroff"
-#reboot="       Reboot"
-#logout="       Logout"
-#lock="       Lock"
+shutdown="       Poweroff"
+reboot="       Reboot"
+logout="       Logout"
+lock="       Lock"
 
 # Variable passed to rofi
 options="$shutdown\n$reboot\n$logout\n$lock"

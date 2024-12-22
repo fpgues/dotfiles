@@ -42,7 +42,7 @@ Usage example:
 local fsroothome = lain.widget.fs({
     settings  = function()
         widget:set_text("/home: " ..  fs_now["/home"].percentage .. "% (" ..
-        fs_now["/home"].free .. " " .. fs_now["/home"].units .. " left)")
+        fs_now["/home"].free .. " " .. fs_now["/home"] .. " left)")
     end
 })
 -- output example: "/home: 37% (239.4 Gb left)"

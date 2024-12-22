@@ -33,3 +33,7 @@ require("lazy").setup({
   -- automatically check for plugin updates
   checker = { enabled = true },
 })
+
+--copy/past with selection mouse
+vim.opt.clipboard = "unnamedplus"
+
