@@ -28,14 +28,14 @@ window {
 
     location:       north; //north, center, south
     width:          640;
-    margin:         300px 10 10 10; /* Margem superior de 20px */
+    margin:         500px 0 0 0; /* Margem superior de 20px */
     border-radius:  12;
 }
 
 inputbar {
     font:   "VictorMono             Bold 10";
     //font:       "UbuntoSans Nerd Font 12";
-    padding:    12px;
+    padding:    0px;
     spacing:    12px;
     children:   [ icon-search, entry ];
 }
@@ -68,8 +68,8 @@ textbox {
 }
 
 listview {
-    lines:      10;
-    columns:    2;
+    lines:      15;
+    columns:    3;
 
     fixed-height:   false;
     border:         1px 0 0;
@@ -77,8 +77,8 @@ listview {
 }
 
 element {
-    padding:            8px 16px;
-    spacing:            16px;
+    padding:            4px 16px;
+    spacing:            6px;
     background-color:   transparent;
 }
 

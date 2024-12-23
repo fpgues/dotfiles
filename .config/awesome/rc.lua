@@ -372,8 +372,8 @@ watch("acpi -i", 30, update_battery, battery_widget1)
 mytextclock = wibox.widget.textclock("%a %e %b %H:%M ", 1)
 
 local cw = calendar_widget({
-    theme = 'nord', --default ,nord, dark, tokyonight
-    placement = 'center', --bottom, bottom_right, center, top_right
+    theme = 'dark', --default ,nord, dark, tokyonight
+    placement = 'top_right', --bottom, bottom_right, center, top_right
     start_sunday = false,
     radius = 7,
     -- with customized next/previous (see table above)
@@ -981,16 +981,16 @@ globalkeys = gears.table.join(
 
 
     -- manipulação das janelas
-    awful.key({ modkey, "Control"          }, "Left",     function () awful.tag.incmwfact( -0.10) end,
+    awful.key({ modkey, "Control"          }, "Right",     function () awful.tag.incmwfact( -0.10) end,
             {description = "increase master width factor", group = "layout"}),
 
-    awful.key({ modkey, "Control"          }, "Right",     function () awful.tag.incmwfact(0.10) end,
+    awful.key({ modkey, "Control"          }, "Left",     function () awful.tag.incmwfact(0.10) end,
             {description = "decrease master width factor", group = "layout"}),
 
-    awful.key({ modkey, "Control" }, "Up", function () awful.client.incwfact(-0.10) end,
+    awful.key({ modkey, "Control" }, "Down", function () awful.client.incwfact(-0.10) end,
             {description = "diminuir altura da janela", group = "layout"}),
 
-    awful.key({ modkey, "Control" }, "Down", function () awful.client.incwfact(0.10) end,
+    awful.key({ modkey, "Control" }, "Up", function () awful.client.incwfact(0.10) end,
             {description = "aumentar altura da janela", group = "layout"}),
 
 
