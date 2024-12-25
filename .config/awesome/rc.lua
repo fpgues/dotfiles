@@ -706,8 +706,8 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
         s.mywibox = awful.wibar({ position = "top", opacity = 1, screen = s, height = 19, width = s.geometry.width, })
 
         --systray.base_size = s.mywibox.height * 0.6
-        local systray = wibox.container.margin(systray, 0, 0, 3, 2 )
-
+        local systray = wibox.container.margin(systray, 0, 0, 0, 0 )
+        --local systray = wibox.container.margin(systray, 0, 0, 3, 2 )
 
         if s == screen.primary then
             -- Add widgets to the wibox
@@ -743,7 +743,6 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                 { -- Right widgets
                     layout = wibox.layout.fixed.horizontal,
 
-
                     systray,
                     --lay_widget,
                     --s.mylayoutbox,
@@ -768,8 +767,8 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     --net_speed_widget(),
                     --weather,
                     --date,
-                    sep,
-                    wifi_widget,
+                    --sep,
+                    --wifi_widget,
                     sep,
                     volume_widget{widget_type = 'icon_and_text'},percent_widget,
                     sep,
@@ -1490,6 +1489,8 @@ awful.spawn.with_shell('xclip')
 
 awful.spawn.with_shell("xsel --output --primary | xsel --input --clipboard")
 awful.spawn.with_shell("autocutsel -fork")
+awful.spawn.with_shell("nm-applet")
+
 --awful.spawn.with_shell('syncthing')
 --awful.spawn.with_shell('pactl load-module module-combine-sink sink_name=COMBINED_SINK')
 
@@ -1513,5 +1514,5 @@ awful.spawn.with_shell("autocutsel -fork")
 
 
 --awful.spawn.with_shell('xrandr --output DP-1 --primary') --via displayport
-awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --rate 75  --output eDP-1 --off')
---awful.spawn.with_shell('xrandr --output eDP-1 --mode 1366x768 --pos 0x386 --rotate normal --output HDMI-1 --off --output DP-1 --primary --mode 2560x1440 --pos 1366x0 --rotate normal')
+--awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --rate 75  --output eDP-1 --off')
+awful.spawn.with_shell('xrandr --output eDP-1 --mode 1366x768 --pos 0x386 --rotate normal --output HDMI-1 --off --output DP-1 --primary --mode 2560x1440 --pos 1366x0 --rotate normal')
