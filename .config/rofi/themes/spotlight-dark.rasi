@@ -26,9 +26,9 @@
 window {
     background-color:   @bg0;
 
-    location:       north; //north, center, south
+    location:       center; //north, center, south
     width:          640;
-    margin:         500px 0 0 0; /* Margem superior de 20px */
+    //margin:         300px 0 0 0; /* Margem superior de 20px */
     border-radius:  12;
 }
 
@@ -68,8 +68,8 @@ textbox {
 }
 
 listview {
-    lines:      15;
-    columns:    3;
+    lines:      10;
+    columns:    2;
 
     fixed-height:   false;
     border:         1px 0 0;

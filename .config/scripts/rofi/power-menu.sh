@@ -16,9 +16,9 @@ style="power"
 #rofi_command="rofi -theme ~/.local/share/rofi/themes/squared-mY-poweroff.rasi"
 #rofi_command="rofi -theme ~/.local/share/rofi/themes/squared-nord.rasi"
 #rofi_command="rofi -theme ~/.local/share/rofi/themes/nord-oneline-my-poweroff.rasi"
-#rofi_command="rofi -theme ~/.local/share/rofi/themes/my-spotlight-dark.rasi"
+rofi_command="rofi -theme ~/.local/share/rofi/themes/my-spotlight-dark.rasi"
 #rofi_command="rofi -theme ~/.local/share/rofi/themes/spotlight-power.rasi"
-rofi_command="rofi -theme ~/.local/share/rofi/themes/z3.rasi"
+#rofi_command="rofi -theme ~/.local/share/rofi/themes/z3.rasi"
 #rofi_command="rofi -theme ~/.local/share/rofi/themes/z2.rasi"
 
 #uptime=$(uptime -p)

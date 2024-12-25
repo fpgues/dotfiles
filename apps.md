@@ -1,7 +1,7 @@
 ###### .deb
 localsend   -> https://localsend.org/ # Compartilhamento de arquivos local, sem a necessidade de internet
 discord     -> https://discord.com/download
-obstudio    -> https://obsidian.md/download # Software de gravação de tela e streaming (OBS Studio)
+obsidian    -> https://obsidian.md/download # Software de gravação de tela e streaming (OBS Studio)
 iriunwebcam -> https://iriun.com/ # Transforma o celular em uma webcam
 vscode      -> https://code.visualstudio.com/ # Editor de código open-source da Microsoft
 anydesk     -> https://anydesk.com.cn/en/downloads/linux # Ferramenta de acesso remoto para Linux
@@ -15,6 +15,7 @@ zettler     -> https://www.zettlr.com/ # Editor Markdown poderoso para acadêmic
 inkscape
 hollywood       # Simula uma interface de "hacking" no terminal, com janelas e informações fictícias como nos filmes.
 bastet          # Versão do Tetris no terminal, que tenta dificultar a vida do jogador.
+obs-studio
 sl              # Exibe um trem animado no terminal como brincadeira ao digitar "ls" errado.
 pipes-sh        # Cria animações de canos desenhados aleatoriamente no terminal.
 tree            # Mostra a estrutura de diretórios em formato hierárquico no terminal.

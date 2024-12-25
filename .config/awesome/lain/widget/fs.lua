@@ -65,7 +65,8 @@ local function factory(args)
 
     if not fs.notification_preset then
         fs.notification_preset = {
-            font = "Monospace 10",
+            --font = "Monospace 10",
+            font = "VictorMono Bold 10",
             fg   = "#FFFFFF",
             bg   = "#000000"
         }

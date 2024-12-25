@@ -200,6 +200,7 @@ browser = "google-chrome"
 fm = "thunar"
 
 -- Default modkey.
+--modkey = "Mod1" -- Alt
 modkey = "Mod1" -- Alt
 modkey1 = "Mod4" -- Win
 
@@ -217,10 +218,10 @@ fs_widget = wibox.widget.textbox("FS:")
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
     awful.layout.suit.tile.left,
-    --awful.layout.suit.tile,
     awful.layout.suit.floating,
-    --awful.layout.suit.tile.top,
     awful.layout.suit.fair.horizontal,
+    --awful.layout.suit.tile,
+    --awful.layout.suit.tile.top,
     --lain.layout.termfair,
 
     --lain.layout.termfair.center,
@@ -336,7 +337,11 @@ vicious.register(wifi_widget, vicious.widgets.wifi,
             --return "  " .. args["{ssid}"]
             --return args["{ssid}"] .. "  "
         end
-    end, 10, "wlp0s20f3")  -- Altere "wlp2s0" para o nome da sua interface Wi-Fi
+        end, 10, "wlp0s20f3" -- Altere "wlp2s0" para o nome da sua interface Wi-Fi
+)
+
+
+
 
 
 
@@ -708,16 +713,16 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
             -- Add widgets to the wibox
             s.mywibox:setup {
                 layout = wibox.layout.align.horizontal,
-                expand = "none",
+                --expand = "none",
 
                 {   -- Left widgets
                     layout = wibox.layout.fixed.horizontal,
-                    sep3,
-                    mylauncher,
-                    sep2,
+                    s.mylayoutbox,sep3,
+                    --mylauncher,sep3,
+
                     s.mytaglist,
                     sep,
-                    s.mytasklist,
+                    --s.mytasklist,
 
 
                     sep,sep,
@@ -738,10 +743,10 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                 { -- Right widgets
                     layout = wibox.layout.fixed.horizontal,
 
+
                     systray,
-                    sep,
-                    lay_widget,
-                    s.mylayoutbox,
+                    --lay_widget,
+                    --s.mylayoutbox,
                     sep,
                     --cpu2,
                     cpu1.widget, cpu_hz,
@@ -867,27 +872,36 @@ globalkeys = gears.table.join(
     --awful.key({ modkey,         },  "a",    function () awful.spawn("kitty -e /home/filipe/.dotfiles/.config/ranger/rangerdownloads.sh") end,
     --        {descrption = "Open ranger", group = "Personal launchers"}),
 
-    awful.key({ modkey,         },  "o",    function () awful.spawn("xpad -s") end,
-            {descrption = "show xpad", group = "personal launchers"}),
-    awful.key({ modkey,         },  "k",    function () awful.spawn("xpad -h") end,
-            {descrption = "Hide Xpad", group = "Personal launchers"}),
-    awful.key({ modkey, "Control"      },  "n",    function () awful.spawn("xpad -n") end,
-            {descrption = "New Xpad", group = "Personal launchers"}),
+
+    --awful.key({ modkey,         },  "o",    function () awful.spawn("xpad -s") end,
+    --        {descrption = "show xpad", group = "personal launchers"}),
+    --awful.key({ modkey,         },  "k",    function () awful.spawn("xpad -h") end,
+    --        {descrption = "Hide Xpad", group = "Personal launchers"}),
+        --awful.key({ modkey, "Control"      },  "n",    function () awful.spawn("xpad -n") end,
+    --        {descrption = "New Xpad", group = "Personal launchers"}),
+
     --awful.key({ modkey,         },   "l",    function () awful.spawn("rofi -show calc -modi calc -no-show-match -no-sort -no-persist-history ") end,
     --         {description = "Rofi-apps", group = "Personal launchers"}),
     --awful.key({ modkey,         },   "l",    function () awful.spawn("tilix -e qalc") end,
     --         {description = "Rofi-apps", group = "Personal launchers"}),
 
-    awful.key({ modkey, "Control"         },   "d",    function () awful.spawn("kitty -e pactl load-module module-combine-sink sink_name=COMBINED_SINK && exit") end,
+    awful.key({ modkey, "Control"  },   "d",    function () awful.spawn("kitty -e pactl load-module module-combine-sink sink_name=COMBINED_SINK && exit") end,
              {description = "Combine Sink", group = "Personal launchers"}),
 
-    awful.key({ modkey,         },   "l",    function () awful.spawn("kitty -e /home/filipe/.config/scripts/qalc-term.sh") end,
+    awful.key({ modkey,            },   "l",    function () awful.spawn("kitty -e /home/filipe/.config/scripts/qalc-term.sh") end,
              {description = "Rofi-apps", group = "Personal launchers"}),
 
     awful.key({ "Control",         },   "space",    function () awful.spawn("rofi -show drun -display-drun ' Exec ' ") end,
             {description = "Rofi-apps", group = "Personal launchers"}),
     awful.key({ modkey,         },   "Tab",      function () awful.spawn("rofi -show window ' Exec ' ") end,
             {description = "Rofi-switch-apps", group = "Personal launchers"}),
+
+    awful.key({ modkey, "Control"  },   "c",      function () awful.spawn("rofi -modi 'clipboard:greenclip print' -show clipboard -run-command ' Exec ' ") end,
+            {description = "Rofi-greenclip", group = "Personal launchers"}),
+
+
+
+
     awful.key({ modkey         },   "t",      function () awful.spawn("kitty -e htop") end,
             {description = "Open htop", group = "Personal launchers"}),
     awful.key({ modkey         },   "r",        function () awful.spawn("/home/filipe/.config/scripts/rofi/rofi-files") end,
@@ -1426,7 +1440,7 @@ client.connect_signal("unfocus", function(c)
 ---------------------------- GAPS ------------------------------------
 ----------------------------------------------------------------------
 
-beautiful.useless_gap = 2,
+beautiful.useless_gap = 10,
 
 --beautiful.gap_single_client   = false
 
@@ -1467,11 +1481,15 @@ awful.spawn.with_shell('xset -dpms')
 awful.spawn.with_shell('/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1')
 awful.spawn.with_shell('nitrogen --restore') -- controlador de wallpaper
 awful.spawn.with_shell('picom --experimental-backends') --background transluced
-awful.spawn.with_shell('parcellite') --gerenciador de área de transferencia
+--awful.spawn.with_shell('parcellite') --gerenciador de área de transferencia
+awful.spawn.with_shell("greenclip daemon")
 awful.spawn.with_shell('fusuma -d')
 awful.spawn.with_shell('xdotool')
-awful.spawn.with_shell('xsel')
+--awful.spawn.with_shell('xsel')
 awful.spawn.with_shell('xclip')
+
+awful.spawn.with_shell("xsel --output --primary | xsel --input --clipboard")
+awful.spawn.with_shell("autocutsel -fork")
 --awful.spawn.with_shell('syncthing')
 --awful.spawn.with_shell('pactl load-module module-combine-sink sink_name=COMBINED_SINK')
 
@@ -1481,6 +1499,16 @@ awful.spawn.with_shell('xclip')
 --awful.spawn.with_shell('localsend_app') --localsend
 --awful.spawn.with_shell('knotes')
 --awful.spawn.with_shell("/home/filipe/Downloads/wlive.sh"
+
+
+
+
+
+
+
+
+
+
 
 
 
