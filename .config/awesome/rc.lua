@@ -205,7 +205,7 @@ modkey = "Mod1" -- Alt
 modkey1 = "Mod4" -- Win
 
 -- Separator Blanc
-sep = wibox.widget.textbox("  ")
+sep = wibox.widget.textbox("   ")
 sep1 = wibox.widget.textbox("  ") --("") --("  ") --("⏽") --("") 󰇙
 sep2 = wibox.widget.textbox(" 󱗿 ")
 sep3 = wibox.widget.textbox(" ")
@@ -850,11 +850,11 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
             {description = "open a terminal", group = "launcher"}),
 
-    awful.key({ modkey1,  }, "l", function () awful.spawn('i3lock -c 000000') end,
-            {description = "open a terminal", group = "launcher"}),
-
-    --awful.key({ modkey1,          }, "l", function () awful.spawn('gdmflexiserver --lock') end,
+    --awful.key({ modkey1,  }, "l", function () awful.spawn('i3lock -c 000000') end,
     --        {description = "open a terminal", group = "launcher"}),
+
+    awful.key({ modkey1,          }, "l", function () awful.spawn('gdmflexiserver --lock') end,
+            {description = "open a terminal", group = "launcher"}),
 
     --awful.key({ modkey, "Control"  }, "l", function () awful.spawn('xscreensaver-command -l') end,
             --{description = "open a terminal", group = "launcher"}),
