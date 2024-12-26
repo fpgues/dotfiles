@@ -795,7 +795,8 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 
                 {   -- Left widgets (apenas taglist)
                     layout = wibox.layout.fixed.horizontal,
-                    sep,
+                    s.mylayoutbox,
+                    sep3,
                     s.mytaglist,
                     sep1,
                     spotify_widget({
@@ -814,15 +815,17 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 
                 {   -- Right widgets (apenas relógio)
                     layout = wibox.layout.fixed.horizontal,
-                    lay_widget,
-                    s.mylayoutbox,
-                    sep1,
-                    wifi_widget,
-                    sep1,
+                    --lay_widget,
+                    --sep1,
+                    --wifi_widget,
+                    --sep1,
                     volume_widget{widget_type = 'icon_and_text'},percent,
-                    sep1,
+                    sep,
                     battery_widget(),
                     battery_widget1,
+                    sep,
+                    logout_menu_widget(),
+                    mytextclock,
                 },
             }
     end

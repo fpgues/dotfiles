@@ -43,11 +43,14 @@ sudo ln -s ~/.dotfiles/all/links-home/.Xresources ~/
 
 sudo ln -s ~/.dotfiles/all/lx-themes/fonts ~/.fonts
 
-sudo ln -s ~/.dotfiles/all/links-home/.zprofile ~/
 
-sudo ln -s ~/.dotfiles/all/links-home/.bash_profile ~/
+#sudo apt install xinit
 
-sudo ln -s ~/.dotfiles/all/links-home/.xinitrc ~/
+#sudo ln -s ~/.dotfiles/all/links-home/.zprofile ~/
+
+#sudo ln -s ~/.dotfiles/all/links-home/.bash_profile ~/
+
+#sudo ln -s ~/.dotfiles/all/links-home/.xinitrc ~/
 
 #################################################################################
 #####RELOAD FONTS###############################################################
