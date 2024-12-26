@@ -28,13 +28,15 @@ theme.font          = "VictorMono                   Bold 9"
 ----------------------------------------------------------
 ---------------BARRA--------------------------------------
 ----------------------------------------------------------
+theme.bg_normal  = "#1C2529"
+--theme.bg_normal  = "#222222" -- PADRAO
 --theme.bg_normal     = "#263238" -- material blue-gray
 --theme.bg_normal     = "#263238EF" -- material blue-gray
 
 
 --theme.bg_normal     = "#282828DF" --gruvbox
 --theme.bg_normal     = "#14171C"
-theme.bg_normal     = "#000000" --100%dark
+--theme.bg_normal     = "#000000" --100%dark
 --theme.bg_normal     = "#263238"
 --theme.bg_normal     = "#171f24" --color wallpaper_green
 --theme.bg_normal     = "#1a1b26" --TokyoNight
@@ -54,9 +56,6 @@ theme.bg_normal     = "#000000" --100%dark
 --theme.bg_focus      = "#8a8ea8" -- #e9befb" --"#db93f9" --"#535d6c"
 theme.bg_focus      = "#ffffff2F"
 --theme.bg_focus      = "#535d6c"
-
-
-
 
 theme.bg_urgent     = "#ff0000"
 theme.bg_minimize   = "#444444"

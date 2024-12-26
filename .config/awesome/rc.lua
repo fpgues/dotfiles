@@ -205,7 +205,7 @@ modkey = "Mod1" -- Alt
 modkey1 = "Mod4" -- Win
 
 -- Separator Blanc
-sep = wibox.widget.textbox("   ")
+sep = wibox.widget.textbox("  ")
 sep1 = wibox.widget.textbox("  ") --("") --("  ") --("⏽") --("") 󰇙
 sep2 = wibox.widget.textbox(" 󱗿 ")
 sep3 = wibox.widget.textbox(" ")
@@ -743,7 +743,6 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                 { -- Right widgets
                     layout = wibox.layout.fixed.horizontal,
 
-                    systray,
                     --lay_widget,
                     --s.mylayoutbox,
                     sep,
@@ -772,7 +771,7 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     sep,
                     volume_widget{widget_type = 'icon_and_text'},percent_widget,
                     sep,
-                    battery_widget(),
+                                        battery_widget(),
                     battery_widget1,
                     --sep1,
                     --mykeyboardlayout,
@@ -780,6 +779,8 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     --mytextclock,
                     sep,
                     logout_menu_widget(),
+                    sep,
+                    systray,
                     sep,
                     mytextclock,
                 },
@@ -791,7 +792,7 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
             -- Configuração do segundo monitor (apenas taglist e relógio)
             s.mywibox:setup {
                 layout = wibox.layout.align.horizontal,
-                expand = 'none',
+                --expand = 'none',
 
                 {   -- Left widgets (apenas taglist)
                     layout = wibox.layout.fixed.horizontal,
@@ -1442,7 +1443,7 @@ client.connect_signal("unfocus", function(c)
 ---------------------------- GAPS ------------------------------------
 ----------------------------------------------------------------------
 
-beautiful.useless_gap = 10,
+beautiful.useless_gap = 4,
 
 --beautiful.gap_single_client   = false
 
