@@ -205,7 +205,7 @@ modkey = "Mod1" -- Alt
 modkey1 = "Mod4" -- Win
 
 -- Separator Blanc
-sep = wibox.widget.textbox("   ")
+sep = wibox.widget.textbox("  ")
 sep1 = wibox.widget.textbox("  ") --("") --("  ") --("⏽") --("") 󰇙
 sep2 = wibox.widget.textbox(" 󱗿 ")
 sep3 = wibox.widget.textbox(" ")
@@ -507,10 +507,10 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 
         --Each screen has its own tag table.󰖟
         --awful.tag({"1","2","3","4","5"}, s, awful.layout.layouts[1])
-        awful.tag({" 1 "," 2 "," 3 "," 4 "," 5 "}, s, awful.layout.layouts[1])
+        --awful.tag({" 1 "," 2 "," 3 "," 4 "," 5 "}, s, awful.layout.layouts[1])
         --awful.tag({"   󰬺","   󰬻","   󰬼","   󰬽","   󰬾","   󰬿"}, s, awful.layout.layouts[1])
         --awful.tag({" 󰬺 "," 󰬻 "," 󰬼 "," 󰬽 "," 󰬾 "," 󰬿 "," 󰭀 "," 󰭁 "}, s, awful.layout.layouts[1])
-        --awful.tag({" Web "," Term "," Files "," Other "}, s, awful.layout.layouts[1])
+        awful.tag({" Web "," Term "," Files "," Other "}, s, awful.layout.layouts[1])
         --awful.tag({" 1-Web "," 2-Term "," 3-Files "," 4-Others "}, s, awful.layout.layouts[1])
         --awful.tag({"  ","  ","  ","  ","  ","  ",}, s, awful.layout.layouts[1])
         --awful.tag({"  ","  ","  ","  ","  ","  ",}, s, awful.layout.layouts[1])
@@ -713,16 +713,22 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
             -- Add widgets to the wibox
             s.mywibox:setup {
                 layout = wibox.layout.align.horizontal,
-                --expand = "none",
+                expand = "none",
 
                 {   -- Left widgets
                     layout = wibox.layout.fixed.horizontal,
                     s.mylayoutbox,sep3,
                     --mylauncher,sep3,
 
-                    s.mytaglist,
-                    sep,
+                    --s.mytaglist,
                     --s.mytasklist,
+
+                    cpu1.widget, cpu_hz,
+                    sep,
+                    --ram_widget(),
+                    mem1,
+                    sep,
+                    fsroothome,
 
 
                     sep,sep,
@@ -737,7 +743,7 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 
                 {   -- Middle widget
                     layout = wibox.layout.flex.horizontal,
-
+                    s.mytaglist,
                                     },
 
                 { -- Right widgets
@@ -747,12 +753,14 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     --s.mylayoutbox,
                     sep,
                     --cpu2,
-                    cpu1.widget, cpu_hz,
-                    sep,
-                    --ram_widget(),
-                    mem1,
-                    sep,
-                    fsroothome,
+
+                    --cpu1.widget, cpu_hz,
+                    --sep,
+                    ----ram_widget(),
+                    --mem1,
+                    --sep,
+                    --fsroothome,
+
                     --fs_widget(),
                     --batteryarc_widget({
                     --    show_current_level = true,
@@ -768,6 +776,8 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     --date,
                     --sep,
                     --wifi_widget,
+                                        sep,
+                    systray,
                     sep,
                     volume_widget{widget_type = 'icon_and_text'},percent_widget,
                     sep,
@@ -779,8 +789,6 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     --mytextclock,
                     sep,
                     logout_menu_widget(),
-                    sep,
-                    systray,
                     sep,
                     mytextclock,
                 },
@@ -1518,5 +1526,10 @@ awful.spawn.with_shell("nm-applet")
 
 
 --awful.spawn.with_shell('xrandr --output DP-1 --primary') --via displayport
---awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --rate 75  --output eDP-1 --off')
-awful.spawn.with_shell('xrandr --output eDP-1 --mode 1366x768 --pos 0x386 --rotate normal --output HDMI-1 --off --output DP-1 --primary --mode 2560x1440 --pos 1366x0 --rotate normal')
+awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --rate 75  --output eDP-1 --off')
+
+
+--NOTE EM BAIXO
+--awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --pos 0x0 --rotate normal --output eDP-1 --mode 1366x768 --pos 536x1440 --rotate normal --output HDMI-1 --off --output DP-2 --off --output DP-3 --off --output DP-4 --off')
+
+--awful.spawn.with_shell('xrandr --output eDP-1 --mode 1366x768 --pos 0x386 --rotate normal --output HDMI-1 --off --output DP-1 --primary --mode 2560x1440 --pos 1366x0 --rotate normal')

@@ -13,30 +13,24 @@ genymotion  -> https://www.genymotion.com/product-desktop/download/ # Emulador d
 zettler     -> https://www.zettlr.com/ # Editor Markdown poderoso para acadêmicos
 
 ###### .apt
-inkscape
 hollywood       # Simula uma interface de "hacking" no terminal, com janelas e informações fictícias como nos filmes.
-easyeffects
-gnome-disk-utility
 kmag
 bastet          # Versão do Tetris no terminal, que tenta dificultar a vida do jogador.
 obs-studio
 sl              # Exibe um trem animado no terminal como brincadeira ao digitar "ls" errado.
 pipes-sh        # Cria animações de canos desenhados aleatoriamente no terminal.
-tree            # Mostra a estrutura de diretórios em formato hierárquico no terminal.
+i3lock
 qimgv           # Visualizador de imagens leve e rápido, com suporte a atalhos personalizáveis.
 knotes          # Aplicativo de notas adesivas para o desktop.
-arandr          # Interface gráfica simples para configurar monitores no X11.
-autorandr       # Salva e restaura configurações de layout de monitores automaticamente.
+parcellite
 asciidoc        # Processador de texto que converte arquivos em AsciiDoc para outros formatos.
 screenkey       # Exibe as teclas digitadas na tela, útil para tutoriais ou gravações.
 tmux            # Multiplexador de terminal que permite dividir janelas e gerenciar sessões.
 scrot           # Ferramenta de captura de tela pelo terminal.
 exa             # Alternativa moderna ao "ls", com mais recursos e cores.
-gpick           # Ferramenta para selecionar e gerenciar paletas de cores.
 calc            # Calculadora avançada para o terminal.
 meson           # Sistema de build para compilação rápida de projetos.
 xpad            # Aplicativo simples de notas adesivas para desktop.
-gnome-boxes     # Gerenciador de máquinas virtuais baseado em GNOME.
 xscreensaver    # Protetor de tela personalizável para sistemas X11.
 cava            # Visualizador de espectro de áudio em tempo real no terminal.
 font-manager    # Gerenciador de fontes com interface gráfica.
@@ -57,7 +51,6 @@ ipcalc          # Calculadora de endereços IP para redes.
 vagrant --version2.3.7 # Ferramenta para criar e gerenciar máquinas virtuais de forma simplificada.
 maven           # Maven é uma ferramenta para gestão de builds em projetos Java;
 awscli          # AWS CLI é a interface de linha de comando da Amazon Web Services.
-shotcut         # Editor de vídeo com recursos avançados e interface simples.
 
 ###### snap
 scrcpy          # Ferramenta para espelhar e controlar dispositivos Android no PC.
