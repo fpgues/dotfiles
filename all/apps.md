@@ -1,6 +1,5 @@
 ###### .deb
 localsend   -> https://localsend.org/ # Compartilhamento de arquivos local, sem a necessidade de internet
-gnome-control-center
 discord     -> https://discord.com/download
 obsidian    -> https://obsidian.md/download # Software de gravação de tela e streaming (OBS Studio)
 iriunwebcam -> https://iriun.com/ # Transforma o celular em uma webcam
@@ -12,9 +11,27 @@ wydroroid   -> https://waydro.id/ # Ferramenta para rodar apps Android em Linux
 genymotion  -> https://www.genymotion.com/product-desktop/download/ # Emulador de Android
 zettler     -> https://www.zettlr.com/ # Editor Markdown poderoso para acadêmicos
 
+###### .flatpak
+-> amberol
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak install flathub io.bassi.Amberol
+flatpak run io.bassi.Amberol
+
+->
+
+
+
+
+
+
 ###### .apt
+flatpak
 hollywood       # Simula uma interface de "hacking" no terminal, com janelas e informações fictícias como nos filmes.
+gnome-control-center
 kmag
+figlet
+lolcat
+cmatrix
 bastet          # Versão do Tetris no terminal, que tenta dificultar a vida do jogador.
 obs-studio
 sl              # Exibe um trem animado no terminal como brincadeira ao digitar "ls" errado.

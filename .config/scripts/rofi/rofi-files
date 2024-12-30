@@ -23,10 +23,11 @@ declare -a options=(
 "zsh                 $HOME/.zshrc"
 "nvim                $HOME/.config/nvim/init.vim"
 "picom               $HOME/.config/picom/picom.conf"
+"autoinstall.sh      $HOME/.dotfiles/autoinstall.sh"
+"apps.md             $HOME/.dotfiles/all/apps.md"
 "rofi-config         $HOME/.config/rofi/config.rasi"
 "rofi-files          $HOME/.config/scripts/rofi/rofi-files"
 "rofi-search         $HOME/.config/scripts/rofi/rofi-search"
-"autoinstall.sh      $HOME/.dotfiles/autoinstall.sh"
 #"4) bash - $HOME/.bashrc"
     "quit"
 )

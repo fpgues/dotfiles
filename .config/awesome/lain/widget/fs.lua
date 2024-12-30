@@ -68,7 +68,8 @@ local function factory(args)
             --font = "Monospace 10",
             font = "VictorMono Bold 10",
             fg   = "#FFFFFF",
-            bg   = "#000000"
+            bg   = "#000000",
+            position = "top_left",
         }
     end
 

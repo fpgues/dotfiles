@@ -36,6 +36,11 @@ awful.rules.rules = {
 
     client.connect_signal("manage", function (c)
         -- Applicativos flutuantes
+
+        if c.instance == "gl" then --mpv
+            c.floating = true
+        end
+
         if c.instance == "nitrogen" then
             c.floating = true
         end
@@ -52,9 +57,9 @@ awful.rules.rules = {
             c.floating = true
         end
 
-        --if c.instance == "discord" then
-        --    c.floating = true
-        --end
+        if c.instance == "Alacritty" then
+            c.floating = true
+        end
 
         if c.instance == "pavucontrol" then
             c.floating = true
@@ -101,7 +106,7 @@ awful.rules.rules = {
         end
 
 
-        -- CENTRALIZA OS APPS
+        -- PARA CENTRALIZAR OS APPS, EXCLUA DA LISTA ABAIXO
         local exclude_classes = {
                 -- Adicione outras classes ou instâncias que deseja excluir
                "gimp",       -- Nome da classe do GIMP
@@ -116,6 +121,7 @@ awful.rules.rules = {
                "amberol",
                "org.inkscape.Inkscape",
                "Inkscape",
+               --"Alacritty",
         }
 
         -- Função para verificar se a classe ou instância do cliente está na lista de exclusão
@@ -219,13 +225,14 @@ fs_widget = wibox.widget.textbox("FS:")
 awful.layout.layouts = {
     awful.layout.suit.tile.left,
     awful.layout.suit.floating,
-    awful.layout.suit.fair.horizontal,
+    awful.layout.suit.fair,
+    --awful.layout.suit.fair.horizontal,
+
+    --lain.layout.termfair,
     --awful.layout.suit.tile,
     --awful.layout.suit.tile.top,
-    --lain.layout.termfair,
 
     --lain.layout.termfair.center,
-    --awful.layout.suit.fair,
     --lain.layout.centerwork,
     --awful.layout.suit.tile.bottom,
     --awful.layout.suit.spiral,
@@ -717,7 +724,7 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 
                 {   -- Left widgets
                     layout = wibox.layout.fixed.horizontal,
-                    s.mylayoutbox,sep3,
+                    s.mylayoutbox,sep,
                     --mylauncher,sep3,
 
                     --s.mytaglist,
@@ -800,41 +807,50 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
             -- Configuração do segundo monitor (apenas taglist e relógio)
             s.mywibox:setup {
                 layout = wibox.layout.align.horizontal,
-                --expand = 'none',
+                expand = 'none',
 
                 {   -- Left widgets (apenas taglist)
                     layout = wibox.layout.fixed.horizontal,
-                    s.mylayoutbox,
-                    sep3,
-                    s.mytaglist,
-                    sep1,
-                    spotify_widget({
-                                --font = "FantasqueSansMNerdFont     Regular 12"
-                                --font = "Victor Mono  SemiBold 10"
-                                font = 'ProggyClean CE Nerd Font 12',
-                                --play_icon = '/usr/share/icons/Papirus-Light/24x24/categories/spotify.svg',
-                                --pause_icon = '/usr/share/icons/Papirus-Dark/24x24/panel/spotify-indicator.svg'
-                                }),
+
+                    s.mylayoutbox,sep,
+                    --mylauncher,sep3,
+
+                    --s.mytaglist,
+                    --s.mytasklist,
+
+                    cpu1.widget, cpu_hz,
+                    sep,
+                    --ram_widget(),
+                    mem1,
+                    sep,
+                    fsroothome,
+
+
                     },
 
                 {   -- Middle widget (vazio)
                     layout = wibox.layout.flex.horizontal,
-                    --mytextclock,
+                    s.mytaglist,
                 },
 
                 {   -- Right widgets (apenas relógio)
                     layout = wibox.layout.fixed.horizontal,
-                    --lay_widget,
-                    --sep1,
-                    --wifi_widget,
-                    --sep1,
-                    volume_widget{widget_type = 'icon_and_text'},percent,
+
+                    systray,
                     sep,
-                    battery_widget(),
+                    volume_widget{widget_type = 'icon_and_text'},percent_widget,
+                    sep,
+                                        battery_widget(),
                     battery_widget1,
+                    --sep1,
+                    --mykeyboardlayout,
+                    --sep1,
+                    --mytextclock,
                     sep,
                     logout_menu_widget(),
+                    sep,
                     mytextclock,
+
                 },
             }
     end
@@ -870,19 +886,16 @@ globalkeys = gears.table.join(
             {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
             {description = "quit awesome", group = "awesome"}),
-    awful.key({ modkey         },   "s",    function () awful.spawn("kitty -e pulsemixer") end,
+    awful.key({ modkey         },   "a",    function () awful.spawn("alacritty -e pulsemixer") end,
             {description = "Exec pulsemixer", group = "Personal launchers"}),
     awful.key({ modkey         },   "b",    function () awful.spawn("blueman-manager") end,
             {description = "Exec pulsemixer", group = "Personal launchers"}),
-    --awful.key({ modkey,         },  "s",    function () awful.spawn("kitty -e ranger") end,
-    --        {descrption = "Open ranger", group = "Personal launchers"}),
 
-    awful.key({ modkey,         },  "a",    function () awful.spawn("kitty -e ranger") end,
+    awful.key({ modkey,         },  "s",    function () awful.spawn("kitty -e ranger") end,
             {descrption = "Open ranger", group = "Personal launchers"}),
 
     --awful.key({ modkey,         },  "a",    function () awful.spawn("kitty -e /home/filipe/.dotfiles/.config/ranger/rangerdownloads.sh") end,
     --        {descrption = "Open ranger", group = "Personal launchers"}),
-
 
     --awful.key({ modkey,         },  "o",    function () awful.spawn("xpad -s") end,
     --        {descrption = "show xpad", group = "personal launchers"}),
@@ -896,15 +909,15 @@ globalkeys = gears.table.join(
     --awful.key({ modkey,         },   "l",    function () awful.spawn("tilix -e qalc") end,
     --         {description = "Rofi-apps", group = "Personal launchers"}),
 
-    awful.key({ modkey, "Control"  },   "d",    function () awful.spawn("kitty -e pactl load-module module-combine-sink sink_name=COMBINED_SINK && exit") end,
+    awful.key({ modkey, "Control"  },   "d",    function () awful.spawn("alacritty -e pactl load-module module-combine-sink sink_name=COMBINED_SINK && exit") end,
              {description = "Combine Sink", group = "Personal launchers"}),
 
-    awful.key({ modkey,            },   "l",    function () awful.spawn("kitty -e /home/filipe/.config/scripts/qalc-term.sh") end,
+    awful.key({ modkey,            },   "l",    function () awful.spawn("alacritty -e /home/filipe/.config/scripts/qalc-term.sh") end,
              {description = "Rofi-apps", group = "Personal launchers"}),
 
     awful.key({ "Control",         },   "space",    function () awful.spawn("rofi -show drun -display-drun ' Exec ' ") end,
             {description = "Rofi-apps", group = "Personal launchers"}),
-    awful.key({ modkey,         },   "Tab",      function () awful.spawn("rofi -show window ' Exec ' ") end,
+    awful.key({ modkey, "Control"        },   "Tab",      function () awful.spawn("rofi -show window ' Exec ' ") end,
             {description = "Rofi-switch-apps", group = "Personal launchers"}),
 
     awful.key({ modkey, "Control"  },   "c",      function () awful.spawn("rofi -modi 'clipboard:greenclip print' -show clipboard -run-command ' Exec ' ") end,
@@ -991,7 +1004,10 @@ globalkeys = gears.table.join(
             {description = "toggle floating", group = "client"}),
 
     -- Layout Manipulation
-    awful.key({ modkey,           }, "Right", function () awful.client.focus.byidx( 1) end,
+    awful.key({ modkey,           }, "Tab", function () awful.client.focus.byidx( 1) end,
+            {description = "focus next by index", group = "client"}),
+
+            awful.key({ modkey,           }, "Right", function () awful.client.focus.byidx( 1) end,
             {description = "focus next by index", group = "client"}),
     awful.key({ modkey,           }, "Down", function () awful.client.focus.byidx( 1) end,
             {description = "focus next by index", group = "client"}),
@@ -1006,16 +1022,16 @@ globalkeys = gears.table.join(
 
 
     -- manipulação das janelas
-    awful.key({ modkey, "Control"          }, "Right",     function () awful.tag.incmwfact( -0.10) end,
+    awful.key({ modkey, "Control"          }, "Right",     function () awful.tag.incmwfact( -0.05) end,
             {description = "increase master width factor", group = "layout"}),
 
-    awful.key({ modkey, "Control"          }, "Left",     function () awful.tag.incmwfact(0.10) end,
+    awful.key({ modkey, "Control"          }, "Left",     function () awful.tag.incmwfact(0.05) end,
             {description = "decrease master width factor", group = "layout"}),
 
-    awful.key({ modkey, "Control" }, "Down", function () awful.client.incwfact(-0.10) end,
+    awful.key({ modkey, "Control" }, "Down", function () awful.client.incwfact(-0.05) end,
             {description = "diminuir altura da janela", group = "layout"}),
 
-    awful.key({ modkey, "Control" }, "Up", function () awful.client.incwfact(0.10) end,
+    awful.key({ modkey, "Control" }, "Up", function () awful.client.incwfact(0.05) end,
             {description = "aumentar altura da janela", group = "layout"}),
 
 
@@ -1341,10 +1357,10 @@ awful.rules.rules = {
             properties = { width = 1400, height = 1000 }
     },
 
-    {
-        rule = { class = "Google-chrome" },
-            properties = { width = 1250, height = 730 }
-    },
+    --{
+    --    rule = { class = "Google-chrome" },
+    --        properties = { width = 1250, height = 730 }
+    --},
 
     { rule = { class = "Authenticator" },
         properties = { floating = true, ontop = true }
@@ -1517,19 +1533,11 @@ awful.spawn.with_shell("nm-applet")
 
 
 
-
-
-
-
-
-
-
-
 --awful.spawn.with_shell('xrandr --output DP-1 --primary') --via displayport
-awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --rate 75  --output eDP-1 --off')
+--awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --rate 75  --output eDP-1 --off')
 
 
 --NOTE EM BAIXO
---awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --pos 0x0 --rotate normal --output eDP-1 --mode 1366x768 --pos 536x1440 --rotate normal --output HDMI-1 --off --output DP-2 --off --output DP-3 --off --output DP-4 --off')
+awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --pos 0x0 --rotate normal --output eDP-1 --mode 1366x768 --pos 536x1440 --rotate normal ')
 
 --awful.spawn.with_shell('xrandr --output eDP-1 --mode 1366x768 --pos 0x386 --rotate normal --output HDMI-1 --off --output DP-1 --primary --mode 2560x1440 --pos 1366x0 --rotate normal')

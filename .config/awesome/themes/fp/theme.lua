@@ -85,7 +85,7 @@ theme.fg_minimize   = "#ffffff"
 ----------------------------------------------------------
 ----------------------------------------------------------
 theme.useless_gap   = dpi(0)
-theme.border_width  = dpi(0)
+theme.border_width  = dpi(1)
 
 
 --BORDA DAS JANELAS
@@ -101,14 +101,14 @@ theme.border_normal = "#0000000F"
 --theme.border_focus  = "#994D37"
 --theme.border_focus  = "#A1B56C"
 --theme.border_focus  = "#ffffff" --White
---theme.border_focus  = "#848487" -- Gray
+theme.border_focus  = "#848487" -- Gray
 --theme.border_focus  = "#b4f9f8" --TokyoNight
 --theme.border_focus  = "#52C647"-- Dracula
 --theme.border_focus  = "#6272a4"--dracula
 --theme.border_focus  = "#931508"
 --theme.border_focus  = "#FF79C6" --dracula
 --theme.border_focus  = "#88c0d0"
-theme.border_focus  = "#00C4F0"
+--theme.border_focus  = "#00C4F0"
 ---------------------------------------------------------
 ----------------------------------------------------------
 ----------------------------------------------------------
