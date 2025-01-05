@@ -710,7 +710,7 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 
         --settings wibar
         --s.mywibox = awful.wibar({ position = "top", opacity = 1, screen = s, visible = true, height = 22, width = s.geometry.width, })
-        s.mywibox = awful.wibar({ position = "top", opacity = 1, screen = s, height = 19, width = s.geometry.width, })
+        s.mywibox = awful.wibar({ position = "bottom", opacity = 1, screen = s, height = 19, width = s.geometry.width, })
 
         --systray.base_size = s.mywibox.height * 0.6
         local systray = wibox.container.margin(systray, 0, 0, 0, 0 )
@@ -724,7 +724,7 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 
                 {   -- Left widgets
                     layout = wibox.layout.fixed.horizontal,
-                    s.mylayoutbox,sep,
+                    --s.mylayoutbox,sep,
                     --mylauncher,sep3,
 
                     --s.mytaglist,
@@ -751,11 +751,12 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                 {   -- Middle widget
                     layout = wibox.layout.flex.horizontal,
                     s.mytaglist,
-                                    },
+                },
 
                 { -- Right widgets
                     layout = wibox.layout.fixed.horizontal,
 
+                    s.mylayoutbox,
                     --lay_widget,
                     --s.mylayoutbox,
                     sep,
@@ -783,7 +784,6 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     --date,
                     --sep,
                     --wifi_widget,
-                                        sep,
                     systray,
                     sep,
                     volume_widget{widget_type = 'icon_and_text'},percent_widget,
@@ -897,12 +897,12 @@ globalkeys = gears.table.join(
     --awful.key({ modkey,         },  "a",    function () awful.spawn("kitty -e /home/filipe/.dotfiles/.config/ranger/rangerdownloads.sh") end,
     --        {descrption = "Open ranger", group = "Personal launchers"}),
 
-    --awful.key({ modkey,         },  "o",    function () awful.spawn("xpad -s") end,
-    --        {descrption = "show xpad", group = "personal launchers"}),
-    --awful.key({ modkey,         },  "k",    function () awful.spawn("xpad -h") end,
-    --        {descrption = "Hide Xpad", group = "Personal launchers"}),
-        --awful.key({ modkey, "Control"      },  "n",    function () awful.spawn("xpad -n") end,
-    --        {descrption = "New Xpad", group = "Personal launchers"}),
+    awful.key({ modkey,         },  "o",    function () awful.spawn("xpad -s") end,
+            {descrption = "show xpad", group = "personal launchers"}),
+    awful.key({ modkey,         },  "k",    function () awful.spawn("xpad -h") end,
+            {descrption = "Hide Xpad", group = "Personal launchers"}),
+    awful.key({ modkey, "Control"      },  "n",    function () awful.spawn("xpad -n") end,
+            {descrption = "New Xpad", group = "Personal launchers"}),
 
     --awful.key({ modkey,         },   "l",    function () awful.spawn("rofi -show calc -modi calc -no-show-match -no-sort -no-persist-history ") end,
     --         {description = "Rofi-apps", group = "Personal launchers"}),
@@ -912,7 +912,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Control"  },   "d",    function () awful.spawn("alacritty -e pactl load-module module-combine-sink sink_name=COMBINED_SINK && exit") end,
              {description = "Combine Sink", group = "Personal launchers"}),
 
-    awful.key({ modkey,            },   "l",    function () awful.spawn("alacritty -e /home/filipe/.config/scripts/qalc-term.sh") end,
+    awful.key({ modkey1,            },   "c",    function () awful.spawn("alacritty -e /home/filipe/.config/scripts/qalc-term.sh") end,
              {description = "Rofi-apps", group = "Personal launchers"}),
 
     awful.key({ "Control",         },   "space",    function () awful.spawn("rofi -show drun -display-drun ' Exec ' ") end,
@@ -1007,10 +1007,13 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "Tab", function () awful.client.focus.byidx( 1) end,
             {description = "focus next by index", group = "client"}),
 
-            awful.key({ modkey,           }, "Right", function () awful.client.focus.byidx( 1) end,
+
+    awful.key({ modkey,           }, "l", function () awful.client.focus.byidx( 1) end,
             {description = "focus next by index", group = "client"}),
-    awful.key({ modkey,           }, "Down", function () awful.client.focus.byidx( 1) end,
-            {description = "focus next by index", group = "client"}),
+    awful.key({ modkey,          }, "h", function () awful.client.focus.byidx(-1) end,
+            {description = "focus previous by index", group = "client"}),
+
+
     awful.key({ modkey,          }, "Left", function () awful.client.focus.byidx(-1) end,
             {description = "focus previous by index", group = "client"}),
     awful.key({ modkey,          }, "Up", function () awful.client.focus.byidx(-1) end,
@@ -1022,6 +1025,13 @@ globalkeys = gears.table.join(
 
 
     -- manipulação das janelas
+    awful.key({ modkey, "Control"          }, "l",     function () awful.tag.incmwfact( -0.05) end,
+            {description = "increase master width factor", group = "layout"}),
+
+    awful.key({ modkey, "Control"          }, "h",   function () awful.tag.incmwfact(0.05) end,
+            {description = "decrease master width factor", group = "layout"}),
+
+
     awful.key({ modkey, "Control"          }, "Right",     function () awful.tag.incmwfact( -0.05) end,
             {description = "increase master width factor", group = "layout"}),
 
@@ -1529,8 +1539,7 @@ awful.spawn.with_shell("nm-applet")
 --awful.spawn.with_shell('knotes')
 --awful.spawn.with_shell("/home/filipe/Downloads/wlive.sh"
 
-
-
+awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --pos 0x0 --rotate normal --output eDP-1 --mode 1366x768 --pos 2560x336 --rotate normal --output HDMI-1 --off --output DP-2 --off --output DP-3 --off --output DP-4 --off')
 
 
 --awful.spawn.with_shell('xrandr --output DP-1 --primary') --via displayport
@@ -1538,6 +1547,6 @@ awful.spawn.with_shell("nm-applet")
 
 
 --NOTE EM BAIXO
-awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --pos 0x0 --rotate normal --output eDP-1 --mode 1366x768 --pos 536x1440 --rotate normal ')
+--awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --pos 0x0 --rotate normal --output eDP-1 --mode 1366x768 --pos 536x1440 --rotate normal ')
 
 --awful.spawn.with_shell('xrandr --output eDP-1 --mode 1366x768 --pos 0x386 --rotate normal --output HDMI-1 --off --output DP-1 --primary --mode 2560x1440 --pos 1366x0 --rotate normal')

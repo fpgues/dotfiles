@@ -12,22 +12,16 @@ genymotion  -> https://www.genymotion.com/product-desktop/download/ # Emulador d
 zettler     -> https://www.zettlr.com/ # Editor Markdown poderoso para acadêmicos
 
 ###### .flatpak
--> amberol
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install flathub io.bassi.Amberol
-flatpak run io.bassi.Amberol
-
-->
-
-
-
-
+amberol         -> https://flathub.org/repo/flathub.flatpakrepo
+Rnote           -> https://flathub.org/apps/com.github.flxzt.rnote
+onlyoffice      -> https://flathub.org/apps/org.onlyoffice.desktopeditors
+gdm settings    -> https://flathub.org/apps/io.github.realmazharhussain.GdmSettings
 
 
 ###### .apt
+gnome-control-center rhythmbox --no-install-recommends
 flatpak
 hollywood       # Simula uma interface de "hacking" no terminal, com janelas e informações fictícias como nos filmes.
-gnome-control-center
 kmag
 figlet
 lolcat

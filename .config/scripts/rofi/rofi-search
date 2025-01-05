@@ -17,7 +17,7 @@ declare -a options=(
 "google          https://www.google.com/search?q="
 "translate       https://translate.google.com/?sl=auto&tl=en&text="
 "youtube         https://www.youtube.com/results?search_query="
-"twitter         https://twitter.com/search?q="
+"flatpak         https://flathub.org/apps/search?q="
 "googleimages    https://www.google.com/search?hl=en&tbm=isch&q="
 "drive           https://drive.google.com/drive/search?q="
 "github          https://github.com/search?q="
