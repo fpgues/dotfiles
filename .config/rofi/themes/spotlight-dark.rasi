@@ -7,9 +7,11 @@
 * {
     //font:   "UbuntoSans Nerd Font 12";
     font:   "VictorMono             Bold 10";
+    
 
+    bg0:    #282C34;
     //bg0:    #1C2529;
-    bg0:    #242424; //standard
+    //bg0:    #242424; //standard
     bg1:    #7E7E7E80;
     bg2:    #0860f2E6;
 
@@ -28,11 +30,12 @@
 window {
     background-color:   @bg0;
     border:         1;
-    border-color:   #ffffff9f;
+    border-color:   #535d6F;
+    //border-color:   #ffffff9f;
     border-radius:  12;
     location:       north; //north, center, south
     width:          540;
-    margin:         220px 0 0 0; /* Margem superior de 20px */
+    margin:         330px 0 0 0; /* Margem superior de 20px */
 }
 
 inputbar {
@@ -71,7 +74,7 @@ textbox {
 }
 
 listview {
-    lines:      15;
+    lines:      12;
     columns:    1;
 
     fixed-height:   false;

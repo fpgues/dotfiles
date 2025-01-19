@@ -63,6 +63,14 @@ if [ "$preview_images" = "True" ]; then
     esac
 fi
 
+elif has w3mimgdisplay; then
+    draw_image() {
+        w3mimgdisplay - ...
+    }
+fi
+
+
+
 case "$extension" in
     # Archive extensions:
     a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|\

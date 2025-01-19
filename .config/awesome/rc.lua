@@ -20,11 +20,14 @@ local debian = require("debian.menu")
 local color = require("gears.color")
 local watch = require("awful.widget.watch")
 
-
+-- Inicialize a temperatura com um valor padrão
+local current_temp = 6500  -- Temperatura inicial (valor padrão)
+local step_temp = 100      -- Incremento/decremento (mais suave)
 ----------------------------------------------------------------------
 ---------------------------- THEMES ----------------------------------
 ----------------------------------------------------------------------
 beautiful.init(gears.filesystem.get_themes_dir() .. "fp/theme.lua")
+--beautiful.init(gears.filesystem.get_themes_dir() .. "Nord/theme.lua")
 
 
 ----------------------------------------------------------------------
@@ -151,6 +154,47 @@ awful.rules.rules = {
 
     end)
 }
+
+
+
+
+
+
+-- Aumentar a temperatura (mais fria)
+local function increase_temp()
+    current_temp = math.min(current_temp + step_temp, 6500) -- Limite superior (máximo 6500K)
+    awful.spawn.with_shell("redshift -O " .. current_temp)
+end
+
+-- Diminuir a temperatura (mais quente)
+local function decrease_temp()
+    current_temp = math.max(current_temp - step_temp, 3000) -- Limite inferior (mínimo 3000K)
+    awful.spawn.with_shell("redshift -O " .. current_temp)
+end
+
+-- Restaurar temperatura padrão
+local function reset_temp()
+    current_temp = 6500  -- Volta ao valor inicial
+    awful.spawn.with_shell("redshift -x")
+end
+
+
+local naughty = require("naughty")
+
+local function notify_temp()
+    naughty.notify({ text = "Temperatura atual: " .. current_temp .. "K" })
+end
+
+-- Exemplo ao ajustar a temperatura:
+local function increase_temp()
+    current_temp = math.min(current_temp + step_temp, 6500)
+    awful.spawn.with_shell("redshift -O " .. current_temp)
+    notify_temp()
+end
+
+
+
+
 
 ----------------------------------------------------------------------
 ---------------------------- ERROR -----------------------------------
@@ -279,39 +323,28 @@ local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightne
 
 
 --WidgetLain
-local cpu1 = lain.widget.cpu {
+
+local cpu_1 = lain.widget.cpu {
     settings = function()
-        widget:set_markup("CPU:" .. cpu_now.usage .. "%")
+        widget:set_markup("  " .. cpu_now.usage .. "%")
+        --widget:set_markup("  " .. cpu_now.usage .. "%")
+        --widget:set_markup("CPU:" .. cpu_now.usage .. "%")
     end
 }
 
-local cpu2 = lain.widget.cpu {
+local mem_1 = lain.widget.mem({
     settings = function()
-        widget:set_markup("󰍛 " .. cpu_now.usage .. "%")
-    end
-}
-
-local mem1 = lain.widget.mem({
-    settings = function()
-        widget:set_markup("MEM:" .. mem_now.used .." MB16GB")
+        widget:set_markup("  " .. mem_now.used .." MB")
+        --widget:set_markup("  " .. mem_now.used .." MB")
+        --widget:set_markup("MEM:" .. mem_now.used .." MB16GB")
     end
 })
 
-local mem2 = lain.widget.mem({
-    settings = function()
-        widget:set_markup("  " .. mem_now.used .." MB")
-    end
-})
-
-local mem2 = lain.widget.mem({
-    settings = function()
-        widget:set_markup("  " .. mem_now.used .." MB")
-    end
-})
 
 local fsroothome = lain.widget.fs({
     settings  = function()
-        widget:set_text("DISK:/" .. fs_now ["/"].percentage .. "%" .. " ~/" ..  fs_now["/home"].percentage .. "%")
+        widget:set_text("󰆼 Disk% ")
+        --widget:set_text("DISK:/" .. fs_now ["/"].percentage .. "%" .. " ~/" ..  fs_now["/home"].percentage .. "%")
     end
 })
 
@@ -710,7 +743,7 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 
         --settings wibar
         --s.mywibox = awful.wibar({ position = "top", opacity = 1, screen = s, visible = true, height = 22, width = s.geometry.width, })
-        s.mywibox = awful.wibar({ position = "bottom", opacity = 1, screen = s, height = 19, width = s.geometry.width, })
+        s.mywibox = awful.wibar({ position = "top", opacity = 1, screen = s, height = 19, width = s.geometry.width, })
 
         --systray.base_size = s.mywibox.height * 0.6
         local systray = wibox.container.margin(systray, 0, 0, 0, 0 )
@@ -725,20 +758,18 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                 {   -- Left widgets
                     layout = wibox.layout.fixed.horizontal,
                     --s.mylayoutbox,sep,
+                    s.mylayoutbox,
                     --mylauncher,sep3,
-
-                    --s.mytaglist,
+                    sep,
+                    s.mytaglist,
                     --s.mytasklist,
-
-                    cpu1.widget, cpu_hz,
                     sep,
+                    --cpu1.widget, cpu_hz,
+                    --sep,
                     --ram_widget(),
-                    mem1,
+                    --mem1,
+                    --sep,
                     sep,
-                    fsroothome,
-
-
-                    sep,sep,
                     spotify_widget({
                             --font = "FantasqueSansMNerdFont     Regular 12"
                             --font = "Victor Mono  Bold 10"
@@ -746,22 +777,26 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                             --play_icon = '/usr/share/icons/Papirus-Light/24x24/categories/spotify.svg',
                             --pause_icon = '/usr/share/icons/Papirus-Dark/24x24/panel/spotify-indicator.svg'
                     }),
+
                 },
 
                 {   -- Middle widget
                     layout = wibox.layout.flex.horizontal,
-                    s.mytaglist,
+                    --s.mytaglist,
                 },
 
                 { -- Right widgets
                     layout = wibox.layout.fixed.horizontal,
 
-                    s.mylayoutbox,
                     --lay_widget,
                     --s.mylayoutbox,
+                    systray,
                     sep,
-                    --cpu2,
-
+                    fsroothome,
+                    sep,
+                    cpu_1,
+                    sep,
+                    mem_1,
                     --cpu1.widget, cpu_hz,
                     --sep,
                     ----ram_widget(),
@@ -784,11 +819,10 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     --date,
                     --sep,
                     --wifi_widget,
-                    systray,
                     sep,
                     volume_widget{widget_type = 'icon_and_text'},percent_widget,
                     sep,
-                                        battery_widget(),
+                    battery_widget(),
                     battery_widget1,
                     --sep1,
                     --mykeyboardlayout,
@@ -812,16 +846,15 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                 {   -- Left widgets (apenas taglist)
                     layout = wibox.layout.fixed.horizontal,
 
-                    s.mylayoutbox,sep,
                     --mylauncher,sep3,
 
                     --s.mytaglist,
                     --s.mytasklist,
-
-                    cpu1.widget, cpu_hz,
                     sep,
+                    --cpu1.widget, cpu_hz,
+                    --sep,
                     --ram_widget(),
-                    mem1,
+                    --mem1,
                     sep,
                     fsroothome,
 
@@ -850,7 +883,7 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     logout_menu_widget(),
                     sep,
                     mytextclock,
-
+                    s.mylayoutbox,
                 },
             }
     end
@@ -876,6 +909,23 @@ globalkeys = gears.table.join(
 
     --awful.key({ modkey1,  }, "l", function () awful.spawn('i3lock -c 000000') end,
     --        {description = "open a terminal", group = "launcher"}),
+    
+
+    
+    -- Adicionar atalhos no globalkeys
+    awful.key({ "Control", "Shift" }, "Up", function()
+        increase_temp()
+    end, {description = "Aumentar temperatura da cor", group = "Custom"}),
+    
+    awful.key({ "Control", "Shift" }, "Down", function()
+        decrease_temp()
+    end, {description = "Diminuir temperatura da cor", group = "Custom"}),
+    
+    awful.key({ "Control", "Shift" }, "r", function()
+        reset_temp()
+    end, {description = "Restaurar temperatura padrão", group = "Custom"}),
+      
+
 
     awful.key({ modkey1,          }, "l", function () awful.spawn('gdmflexiserver --lock') end,
             {description = "open a terminal", group = "launcher"}),
@@ -916,7 +966,8 @@ globalkeys = gears.table.join(
              {description = "Rofi-apps", group = "Personal launchers"}),
 
     awful.key({ "Control",         },   "space",    function () awful.spawn("rofi -show drun -display-drun ' Exec ' ") end,
-            {description = "Rofi-apps", group = "Personal launchers"}),
+             {description = "Rofi-apps", group = "Personal launchers"}),
+    
     awful.key({ modkey, "Control"        },   "Tab",      function () awful.spawn("rofi -show window ' Exec ' ") end,
             {description = "Rofi-switch-apps", group = "Personal launchers"}),
 
@@ -936,7 +987,38 @@ globalkeys = gears.table.join(
             {description = "Power-menu.sh", group = "Personal launchers"}),
     awful.key({ modkey         },   "u",        function () awful.spawn("/home/filipe/.config/scripts/wibar/autoupdate.sh") end,
             {description = "Check Updates", group = "Personal launchers"}),
-    --Volume
+    
+
+
+
+
+
+
+
+
+
+
+
+    -- Aumentar a temperatura (mais fria)
+    awful.key({ modkey1  }, "Up", function()
+        increase_temp()
+    end, {description = "Aumentar temperatura da cor", group = "Custom"}),
+
+    -- Diminuir a temperatura (mais quente)
+    awful.key({ modkey1 }, "Down", function()
+        decrease_temp()
+    end, {description = "Diminuir temperatura da cor", group = "Custom"}),
+
+    -- Restaurar temperatura padrão
+    awful.key({ modkey1 }, "r", function()
+        reset_temp()
+    end, {description = "Restaurar temperatura padrão", group = "Custom"}),
+
+
+
+
+
+  --Volume
     awful.key({ "Control"      },   "Up",      function () awful.spawn("/home/filipe/.config/scripts/notify/volume+") end,
             {description = "exec volup", group = "Volume"}),
     awful.key({ "Control"      },   "Down",    function () awful.spawn("/home/filipe/.config/scripts/notify/volume-") end,
@@ -1014,10 +1096,14 @@ globalkeys = gears.table.join(
             {description = "focus previous by index", group = "client"}),
 
 
-    awful.key({ modkey,          }, "Left", function () awful.client.focus.byidx(-1) end,
+    awful.key({ modkey,          }, "Left", function () awful.client.focus.byidx(1) end,
             {description = "focus previous by index", group = "client"}),
-    awful.key({ modkey,          }, "Up", function () awful.client.focus.byidx(-1) end,
+    awful.key({ modkey,          }, "Right", function () awful.client.focus.byidx(-1) end,
             {description = "focus previous by index", group = "client"}),
+
+
+
+
     awful.key({ modkey, "Shift"   }, "Right", function () awful.client.swap.byidx(  1)    end,
             {description = "swap with next client by index", group = "client"}),
     awful.key({ modkey, "Shift"   }, "Left", function () awful.client.swap.byidx( -1)    end,
@@ -1080,7 +1166,7 @@ globalkeys = gears.table.join(
            {description = "restore minimized", group = "client"}),
 
    -- Tirar print com Flameshot usando a tecla Print
-   awful.key({modkey1}, "p", function () awful.spawn("flameshot gui") end,
+   awful.key({modkey1}, "w", function () awful.spawn("flameshot gui") end,
              {description = "Take screenshot", group = "screenshot"}),
    -- Prompt
    awful.key({ modkey },            "F6",     function () awful.screen.focused().mypromptbox:run() end,
@@ -1367,10 +1453,10 @@ awful.rules.rules = {
             properties = { width = 1400, height = 1000 }
     },
 
-    --{
-    --    rule = { class = "Google-chrome" },
-    --        properties = { width = 1250, height = 730 }
-    --},
+    {
+        rule = { class = "Google-chrome" },
+            properties = { width = 1345, height = 735 }
+    },
 
     { rule = { class = "Authenticator" },
         properties = { floating = true, ontop = true }
@@ -1417,50 +1503,61 @@ client.connect_signal("manage", function (c)
 
 end)
 
----- Add a titlebar if titlebars_enabled is set to true in the rules.
---client.connect_signal("request::titlebars", function(c)
---    -- buttons for the titlebar
---    local buttons = gears.table.join(
---        awful.button({ }, 1, function()
---            c:emit_signal("request::activate", "titlebar", {raise = true})
---            awful.mouse.client.move(c)
---        end),
---        awful.button({ }, 3, function()
---            c:emit_signal("request::activate", "titlebar", {raise = true})
---            awful.mouse.client.resize(c)
---        end)
---    )
---
---    awful.titlebar(c) : setup {
---        { -- Left
---            awful.titlebar.widget.iconwidget(c),
---            buttons = buttons,
---            layout  = wibox.layout.fixed.horizontal
---        },
---        { -- Middle
---            { -- Title
---                align  = "center",
---                widget = awful.titlebar.widget.titlewidget(c)
---            },
---            buttons = buttons,
---            layout  = wibox.layout.flex.horizontal
---        },
---        { -- Right
---            awful.titlebar.widget.floatingbutton (c),
---            awful.titlebar.widget.maximizedbutton(c),
---            awful.titlebar.widget.stickybutton   (c),
---            awful.titlebar.widget.ontopbutton    (c),
---            awful.titlebar.widget.closebutton    (c),
---            layout = wibox.layout.fixed.horizontal()
---        },
---        layout = wibox.layout.align.horizontal
---    }
---end)
---
---client.connect_signal("request::titlebars", function(c)
---    print("Adicionando titlebars para a janela: " .. (c.name or ""))
---    -- Resto do código dos botões
---end)
+
+
+
+-- TITLEBARS
+-- Add a titlebar if titlebars_enabled is set to true in the rules.
+client.connect_signal("request::titlebars", function(c)
+    -- buttons for the titlebar
+    local buttons = gears.table.join(
+        awful.button({ }, 1, function()
+            c:emit_signal("request::activate", "titlebar", {raise = true})
+            awful.mouse.client.move(c)
+        end),
+        awful.button({ }, 3, function()
+            c:emit_signal("request::activate", "titlebar", {raise = true})
+            awful.mouse.client.resize(c)
+        end)
+    )
+
+    awful.titlebar(c, {size = 20}) : setup {
+        { -- Left
+            --awful.titlebar.widget.iconwidget(c),
+            buttons = buttons,
+            layout  = wibox.layout.fixed.horizontal
+        },
+        { -- Middle
+            { -- Title
+                align  = "center",
+                widget = awful.titlebar.widget.titlewidget(c)
+            },
+            buttons = buttons,
+            layout  = wibox.layout.flex.horizontal
+        },
+        { -- Right
+            awful.titlebar.widget.floatingbutton (c),
+            --awful.titlebar.widget.maximizedbutton(c),
+            --awful.titlebar.widget.stickybutton   (c),
+            --awful.titlebar.widget.ontopbutton    (c),
+            awful.titlebar.widget.closebutton    (c),
+            layout = wibox.layout.fixed.horizontal()
+        },
+        layout = wibox.layout.align.horizontal
+    }
+end)
+
+client.connect_signal("request::titlebars", function(c)
+    print("Adicionando titlebars para a janela: " .. (c.name or ""))
+    -- Resto do código dos botões
+end)
+
+
+
+
+
+
+
 
 -- Enable sloppy focus, so that focus follows mouse.
 client.connect_signal("mouse::enter", function(c)
@@ -1477,7 +1574,7 @@ client.connect_signal("unfocus", function(c)
 ---------------------------- GAPS ------------------------------------
 ----------------------------------------------------------------------
 
-beautiful.useless_gap = 4,
+beautiful.useless_gap = 2,
 
 --beautiful.gap_single_client   = false
 
@@ -1539,14 +1636,16 @@ awful.spawn.with_shell("nm-applet")
 --awful.spawn.with_shell('knotes')
 --awful.spawn.with_shell("/home/filipe/Downloads/wlive.sh"
 
-awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --pos 0x0 --rotate normal --output eDP-1 --mode 1366x768 --pos 2560x336 --rotate normal --output HDMI-1 --off --output DP-2 --off --output DP-3 --off --output DP-4 --off')
+awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --pos 0x0 --rotate normal --output eDP-1 --off --output HDMI-1 --off --output DP-2 --off --output DP-3 --off --output DP-4 --off')
 
 
 --awful.spawn.with_shell('xrandr --output DP-1 --primary') --via displayport
---awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --rate 75  --output eDP-1 --off')
+
+
 
 
 --NOTE EM BAIXO
 --awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --pos 0x0 --rotate normal --output eDP-1 --mode 1366x768 --pos 536x1440 --rotate normal ')
 
---awful.spawn.with_shell('xrandr --output eDP-1 --mode 1366x768 --pos 0x386 --rotate normal --output HDMI-1 --off --output DP-1 --primary --mode 2560x1440 --pos 1366x0 --rotate normal')
+--solo
+--awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --rate 75  --output eDP-1 --off')

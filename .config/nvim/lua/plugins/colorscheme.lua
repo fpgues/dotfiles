@@ -10,6 +10,8 @@ return {
   --  },
   --},
 
+
+
   --return {
   ---- Outros plugins...
   --
@@ -47,50 +49,56 @@ return {
   --  end
   --}
 
+
+  --Tema  OneDark
+  --{
+  --  "navarasu/onedark.nvim", -- Tema OneDark
+  --  priority = 1000,         -- Carregue o tema antes dos outros plugins
+  --  config = function()
+  --    require("onedark").setup {
+  --      style = "darker", -- Escolha 'dark', 'darker', ou 'cool', dependendo do gosto
+  --      --transparent_bg = true,
+  --    }
+  --    require("onedark").load()
+  --  end,
+  --},
+
+
+  --Tema  OneDark
   {
     "navarasu/onedark.nvim", -- Tema OneDark
     priority = 1000,         -- Carregue o tema antes dos outros plugins
     config = function()
       require("onedark").setup {
-        style = "dark", -- Escolha 'dark', 'darker', ou 'cool', dependendo do gosto
-        transparent_bg = true,
+
+        style = "darker", -- Escolha 'dark', 'darker', 'cool', 'deep', ou 'warmer'
+        term_colors = true, -- Garante que o terminal use as cores do tema
+        colors = {
+          -- Personalize cores mais vivas
+          fg = "#ffffff",
+          bg = "#282c34",
+          red = "#e06c75",
+          green = "#98c379",
+          blue = "#61afef",
+          yellow = "#e5c07b",
+          cyan = "#56b6c2",
+          magenta = "#c678dd",
+        },
+
+
+
+
       }
       require("onedark").load()
     end,
   },
+
+
+
+
+
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

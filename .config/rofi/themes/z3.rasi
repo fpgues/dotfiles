@@ -72,7 +72,7 @@ textbox {
 
 listview {
     padding:    0px 50;
-    lines:      12;
+    lines:      8;
     columns:    1;
 
     //fixed-height:   false; //centraliza no centro do monitor o rofi

@@ -9,6 +9,7 @@ vim.opt.number = true
 vim.opt.autoindent = false
 vim.opt.smartindent = false
 vim.g.autoformat = false
+vim.opt.termguicolors = true
 
 vim.cmd([[
   set conceallevel=0

@@ -66,10 +66,11 @@ local function factory(args)
     if not fs.notification_preset then
         fs.notification_preset = {
             --font = "Monospace 10",
-            font = "VictorMono Bold 10",
+            --font = "VictorMono Bold 10",
+            font = "JetBrainsMono Nerd Font SemiBold 10",
             fg   = "#FFFFFF",
             bg   = "#000000",
-            position = "top_left",
+            position = "top_right", --top_right, top_left,
         }
     end
 

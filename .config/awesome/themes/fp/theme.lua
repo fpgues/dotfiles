@@ -16,11 +16,11 @@ local theme = {}
 --theme.font          = "InconsolataNerdFont        Regular 12"
 --theme.font          = "Iosevka Nerd Font          Regular 10"
 --theme.font          = "IosevkaTerm Nerd Font      Regular 10"
---theme.font          = "JetBrainsMono Nerd Font    SemiBold 10"
+theme.font          = "JetBrainsMono Nerd Font    SemiBold 10"
 --theme.font          = "Maple Mono NF              Regular 8"
 --theme.font          = "mononoki                   Regular 10"
 --theme.font          = "NovaMono                   Regular 10"
-theme.font          = "ProggyClean CE Nerd Font   Regular 12"
+--theme.font          = "ProggyClean CE Nerd Font   Regular 12"
 --theme.font          = "UbuntuSans Nerd Font       SemiBold 10"
 --theme.font          = "VictorMono                   Bold 9"
 --theme.font          = "ZedmonoNerdFontMono        Bold 10"
@@ -28,6 +28,7 @@ theme.font          = "ProggyClean CE Nerd Font   Regular 12"
 ----------------------------------------------------------
 ---------------BARRA--------------------------------------
 ----------------------------------------------------------
+
 theme.bg_normal  = "#282C34" --onedark
 --theme.bg_normal  = "#1C2529"
 --theme.bg_normal = "#3C4353"
@@ -36,7 +37,7 @@ theme.bg_normal  = "#282C34" --onedark
 --theme.bg_normal     = "#263238" -- material blue-gray
 --theme.bg_normal     = "#263238EF" -- material blue-gray
 
---theme.bg_normal     = "#282828DF" --gruvbox
+--theme.bg_normal     = "#282828F" --gruvbox
 --theme.bg_normal     = "#14171C"
 --theme.bg_normal = "#000000" --100%dark
 --theme.bg_normal     = "#263238"
@@ -55,7 +56,10 @@ theme.bg_normal  = "#282C34" --onedark
 ----------------------------------------------------------
 --TAGLISTCOLOR
 --theme.bg_focus      = "#8a8ea8" -- #e9befb" --"#db93f9" --"#535d6c"
-theme.bg_focus = "#ffffff2F"
+
+theme.bg_focus = "#282c34"
+--theme.bg_focus = "#ffffff1F"
+
 --theme.bg_focus      = "#535d6c"
 
 theme.bg_urgent = "#ff0000"
@@ -93,18 +97,16 @@ theme.border_width = dpi(1)
 --theme.border_normal = "#535d6F"
 theme.border_normal = "#0000000F"
 
+
+
+-- BORDA FOCUS
+--theme.border_focus = "#848487" -- Gray
+
 --theme.border_focus = "#7ACCD7"
---theme.border_focus = "#0000000F"
---theme.border_focus  = "#535d6F" -- PADRAO
+theme.border_focus  = "#535d6F" -- PADRAO
 --theme.border_focus  = "#31C0F6"--dracula
---theme.border_focus  = "#994D37"
---theme.border_focus  = "#A1B56C"
---theme.border_focus  = "#ffffff" --White
-theme.border_focus = "#848487" -- Gray
 --theme.border_focus  = "#b4f9f8" --TokyoNight
---theme.border_focus  = "#52C647"-- Dracula
---theme.border_focus  = "#6272a4"--dracula
---theme.border_focus  = "#931508"
+--theme.border_focus  = "#52C647"-- Dracula green
 --theme.border_focus  = "#FF79C6" --dracula
 --theme.border_focus  = "#88c0d0"
 --theme.border_focus  = "#00C4F0"
@@ -150,31 +152,44 @@ theme.menu_width = dpi(100)
 --Define the image to load
 --theme.titlebar_close_button_normal = themes_path.."default/titlebar/close_normal.png"
 --theme.titlebar_close_button_focus  = themes_path.."default/titlebar/close_focus.png"
---
---theme.titlebar_minimize_button_normal = themes_path.."default/titlebar/minimize_normal.png"
---theme.titlebar_minimize_button_focus  = themes_path.."default/titlebar/minimize_focus.png"
---
---theme.titlebar_ontop_button_normal_inactive = themes_path.."default/titlebar/ontop_normal_inactive.png"
---theme.titlebar_ontop_button_focus_inactive  = themes_path.."default/titlebar/ontop_focus_inactive.png"
---theme.titlebar_ontop_button_normal_active = themes_path.."default/titlebar/ontop_normal_active.png"
---theme.titlebar_ontop_button_focus_active  = themes_path.."default/titlebar/ontop_focus_active.png"
---
---theme.titlebar_sticky_button_normal_inactive = themes_path.."default/titlebar/sticky_normal_inactive.png"
---theme.titlebar_sticky_button_focus_inactive  = themes_path.."default/titlebar/sticky_focus_inactive.png"
---theme.titlebar_sticky_button_normal_active = themes_path.."default/titlebar/sticky_normal_active.png"
---theme.titlebar_sticky_button_focus_active  = themes_path.."default/titlebar/sticky_focus_active.png"
---
---theme.titlebar_floating_button_normal_inactive = themes_path.."default/titlebar/floating_normal_inactive.png"
---theme.titlebar_floating_button_focus_inactive  = themes_path.."default/titlebar/floating_focus_inactive.png"
---theme.titlebar_floating_button_normal_active = themes_path.."default/titlebar/floating_normal_active.png"
---theme.titlebar_floating_button_focus_active  = themes_path.."default/titlebar/floating_focus_active.png"
---
---theme.titlebar_maximized_button_normal_inactive = themes_path.."default/titlebar/maximized_normal_inactive.png"
---theme.titlebar_maximized_button_focus_inactive  = themes_path.."default/titlebar/maximized_focus_inactive.png"
---theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/maximized_normal_active.png"
---theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
 
---theme.wallpaper = themes_path.."default/background.png"
+theme.titlebar_close_button_focus  = themes_path.."default/titlebar/5.png"
+
+--
+theme.titlebar_minimize_button_normal = themes_path.."default/titlebar/minimize_normal.png"
+theme.titlebar_minimize_button_focus  = themes_path.."default/titlebar/minimize_focus.png"
+
+theme.titlebar_ontop_button_normal_inactive = themes_path.."default/titlebar/ontop_normal_inactive.png"
+theme.titlebar_ontop_button_focus_inactive  = themes_path.."default/titlebar/ontop_focus_inactive.png"
+theme.titlebar_ontop_button_normal_active = themes_path.."default/titlebar/ontop_normal_active.png"
+theme.titlebar_ontop_button_focus_active  = themes_path.."default/titlebar/ontop_focus_active.png"
+
+theme.titlebar_sticky_button_normal_inactive = themes_path.."default/titlebar/sticky_normal_inactive.png"
+theme.titlebar_sticky_button_focus_inactive  = themes_path.."default/titlebar/sticky_focus_inactive.png"
+theme.titlebar_sticky_button_normal_active = themes_path.."default/titlebar/sticky_normal_active.png"
+theme.titlebar_sticky_button_focus_active  = themes_path.."default/titlebar/sticky_focus_active.png"
+
+theme.titlebar_sticky_button_normal_inactive = themes_path.."default/titlebar/sticky_normal_inact.png"
+theme.titlebar_sticky_button_focus_inactive  = themes_path.."default/titlebar/sticky_focus_inactive.png"
+theme.titlebar_sticky_button_normal_active = themes_path.."default/titlebar/sticky_normal_active.png"
+theme.titlebar_sticky_button_focus_active  = themes_path.."default/titlebar/sticky_focus_active.png"
+
+
+
+
+
+
+theme.titlebar_floating_button_normal_inactive = themes_path.."default/titlebar/floating_normal_inactive.png"
+theme.titlebar_floating_button_focus_inactive  = themes_path.."default/titlebar/floating_focus_inactive.png"
+theme.titlebar_floating_button_normal_active = themes_path.."default/titlebar/floating_normal_active.png"
+theme.titlebar_floating_button_focus_active  = themes_path.."default/titlebar/floating_focus_active.png"
+
+theme.titlebar_maximized_button_normal_inactive = themes_path.."default/titlebar/maximized_normal_inactive.png"
+theme.titlebar_maximized_button_focus_inactive  = themes_path.."default/titlebar/maximized_focus_inactive.png"
+theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/maximized_normal_active.png"
+theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
+
+theme.wallpaper = themes_path.."default/background.png"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path .. "default/layouts/fairhw.png"
