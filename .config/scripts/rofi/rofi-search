@@ -16,6 +16,7 @@ DMBROWSER="google-chrome"
 declare -a options=(
 "google          https://www.google.com/search?q="
 "translate       https://translate.google.com/?sl=auto&tl=en&text="
+"symbolab        https://www.symbolab.com/solver/line-standard-form-calculator/"
 "youtube         https://www.youtube.com/results?search_query="
 "flatpak         https://flathub.org/apps/search?q="
 "googleimages    https://www.google.com/search?hl=en&tbm=isch&q="

@@ -60,7 +60,7 @@ awful.rules.rules = {
             c.floating = true
         end
 
-        if c.instance == "Alacritty" then
+        if c.instance == "easyeffects" then
             c.floating = true
         end
 
@@ -104,7 +104,7 @@ awful.rules.rules = {
             c.floating = true
         end
 
-        if c.instance == "" then
+        if c.instance == "Alacritty" then
             c.floating = true
         end
 
@@ -168,7 +168,7 @@ end
 
 -- Diminuir a temperatura (mais quente)
 local function decrease_temp()
-    current_temp = math.max(current_temp - step_temp, 3000) -- Limite inferior (mínimo 3000K)
+    current_temp = math.max(current_temp - step_temp, 4500)-- Limite inferior (mínimo 3000K)
     awful.spawn.with_shell("redshift -O " .. current_temp)
 end
 
@@ -185,12 +185,12 @@ local function notify_temp()
     naughty.notify({ text = "Temperatura atual: " .. current_temp .. "K" })
 end
 
--- Exemplo ao ajustar a temperatura:
-local function increase_temp()
-    current_temp = math.min(current_temp + step_temp, 6500)
-    awful.spawn.with_shell("redshift -O " .. current_temp)
-    notify_temp()
-end
+---- Exemplo ao ajustar a temperatura:
+--local function increase_temp()
+--    current_temp = math.min(current_temp + step_temp, 6500)
+--    awful.spawn.with_shell("redshift -O " .. current_temp)
+--    notify_temp()
+--end
 
 
 
@@ -848,22 +848,14 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 
                     --mylauncher,sep3,
 
-                    --s.mytaglist,
+                    s.mylayoutbox,
+                    sep,
+                    s.mytaglist,
                     --s.mytasklist,
-                    sep,
-                    --cpu1.widget, cpu_hz,
-                    --sep,
-                    --ram_widget(),
-                    --mem1,
-                    sep,
-                    fsroothome,
-
-
                     },
 
                 {   -- Middle widget (vazio)
                     layout = wibox.layout.flex.horizontal,
-                    s.mytaglist,
                 },
 
                 {   -- Right widgets (apenas relógio)
@@ -883,12 +875,9 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     logout_menu_widget(),
                     sep,
                     mytextclock,
-                    s.mylayoutbox,
                 },
             }
     end
-
-
 
 
     end)
@@ -909,26 +898,10 @@ globalkeys = gears.table.join(
 
     --awful.key({ modkey1,  }, "l", function () awful.spawn('i3lock -c 000000') end,
     --        {description = "open a terminal", group = "launcher"}),
-    
-
-    
-    -- Adicionar atalhos no globalkeys
-    awful.key({ "Control", "Shift" }, "Up", function()
-        increase_temp()
-    end, {description = "Aumentar temperatura da cor", group = "Custom"}),
-    
-    awful.key({ "Control", "Shift" }, "Down", function()
-        decrease_temp()
-    end, {description = "Diminuir temperatura da cor", group = "Custom"}),
-    
-    awful.key({ "Control", "Shift" }, "r", function()
-        reset_temp()
-    end, {description = "Restaurar temperatura padrão", group = "Custom"}),
-      
 
 
     awful.key({ modkey1,          }, "l", function () awful.spawn('gdmflexiserver --lock') end,
-            {description = "open a terminal", group = "launcher"}),
+            {description = "Lockscreen", group = "Custom"}),
 
     --awful.key({ modkey, "Control"  }, "l", function () awful.spawn('xscreensaver-command -l') end,
             --{description = "open a terminal", group = "launcher"}),
@@ -937,68 +910,61 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
             {description = "quit awesome", group = "awesome"}),
     awful.key({ modkey         },   "a",    function () awful.spawn("alacritty -e pulsemixer") end,
-            {description = "Exec pulsemixer", group = "Personal launchers"}),
+            {description = "Exec pulsemixer", group = "Custom"}),
     awful.key({ modkey         },   "b",    function () awful.spawn("blueman-manager") end,
-            {description = "Exec pulsemixer", group = "Personal launchers"}),
+            {description = "Exec pulsemixer", group = "Custom"}),
 
     awful.key({ modkey,         },  "s",    function () awful.spawn("kitty -e ranger") end,
-            {descrption = "Open ranger", group = "Personal launchers"}),
+            {descrption = "Open ranger", group = "Custom"}),
 
     --awful.key({ modkey,         },  "a",    function () awful.spawn("kitty -e /home/filipe/.dotfiles/.config/ranger/rangerdownloads.sh") end,
-    --        {descrption = "Open ranger", group = "Personal launchers"}),
+    --        {descrption = "Open ranger", group = "Custom"}),
 
     awful.key({ modkey,         },  "o",    function () awful.spawn("xpad -s") end,
             {descrption = "show xpad", group = "personal launchers"}),
     awful.key({ modkey,         },  "k",    function () awful.spawn("xpad -h") end,
-            {descrption = "Hide Xpad", group = "Personal launchers"}),
+            {descrption = "Hide Xpad", group = "Custom"}),
     awful.key({ modkey, "Control"      },  "n",    function () awful.spawn("xpad -n") end,
-            {descrption = "New Xpad", group = "Personal launchers"}),
+            {descrption = "New Xpad", group = "Custom"}),
 
     --awful.key({ modkey,         },   "l",    function () awful.spawn("rofi -show calc -modi calc -no-show-match -no-sort -no-persist-history ") end,
-    --         {description = "Rofi-apps", group = "Personal launchers"}),
+    --         {description = "Rofi-apps", group = "Custom"}),
     --awful.key({ modkey,         },   "l",    function () awful.spawn("tilix -e qalc") end,
-    --         {description = "Rofi-apps", group = "Personal launchers"}),
+    --         {description = "Rofi-apps", group = "Custom"}),
 
     awful.key({ modkey, "Control"  },   "d",    function () awful.spawn("alacritty -e pactl load-module module-combine-sink sink_name=COMBINED_SINK && exit") end,
-             {description = "Combine Sink", group = "Personal launchers"}),
+             {description = "Combine Sink", group = "Custom"}),
 
     awful.key({ modkey1,            },   "c",    function () awful.spawn("alacritty -e /home/filipe/.config/scripts/qalc-term.sh") end,
-             {description = "Rofi-apps", group = "Personal launchers"}),
+             {description = "Rofi-apps", group = "Custom"}),
 
     awful.key({ "Control",         },   "space",    function () awful.spawn("rofi -show drun -display-drun ' Exec ' ") end,
-             {description = "Rofi-apps", group = "Personal launchers"}),
+             {description = "Rofi-apps", group = "Custom"}),
     
-    awful.key({ modkey, "Control"        },   "Tab",      function () awful.spawn("rofi -show window ' Exec ' ") end,
-            {description = "Rofi-switch-apps", group = "Personal launchers"}),
+    awful.key({ modkey,        },   "Tab",      function () awful.spawn("rofi -show window ' Exec ' ") end,
+            {description = "Rofi-switch-apps", group = "Custom"}),
 
     awful.key({ modkey, "Control"  },   "c",      function () awful.spawn("rofi -modi 'clipboard:greenclip print' -show clipboard -run-command ' Exec ' ") end,
-            {description = "Rofi-greenclip", group = "Personal launchers"}),
-
-
+            {description = "Rofi-greenclip", group = "Custom"}),
 
 
     awful.key({ modkey         },   "t",      function () awful.spawn("kitty -e htop") end,
-            {description = "Open htop", group = "Personal launchers"}),
+            {description = "Open htop", group = "Custom"}),
     awful.key({ modkey         },   "r",        function () awful.spawn("/home/filipe/.config/scripts/rofi/rofi-files") end,
-            {description = "Search files", group = "Personal launchers"}),
+            {description = "Search files", group = "Custom"}),
     awful.key({ modkey         },   "p",        function () awful.spawn("/home/filipe/.config/scripts/rofi/rofi-search") end,
-            {description = "Rofi-search", group = "Personal launchers"}),
+            {description = "Rofi-search", group = "Custom"}),
     awful.key({ modkey         },   "x",        function () awful.spawn("/home/filipe/.config/scripts/rofi/power-menu.sh") end,
-            {description = "Power-menu.sh", group = "Personal launchers"}),
+            {description = "Power-menu.sh", group = "Custom"}),
     awful.key({ modkey         },   "u",        function () awful.spawn("/home/filipe/.config/scripts/wibar/autoupdate.sh") end,
-            {description = "Check Updates", group = "Personal launchers"}),
+            {description = "Check Updates", group = "Custom"}),
     
 
 
 
 
 
-
-
-
-
-
-
+    --REDSHIFT
     -- Aumentar a temperatura (mais fria)
     awful.key({ modkey1  }, "Up", function()
         increase_temp()
@@ -1017,16 +983,18 @@ globalkeys = gears.table.join(
 
 
 
-
-  --Volume
+    --Volume
     awful.key({ "Control"      },   "Up",      function () awful.spawn("/home/filipe/.config/scripts/notify/volume+") end,
-            {description = "exec volup", group = "Volume"}),
+            {description = "exec volup", group = "Custom"}),
+
     awful.key({ "Control"      },   "Down",    function () awful.spawn("/home/filipe/.config/scripts/notify/volume-") end,
-            {descritipn = "exec voldown", group = "Volume"}),
-    awful.key({ }, "XF86AudioRaiseVolume",     function () awful.spawn("/home/filipe/.config/scripts/notify/volume+") end,
-            {description = "exec volup", group = "Volume"}),
-    awful.key({ }, "XF86AudioLowerVolume",     function () awful.spawn("/home/filipe/.config/scripts/notify/volume-") end,
-            {descritipn = "exec voldown", group = "Volume"}),
+            {descritipn = "exec voldown", group = "Custom"}),
+
+    awful.key({                }, "XF86AudioRaiseVolume",     function () awful.spawn("/home/filipe/.config/scripts/notify/volume+") end,
+            {description = "exec volup", group = "Custom"}),
+
+    awful.key({                }, "XF86AudioLowerVolume",     function () awful.spawn("/home/filipe/.config/scripts/notify/volume-") end,
+            {descritipn = "exec voldown", group = "Custom"}),
 
      -- Configuração de atalhos de teclado (KNOB DO VOLUME)
      --        awful.key({ }, "XF86AudioRaiseVolume", function () awful.spawn("pactl set-sink-volume @DEFAULT_SINK@ +5%") end,
@@ -1035,19 +1003,18 @@ globalkeys = gears.table.join(
      --        awful.key({ }, "XF86AudioLowerVolume", function () awful.spawn("pactl set-sink-volume @DEFAULT_SINK@ -5%") end,
      --             {description = "Diminuir volume", group = "Volume"}),
 
-    awful.key({ }, "XF86AudioMute", function () awful.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle")end,
-            {description = "Mutar volume", group = "Volume" }),
+    awful.key({                }, "XF86AudioMute", function () awful.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle")end,
+            {description = "Mutar volume", group = "Custom" }),
 
-    awful.key({ modkey,          }, "i",      hotkeys_popup.show_help,
+    awful.key({ modkey,        }, "i",      hotkeys_popup.show_help,
             {description="show help", group="awesome"}),
-
 
     --  Control Clients
     --awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
     --        {description = "go back", group = "tag"}),
 
-    awful.key({ modkey, "Control" }, "Tab", awful.tag.history.restore,
-              {description = "go back", group = "tag"}),
+    --awful.key({ modkey, "Control" }, "Tab", awful.tag.history.restore,
+    --          {description = "go back", group = "tag"}),
 
     awful.key({ modkey,           }, "y", function () mymainmenu:show() end,
             {description = "show main menu", group = "awesome"}),
@@ -1205,7 +1172,7 @@ globalkeys = gears.table.join(
         if s.mywibox then
             s.mywibox.visible = not s.mywibox.visible
         end
-    end, {description = "Alternar visibilidade da barra", group = "custom"}),
+    end, {description = "Alternar visibilidade da barra", group = "Custom"}),
 
     -- Alternar a visibilidade da barra no primeiro monitor
     --awful.key({ modkey }, "w", function()
@@ -1465,6 +1432,11 @@ awful.rules.rules = {
     { rule = { class = "Inkscape" },
         properties = { maximized = false }
     },
+
+    --{
+    --    rule = { class = "Alacritty" },
+    --        properties = { width = 400, height = 200 }
+    --},
 }
 
 ----------------------------------------------------------------------
@@ -1554,11 +1526,6 @@ end)
 
 
 
-
-
-
-
-
 -- Enable sloppy focus, so that focus follows mouse.
 client.connect_signal("mouse::enter", function(c)
     c:emit_signal("request::activate", "mouse_enter", {raise = false})
@@ -1574,7 +1541,7 @@ client.connect_signal("unfocus", function(c)
 ---------------------------- GAPS ------------------------------------
 ----------------------------------------------------------------------
 
-beautiful.useless_gap = 2,
+beautiful.useless_gap = 0,
 
 --beautiful.gap_single_client   = false
 
@@ -1593,7 +1560,16 @@ beautiful.useless_gap = 2,
 ----------------------------------------------------------------------
 ---------------------------- AUTOSTART -------------------------------
 ----------------------------------------------------------------------
---system
+
+awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --rate 75  --pos 0x0 --rotate normal --output eDP-1 --off')
+
+--awful.spawn.with_shell('xrandr --output DP-1 --primary') --via displayport
+
+--NOTE EM BAIXO
+--awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --pos 0x0 --rotate normal --output eDP-1 --mode 1366x768 --pos 536x1440 --rotate normal ')
+--solo
+--awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --rate 75  --output eDP-1 --off')--system
+
 --awful.spawn.with_shell('autorandr') --bluetooth
 awful.spawn.with_shell('blueman-applet') --bluetooth
 awful.spawn.with_shell('blueman-tray') --bluetooth
@@ -1601,10 +1577,8 @@ awful.spawn.with_shell('setxkbmap us alt-intl')
 awful.spawn.with_shell('xset r rate 300 50')
 awful.spawn.with_shell('xset s 1800 120') -- 10min para desligar a tela
 awful.spawn.with_shell('xset -dpms')
-
 --awful.spawn.with_shell('xautolock -time 1 -locker -notify 30 "gdm.service"') -- Iniciar xautolock com um tempo de 10 minutos (600 segundos)
 --awful.spawn.with_shell("xautolock -time 40 -locker 'i3lock -c 000000'") -- Iniciar xautolock com um tempo de 10 minutos (600 segundos)
-
 --awful.spawn.with_shell('blueman-manager') --bluetooth
 --awful.spawn.with_shell('setxkbmap us intl') -- teclado Ansi
 --awful.spawn.with_shell('/home/filipe/.config/scripts/notify/autoupdate.sh')
@@ -1621,31 +1595,16 @@ awful.spawn.with_shell('fusuma -d')
 awful.spawn.with_shell('xdotool')
 --awful.spawn.with_shell('xsel')
 awful.spawn.with_shell('xclip')
-
 awful.spawn.with_shell("xsel --output --primary | xsel --input --clipboard")
 awful.spawn.with_shell("autocutsel -fork")
 awful.spawn.with_shell("nm-applet")
 
 --awful.spawn.with_shell('syncthing')
 --awful.spawn.with_shell('pactl load-module module-combine-sink sink_name=COMBINED_SINK')
-
 --awful.spawn.with_shell('flameshot') --bater print
 --awful.spawn.with_shell('cmst -m') --gerenciador de área de transferencia
---awful.spawn.with_shell('xpad -h') -- "-h" -> hide "-s" -> show
+awful.spawn.with_shell('xpad -h') -- "-h" -> hide "-s" -> show
 --awful.spawn.with_shell('localsend_app') --localsend
 --awful.spawn.with_shell('knotes')
 --awful.spawn.with_shell("/home/filipe/Downloads/wlive.sh"
 
-awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --pos 0x0 --rotate normal --output eDP-1 --off --output HDMI-1 --off --output DP-2 --off --output DP-3 --off --output DP-4 --off')
-
-
---awful.spawn.with_shell('xrandr --output DP-1 --primary') --via displayport
-
-
-
-
---NOTE EM BAIXO
---awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --pos 0x0 --rotate normal --output eDP-1 --mode 1366x768 --pos 536x1440 --rotate normal ')
-
---solo
---awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --rate 75  --output eDP-1 --off')

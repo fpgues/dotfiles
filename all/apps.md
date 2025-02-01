@@ -11,6 +11,7 @@ wydroroid   -> https://waydro.id/ # Ferramenta para rodar apps Android em Linux
 genymotion  -> https://www.genymotion.com/product-desktop/download/ # Emulador de Android
 zettler     -> https://www.zettlr.com/ # Editor Markdown poderoso para acadêmicos
 
+
 ###### .flatpak
 amberol         -> https://flathub.org/repo/flathub.flatpakrepo
 Rnote           -> https://flathub.org/apps/com.github.flxzt.rnote
@@ -19,6 +20,8 @@ gdm settings    -> https://flathub.org/apps/io.github.realmazharhussain.GdmSetti
 
 
 ###### .apt
+ueberzug        # Uma ferramenta para gerenciar imagens de fundo.
+psmisc          # Pacotes utilitários para o sistema operacional.
 gnome-control-center rhythmbox --no-install-recommends
 flatpak
 hollywood       # Simula uma interface de "hacking" no terminal, com janelas e informações fictícias como nos filmes.
@@ -69,8 +72,6 @@ scrcpy          # Ferramenta para espelhar e controlar dispositivos Android no P
 ###### outros
 barrier         # Permite compartilhar teclado e mouse entre vários computadores.
 gammy           # Aplicativo para ajustar brilho e temperatura da tela.
-
-
 
 
 

@@ -95,7 +95,9 @@ theme.border_width = dpi(1)
 --BORDA DAS JANELAS
 --theme.border_normal  = "#848487" -- Gray
 --theme.border_normal = "#535d6F"
-theme.border_normal = "#0000000F"
+--theme.border_normal = "#0000000F" --transparent
+theme.border_normal = "#000000"
+
 
 
 
@@ -103,12 +105,12 @@ theme.border_normal = "#0000000F"
 --theme.border_focus = "#848487" -- Gray
 
 --theme.border_focus = "#7ACCD7"
-theme.border_focus  = "#535d6F" -- PADRAO
+--theme.border_focus  = "#535d6F" -- PADRAO
 --theme.border_focus  = "#31C0F6"--dracula
 --theme.border_focus  = "#b4f9f8" --TokyoNight
 --theme.border_focus  = "#52C647"-- Dracula green
 --theme.border_focus  = "#FF79C6" --dracula
---theme.border_focus  = "#88c0d0"
+theme.border_focus  = "#88c0d0"
 --theme.border_focus  = "#00C4F0"
 ---------------------------------------------------------
 ----------------------------------------------------------
@@ -189,7 +191,7 @@ theme.titlebar_maximized_button_focus_inactive  = themes_path.."default/titlebar
 theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
 
-theme.wallpaper = themes_path.."default/background.png"
+--theme.wallpaper = themes_path.."default/background.png"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path .. "default/layouts/fairhw.png"

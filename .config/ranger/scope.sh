@@ -103,6 +103,14 @@ case "$extension" in
         ;; # fall back to highlight/cat if the text browsers fail
 esac
 
+
+
+
+
+
+
+
+
 case "$mimetype" in
     # Syntax highlight for text files:
     text/* | */xml)
