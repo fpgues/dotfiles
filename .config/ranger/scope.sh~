@@ -60,43 +60,8 @@ if [ "$preview_images" = "True" ]; then
         # Image preview for video, disabled by default.:
         video/*)
             ffmpegthumbnailer -i "$path" -o "$cached" -s 0 && exit 6 || exit 1;;
-        
-        
-        application/pdf)
-            # Gera miniatura da primeira página do PDF
-            if pdftoppm -jpeg -f 1 -l 1 -singlefile -r 150 "$path" "${cached%.*}"; then
-                mv "${cached%.*}.jpg" "$cached" 2>/dev/null && exit 6
-            fi
-        
-            # Se a conversão de imagem falhar, tenta extrair o texto do PDF
-            if pdftotext -l 3 -nopgbrk -q "$path" -; then
-                dump | trim | fmt -s -w "$width"
-                exit 0
-            fi
-        
-            exit 1;;
-
-
-        application/x-xopp|application/zip)
-            # Extrai a primeira página como imagem para o preview
-            if unzip -p "$path" preview.png > "$cached" 2>/dev/null; then
-                exit 6
-            fi
-        
-            # Se não houver miniatura, tenta extrair o texto do XML principal
-            if unzip -p "$path" document.xml | sed -n 's/.*<text>\(.*\)<\/text>.*/\1/p' | head -n 20; then
-                exit 0
-            fi
-        
-            exit 1
-            ;;
-        
-        
-                #application/pdf)
-                #  #evince "$path" && exit 6 || exit 1;;
-                #    evince-thumbnailer -s 400 "$path" "cached" && exit 6 ;;
-            esac
-        fi
+    esac
+fi
 
 elif has w3mimgdisplay; then
     draw_image() {
@@ -119,15 +84,15 @@ case "$extension" in
     7z)
         # avoid password prompt by providing empty password
         try 7z -p l "$path" && { dump | trim; exit 0; } || exit 1;;
-    ## PDF documents:
-    #pdf)
-    #    
-    #    # Gera preview de imagem da primeira página
-    #    try pdftoppm -jpeg -f 1 -l 1 -singlefile -r 150 "$path" "${cached%.jpg}" && 
-    #        mv "${cached%.jpg}.jpg" "$cached" 2>/dev/null && exit 6
-    #    # Fallback para extrair texto
-    #    try pdftotext -l 3 -nopgbrk -q "$path" - && 
-    #        { dump | trim | fmt -s -w "$width"; exit 0; } || exit 1;;
+    # PDF documents:
+    pdf)
+        
+        # Gera preview de imagem da primeira página
+        try pdftoppm -jpeg -f 1 -l 1 -singlefile -r 150 "$path" "${cached%.jpg}" && 
+            mv "${cached%.jpg}.jpg" "$cached" 2>/dev/null && exit 6
+        # Fallback para extrair texto
+        try pdftotext -l 3 -nopgbrk -q "$path" - && 
+            { dump | trim | fmt -s -w "$width"; exit 0; } || exit 1;;
         
         #try {
         #    pdftoppm -jpeg -f 1 -l 1 -singlefile -r 150 "$1" "${cache//.jpg}" && mv "${cache}.jpg" "$cache" 2>/dev/null && exit 0 || exit 1;;

@@ -743,7 +743,7 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 
         --settings wibar
         --s.mywibox = awful.wibar({ position = "top", opacity = 1, screen = s, visible = true, height = 22, width = s.geometry.width, })
-        s.mywibox = awful.wibar({ position = "top", opacity = 1, screen = s, height = 19, width = s.geometry.width, })
+        s.mywibox = awful.wibar({ position = "bottom", opacity = 1, screen = s, height = 19, width = s.geometry.width, })
 
         --systray.base_size = s.mywibox.height * 0.6
         local systray = wibox.container.margin(systray, 0, 0, 0, 0 )
@@ -1392,11 +1392,13 @@ awful.rules.rules = {
     properties = { floating = true,
                    placement = awful.placement.centered }},
 
+    
 
+    -- BARRA DE TITULOS
     -- Add titlebars to normal clients and dialogs
-    { rule_any = {type = { "normal", "dialog" }
-      }, properties = { titlebars_enabled = true }
-    },
+    --{ rule_any = {type = { "normal", "dialog" }
+    --  }, properties = { titlebars_enabled = true }
+    --},
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- { rule = { class = "Firefox" },
@@ -1541,7 +1543,7 @@ client.connect_signal("unfocus", function(c)
 ---------------------------- GAPS ------------------------------------
 ----------------------------------------------------------------------
 
-beautiful.useless_gap = 0,
+beautiful.useless_gap = 4,
 
 --beautiful.gap_single_client   = false
 

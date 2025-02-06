@@ -16,7 +16,7 @@ local theme = {}
 --theme.font          = "InconsolataNerdFont        Regular 12"
 --theme.font          = "Iosevka Nerd Font          Regular 10"
 --theme.font          = "IosevkaTerm Nerd Font      Regular 10"
-theme.font          = "JetBrainsMono Nerd Font    SemiBold 10"
+theme.font          = "JetBrainsMono Nerd Font    Bold 10"
 --theme.font          = "Maple Mono NF              Regular 8"
 --theme.font          = "mononoki                   Regular 10"
 --theme.font          = "NovaMono                   Regular 10"
@@ -29,7 +29,7 @@ theme.font          = "JetBrainsMono Nerd Font    SemiBold 10"
 ---------------BARRA--------------------------------------
 ----------------------------------------------------------
 
-theme.bg_normal  = "#282C34" --onedark
+--theme.bg_normal  = "#282C34" --onedark
 --theme.bg_normal  = "#1C2529"
 --theme.bg_normal = "#3C4353"
 
@@ -39,7 +39,7 @@ theme.bg_normal  = "#282C34" --onedark
 
 --theme.bg_normal     = "#282828F" --gruvbox
 --theme.bg_normal     = "#14171C"
---theme.bg_normal = "#000000" --100%dark
+theme.bg_normal = "#000000" --100%dark
 --theme.bg_normal     = "#263238"
 --theme.bg_normal     = "#171f24" --color wallpaper_green
 --theme.bg_normal     = "#1a1b26" --TokyoNight
@@ -102,7 +102,8 @@ theme.border_normal = "#000000"
 
 
 -- BORDA FOCUS
---theme.border_focus = "#848487" -- Gray
+--theme.border_focus  = "#88c0d0"
+theme.border_focus = "#848487" -- Gray
 
 --theme.border_focus = "#7ACCD7"
 --theme.border_focus  = "#535d6F" -- PADRAO
@@ -110,7 +111,6 @@ theme.border_normal = "#000000"
 --theme.border_focus  = "#b4f9f8" --TokyoNight
 --theme.border_focus  = "#52C647"-- Dracula green
 --theme.border_focus  = "#FF79C6" --dracula
-theme.border_focus  = "#88c0d0"
 --theme.border_focus  = "#00C4F0"
 ---------------------------------------------------------
 ----------------------------------------------------------

@@ -1,21 +1,23 @@
+allow_remote_control yes
+
 ##################################
 ############# FONTS ##############
 ##################################
 
 #font_family         ConsolaMono
 #font_family         FantasqueSansMNerdFont
-#font_family         FiraCode Nerd Font
+#font_family         FiraCode Nerd Font Bold
 #font_family         GohuFont11NerdFont
 #font_family         InconsolataNerdFont
 #font_family         Iosevka Nerd Font
 #font_family         IosevkaTerm Nerd Font
-font_family         JetBrainsMono Nerd Font
+#font_family         JetBrainsMono Nerd Font
 #font_family         Maple Mono NF
 #font_family         mononoki
 #font_family         NovaMono
 #font_family         ProggyClean CE Nerd Font
 #font_family         UbuntuSans Nerd Font
-#font_family         VictorMono-Bold
+font_family         VictorMono-Bold
 #font_family         ZedmonoNerdFontMono
 
 italic_font         auto
@@ -56,7 +58,7 @@ window_margin_width         10
 #enabled_layouts tall, grid, horizontal, vertical, stack, splits
 #enabled_layouts horizontal, grid
 
-#map ctrl+enter launch --cwd=current --location=vsplit
+map ctrl+enter launch --cwd=current --location=vsplit
 
 #map ctrl+b      previous_layout
 #map ctrl+       next_layout
@@ -78,6 +80,7 @@ map ctrl+shift+end          scroll_end
 map ctrl+minus              decrease_font_size
 
 map ctrl+equal              increase_font_size
+
 #0 off 1 on
 confirm_os_window_close     0
 enable_audio_bell           false
@@ -89,18 +92,81 @@ enable_audio_bell           false
 
 #Transparence
 foreground_opacity      0.0
-background_opacity      1.0
+background_opacity      1
 
 # standard background
 # foreground          #FFFFFF
-#background          #121417
-# background          #282C34
+# background          #121417
+background            #1F2329
 
 #background          #000000
 #background          #2B2E3B #nord
 #background          #263238
 #background          #222E32
 #background          #1C2529
+
+
+## name:     OneDark-Pro
+## author:   VictorPL (https://github.com/VictorPLopes)
+## license:  MIT
+## upstream: https://github.com/VictorPLopes/OneDark-Pro-Kitty-Terminal/blob/main/kitty-themes/OneDark-Pro.conf
+## blurb:    Kitty theme inspired by Binaryify's One Dark Pro theme for Visual Studio Code.
+
+# Colors
+
+# The basic colors
+#foreground              #ABB2BF
+#background              #282C34
+selection_foreground    #282C34
+selection_background    #ABB2BF
+
+# Cursor colors
+cursor                  #ABB2BF
+cursor_text_color       #282C34
+
+# URL underline color when hovering with mouse
+url_color               #ABB2BF
+
+# Tab bar colors
+active_tab_foreground   #3F4451
+active_tab_background   #D7DAE0
+inactive_tab_foreground #ABB2BF
+inactive_tab_background #282C34
+
+# The 16 terminal colors
+
+# black
+color0 #3F4451
+color8 #4F5666
+
+# red
+color1 #E06C75
+color9 #BE5046
+
+# green
+color2  #98C379
+color10 #A5E075
+
+# yellow
+color3  #D19A66
+color11 #E5C07B
+
+# blue
+color4  #61AFEF
+color12 #4DC4FF
+
+# purple
+color5  #C678DD
+color13 #DE73FF
+
+# cyan
+color6  #56B6C2
+color14 #4CD1E0
+
+# white
+color7  #D7DAE0
+color15 #E6E6E6
+
 
 
 
