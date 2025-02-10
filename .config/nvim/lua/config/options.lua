@@ -11,6 +11,10 @@ vim.opt.smartindent = false
 vim.g.autoformat = false
 vim.opt.termguicolors = true
 
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldlevel = 99 -- Mantém tudo expandido por padrão
+
 vim.cmd([[
   set conceallevel=0
   set concealcursor""

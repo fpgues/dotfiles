@@ -6,10 +6,13 @@
 
 * {
     //font:   "UbuntoSans Nerd Font 12";
-    font:      "FantasqueSansMNerdFont Regular 12";
+    //font:   "FantasqueSansMNerdFont Regular 12";
+    //font:      "JetBrainsMono Nerd Font    Bold 10";
+    font:      "ProggyClean CE Nerd Font   Regular 12";
 
     //bg0:    #111d20;
-    bg0:      #263238CF;
+    bg0:      #282C34;
+    //bg0:      #263238CF;
     //bg0:    #1b1e22;
     //bg1:    #7E7E7E80;
     bg1:    #3B4252;
@@ -39,7 +42,8 @@ window {
 
 inputbar {
     --font:       "UbuntoSans Nerd Font 12";
-    font:      "FantasqueSansMNerdFont Regular 12";
+    --font:      "FantasqueSansMNerdFont Regular 12";
+    font:      "ProggyClean CE Nerd Font   Regular 12";
     padding:    12px;
     spacing:    12px;
     children:   [ icon-search, entry ];

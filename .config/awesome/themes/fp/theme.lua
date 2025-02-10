@@ -16,11 +16,13 @@ local theme = {}
 --theme.font          = "InconsolataNerdFont        Regular 12"
 --theme.font          = "Iosevka Nerd Font          Regular 10"
 --theme.font          = "IosevkaTerm Nerd Font      Regular 10"
-theme.font          = "JetBrainsMono Nerd Font    Bold 10"
+--theme.font          = "JetBrainsMono Nerd Font    Bold 10"
 --theme.font          = "Maple Mono NF              Regular 8"
 --theme.font          = "mononoki                   Regular 10"
 --theme.font          = "NovaMono                   Regular 10"
---theme.font          = "ProggyClean CE Nerd Font   Regular 12"
+--theme.font          = "Unifont           Regular 12"
+--theme.font          = "3270NerdFont           Regular 12"
+theme.font          = "ProggyClean CE Nerd Font   Regular 12"
 --theme.font          = "UbuntuSans Nerd Font       SemiBold 10"
 --theme.font          = "VictorMono                   Bold 9"
 --theme.font          = "ZedmonoNerdFontMono        Bold 10"
@@ -29,7 +31,7 @@ theme.font          = "JetBrainsMono Nerd Font    Bold 10"
 ---------------BARRA--------------------------------------
 ----------------------------------------------------------
 
---theme.bg_normal  = "#282C34" --onedark
+theme.bg_normal  = "#282C34" --onedark
 --theme.bg_normal  = "#1C2529"
 --theme.bg_normal = "#3C4353"
 
@@ -39,7 +41,7 @@ theme.font          = "JetBrainsMono Nerd Font    Bold 10"
 
 --theme.bg_normal     = "#282828F" --gruvbox
 --theme.bg_normal     = "#14171C"
-theme.bg_normal = "#000000" --100%dark
+--theme.bg_normal = "#000000" --100%dark
 --theme.bg_normal     = "#263238"
 --theme.bg_normal     = "#171f24" --color wallpaper_green
 --theme.bg_normal     = "#1a1b26" --TokyoNight

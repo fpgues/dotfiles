@@ -39,8 +39,12 @@ awful.rules.rules = {
 
     client.connect_signal("manage", function (c)
         -- Applicativos flutuantes
-
+        
         if c.instance == "gl" then --mpv
+            c.floating = true
+        end
+
+        if c.instance == "PenTablet" then --mpv
             c.floating = true
         end
 
@@ -256,7 +260,7 @@ modkey1 = "Mod4" -- Win
 
 -- Separator Blanc
 sep = wibox.widget.textbox("  ")
-sep1 = wibox.widget.textbox("  ") --("") --("  ") --("⏽") --("") 󰇙
+sep1 = wibox.widget.textbox("") --("") 󰇙 ") --("") --("  ") --("⏽") --("") 󰇙
 sep2 = wibox.widget.textbox(" 󱗿 ")
 sep3 = wibox.widget.textbox(" ")
 percent_widget = wibox.widget.textbox("%")
@@ -269,8 +273,8 @@ fs_widget = wibox.widget.textbox("FS:")
 awful.layout.layouts = {
     awful.layout.suit.tile.left,
     awful.layout.suit.floating,
-    awful.layout.suit.fair,
-    --awful.layout.suit.fair.horizontal,
+    --awful.layout.suit.fair,
+    awful.layout.suit.fair.horizontal,
 
     --lain.layout.termfair,
     --awful.layout.suit.tile,
@@ -326,25 +330,25 @@ local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightne
 
 local cpu_1 = lain.widget.cpu {
     settings = function()
-        widget:set_markup("  " .. cpu_now.usage .. "%")
+        --widget:set_markup("  " .. cpu_now.usage .. "%")
         --widget:set_markup("  " .. cpu_now.usage .. "%")
-        --widget:set_markup("CPU:" .. cpu_now.usage .. "%")
+        widget:set_markup("CPU:" .. cpu_now.usage .. "%")
     end
 }
 
 local mem_1 = lain.widget.mem({
     settings = function()
-        widget:set_markup("  " .. mem_now.used .." MB")
+        --widget:set_markup("  " .. mem_now.used .." MB")
         --widget:set_markup("  " .. mem_now.used .." MB")
-        --widget:set_markup("MEM:" .. mem_now.used .." MB16GB")
+        widget:set_markup("MEM:" .. mem_now.used .." MB16GB")
     end
 })
 
 
 local fsroothome = lain.widget.fs({
     settings  = function()
-        widget:set_text("󰆼 Disk% ")
-        --widget:set_text("DISK:/" .. fs_now ["/"].percentage .. "%" .. " ~/" ..  fs_now["/home"].percentage .. "%")
+        --widget:set_text("󰆼 Disk% ")
+        widget:set_text("DISK:/" .. fs_now ["/"].percentage .. "%" .. " ~/" ..  fs_now["/home"].percentage .. "%")
     end
 })
 
@@ -550,8 +554,9 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
         --awful.tag({" 1 "," 2 "," 3 "," 4 "," 5 "}, s, awful.layout.layouts[1])
         --awful.tag({"   󰬺","   󰬻","   󰬼","   󰬽","   󰬾","   󰬿"}, s, awful.layout.layouts[1])
         --awful.tag({" 󰬺 "," 󰬻 "," 󰬼 "," 󰬽 "," 󰬾 "," 󰬿 "," 󰭀 "," 󰭁 "}, s, awful.layout.layouts[1])
-        awful.tag({" Web "," Term "," Files "," Other "}, s, awful.layout.layouts[1])
+        --awful.tag({" Web "," Term "," Files "," Other "}, s, awful.layout.layouts[1])
         --awful.tag({" 1-Web "," 2-Term "," 3-Files "," 4-Others "}, s, awful.layout.layouts[1])
+        awful.tag({" www ","  term ","  docs ","  media ", "  [*] "}, s, awful.layout.layouts[1])
         --awful.tag({"  ","  ","  ","  ","  ","  ",}, s, awful.layout.layouts[1])
         --awful.tag({"  ","  ","  ","  ","  ","  ",}, s, awful.layout.layouts[1])
         --awful.tag({" 󰈿 "," 󰈿 "," 󰈿 ",}, s, awful.layout.layouts[1])
@@ -743,7 +748,7 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 
         --settings wibar
         --s.mywibox = awful.wibar({ position = "top", opacity = 1, screen = s, visible = true, height = 22, width = s.geometry.width, })
-        s.mywibox = awful.wibar({ position = "bottom", opacity = 1, screen = s, height = 19, width = s.geometry.width, })
+        s.mywibox = awful.wibar({ position = "top", opacity = 1, screen = s, height = 19, width = s.geometry.width, })
 
         --systray.base_size = s.mywibox.height * 0.6
         local systray = wibox.container.margin(systray, 0, 0, 0, 0 )
@@ -760,7 +765,7 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     --s.mylayoutbox,sep,
                     s.mylayoutbox,
                     --mylauncher,sep3,
-                    sep,
+                    sep1,
                     s.mytaglist,
                     --s.mytasklist,
                     sep,
@@ -774,8 +779,8 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                             --font = "FantasqueSansMNerdFont     Regular 12"
                             --font = "Victor Mono  Bold 10"
                             font = 'ProggyClean CE Nerd Font 12',
-                            --play_icon = '/usr/share/icons/Papirus-Light/24x24/categories/spotify.svg',
-                            --pause_icon = '/usr/share/icons/Papirus-Dark/24x24/panel/spotify-indicator.svg'
+                            play_icon = '/usr/share/icons/Papirus-Light/24x24/categories/spotify.svg',
+                            pause_icon = '/usr/share/icons/Papirus-Dark/24x24/panel/spotify-indicator.svg'
                     }),
 
                 },
@@ -791,11 +796,13 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     --lay_widget,
                     --s.mylayoutbox,
                     systray,
-                    sep,
+                    sep,sep1,sep,
                     fsroothome,
-                    sep,
+                    sep,sep1,sep,
                     cpu_1,
                     sep,
+                    cpu_widget(),
+                    sep,sep1,sep,
                     mem_1,
                     --cpu1.widget, cpu_hz,
                     --sep,
@@ -812,14 +819,13 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     --sep,
                     --brightness_widget(),
                     --sep1,
-                    --cpu_widget(),sep1,
                     --todo_widget(),
                     --net_speed_widget(),
                     --weather,
                     --date,
                     --sep,
                     --wifi_widget,
-                    sep,
+                    sep,sep1,sep,
                     volume_widget{widget_type = 'icon_and_text'},percent_widget,
                     sep,
                     battery_widget(),
@@ -830,7 +836,7 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     --mytextclock,
                     sep,
                     logout_menu_widget(),
-                    sep,
+                    sep,sep1,sep,
                     mytextclock,
                 },
             }
@@ -1396,9 +1402,9 @@ awful.rules.rules = {
 
     -- BARRA DE TITULOS
     -- Add titlebars to normal clients and dialogs
-    --{ rule_any = {type = { "normal", "dialog" }
-    --  }, properties = { titlebars_enabled = true }
-    --},
+    { rule_any = {type = { "normal", "dialog" }
+      }, properties = { titlebars_enabled = true }
+    },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- { rule = { class = "Firefox" },
@@ -1562,8 +1568,8 @@ beautiful.useless_gap = 4,
 ----------------------------------------------------------------------
 ---------------------------- AUTOSTART -------------------------------
 ----------------------------------------------------------------------
-
-awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --rate 75  --pos 0x0 --rotate normal --output eDP-1 --off')
+awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --pos 1366x0 --rotate normal --output eDP-1 --mode 1366x768 --pos 0x160 --rotate normal --output HDMI-1 --off --output DP-2 --off --output DP-3 --off --output DP-4 --off')
+--awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --rate 75  --pos 0x0 --rotate normal --output eDP-1 --off')
 
 --awful.spawn.with_shell('xrandr --output DP-1 --primary') --via displayport
 
@@ -1608,5 +1614,4 @@ awful.spawn.with_shell("nm-applet")
 awful.spawn.with_shell('xpad -h') -- "-h" -> hide "-s" -> show
 --awful.spawn.with_shell('localsend_app') --localsend
 --awful.spawn.with_shell('knotes')
---awful.spawn.with_shell("/home/filipe/Downloads/wlive.sh"
 

@@ -38,10 +38,10 @@ rofi_command="rofi -theme ~/.local/share/rofi/themes/my-spotlight-dark.rasi"
 
 
 ## options
-shutdown="       Poweroff"
-reboot="       Reboot"
-logout="       Logout"
-lock="       Lock"
+shutdown="       poweroff"
+reboot="       reboot"
+logout="       logout"
+lock="       lock"
 
 # Variable passed to rofi
 options="$shutdown\n$reboot\n$logout\n$lock"
