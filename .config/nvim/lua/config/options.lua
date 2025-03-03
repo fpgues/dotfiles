@@ -15,6 +15,12 @@ vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldlevel = 99 -- Mantém tudo expandido por padrão
 
+vim.opt.wrap = true
+vim.opt.textwidth = 80
+vim.opt.autoindent = true
+vim.opt.breakindent = true
+
+
 vim.cmd([[
   set conceallevel=0
   set concealcursor""

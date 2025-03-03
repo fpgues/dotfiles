@@ -19,6 +19,10 @@ onlyoffice      -> https://flathub.org/apps/org.onlyoffice.desktopeditors
 gdm settings    -> https://flathub.org/apps/io.github.realmazharhussain.GdmSettings
 
 
+pip install nbconvert
+apt pandoc
+apt texlive-xetex texlive-fonts-recommended texlive-plain-generic
+
 ###### .apt
 ueberzug        # Uma ferramenta para gerenciar imagens de fundo.
 psmisc          # Pacotes utilitários para o sistema operacional.

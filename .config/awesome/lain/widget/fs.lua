@@ -70,7 +70,7 @@ local function factory(args)
             font = "JetBrainsMono Nerd Font SemiBold 10",
             fg   = "#FFFFFF",
             bg   = "#000000",
-            position = "top_right", --top_right, top_left,
+            position = "top_right",--"top_middle", --top_right, top_left,
         }
     end
 

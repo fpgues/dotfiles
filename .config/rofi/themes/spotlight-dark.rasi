@@ -6,8 +6,8 @@
 
 * {
     //font:   "UbuntoSans Nerd Font 12";
-    //font:   "VictorMono             Bold 10";
-    font:      "ProggyClean CE Nerd Font   Regular 12";
+    font:   "VictorMono             Bold 10";
+    //font:      "ProggyClean CE Nerd Font   Regular 12";
     
 
     bg0:    #282C34;

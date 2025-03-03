@@ -22,16 +22,18 @@ local theme = {}
 --theme.font          = "NovaMono                   Regular 10"
 --theme.font          = "Unifont           Regular 12"
 --theme.font          = "3270NerdFont           Regular 12"
-theme.font          = "ProggyClean CE Nerd Font   Regular 12"
+--theme.font          = "ProggyClean CE Nerd Font   Regular 12"
 --theme.font          = "UbuntuSans Nerd Font       SemiBold 10"
---theme.font          = "VictorMono                   Bold 9"
+theme.font          = "VictorMono                   Bold 10"
 --theme.font          = "ZedmonoNerdFontMono        Bold 10"
 
 ----------------------------------------------------------
 ---------------BARRA--------------------------------------
 ----------------------------------------------------------
-
-theme.bg_normal  = "#282C34" --onedark
+--
+--theme.bg_normal  = "#644540"
+--theme.bg_normal  = "#1B443C"
+--theme.bg_normal  = "#282C34" --onedark
 --theme.bg_normal  = "#1C2529"
 --theme.bg_normal = "#3C4353"
 
@@ -40,8 +42,6 @@ theme.bg_normal  = "#282C34" --onedark
 --theme.bg_normal     = "#263238EF" -- material blue-gray
 
 --theme.bg_normal     = "#282828F" --gruvbox
---theme.bg_normal     = "#14171C"
---theme.bg_normal = "#000000" --100%dark
 --theme.bg_normal     = "#263238"
 --theme.bg_normal     = "#171f24" --color wallpaper_green
 --theme.bg_normal     = "#1a1b26" --TokyoNight
@@ -52,16 +52,17 @@ theme.bg_normal  = "#282C34" --onedark
 --theme.bg_normal     = "#27383a" --light green
 --theme.bg_normal     = "#111d20" --dark green
 --theme.bg_normal     = "#1b2523" --green
+--theme.bg_normal     = "#2E1643"
+--theme.bg_normal     = "#864087"
+theme.bg_normal     = "#000000"
 
 ---------------------------------------------------------
 ----------------------------------------------------------
 ----------------------------------------------------------
 --TAGLISTCOLOR
 --theme.bg_focus      = "#8a8ea8" -- #e9befb" --"#db93f9" --"#535d6c"
-
-theme.bg_focus = "#282c34"
+theme.bg_focus = "#282c340F"
 --theme.bg_focus = "#ffffff1F"
-
 --theme.bg_focus      = "#535d6c"
 
 theme.bg_urgent = "#ff0000"
@@ -77,11 +78,16 @@ theme.bg_minimize = "#444444"
 --theme.fg_normal     = "#aaaaaa" --standard
 theme.fg_normal = "#ffffff"
 --theme.fg_normal     = "#ffffffCF"
+--theme.fg_normal     = "#000000"
+--theme.fg_normal     = "#CFD2C6"
+
+
 
 ----------------------------------------------------------
 ----------------------------------------------------------
-theme.fg_focus = "#ffffff" --standard
+--theme.fg_focus = "#ffffff" --standard
 --theme.fg_focus      = "#000000"
+theme.fg_focus      = "#ff5555"
 --theme.fg_focus      = "#b4f9f8"
 
 ----------------------------------------------------------
