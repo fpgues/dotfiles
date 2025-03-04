@@ -21,4 +21,18 @@ With user root.
 ``git clone https://github.com/fpgues/dotfiles.git && mv dotfiles .dotfiles && cd .dotfiles && ./autoinstall.sh ``
 
 
+### Themes
+
+git clone https://github.com/vinceliuice/Tela-circle-icon-theme.git
+
+./install
+
+
+git clone https://github.com/vinceliuice/Orchis-theme.git
+./install
+
+
+
+
+
 

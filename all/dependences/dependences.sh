@@ -8,6 +8,7 @@ echo "           |_|                                                "
 ########################################################################
 #                       NEOVIM                                         #
 ########################################################################
+### -> https://github.com/neovim/neovim/blob/master/INSTALL.md
 
 #Pre-built archives
 #The Releases page provides pre-built binaries for Linux systems.
