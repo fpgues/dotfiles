@@ -15,14 +15,14 @@ export ZSH="$HOME/.oh-my-zsh"
 #ZSH_THEME="my2"
 #ZSH_THEME="my3"
 #ZSH_THEME="my4" #ohmybash
-ZSH_THEME="my5" #ohmybash
+#ZSH_THEME="my5" #ohmybash
 #ZSH_THEME="gentoo"
 #ZSH_THEME="eastwood"
 #ZSH_THEME="clean"
 #ZSH_THEME="kafeitu"
 #ZSH_THEME="jtriley"
 #ZSH_THEME="maran"
-#ZSH_THEME="robbyrussell"
+ZSH_THEME="robbyrussell"
 #ZSH_THEME="agnoster"
 #ZSH_THEME="sammy"
 #ZSH_THEME="simple"
@@ -173,19 +173,19 @@ fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 
 ## POWERLEVEL10K
-source ~/powerlevel10k/powerlevel10k.zsh-theme
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-
-source ~/powerlevel10k/powerlevel10k.zsh-theme
-source ~/powerlevel10k/powerlevel10k.zsh-theme
+#source ~/powerlevel10k/powerlevel10k.zsh-theme
+#
+## To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+#
+#
+## Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+## Initialization code that may require console input (password prompts, [y/n]
+## confirmations, etc.) must go above this block; everything else may go below.
+#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+#fi
+#
+#
+#source ~/powerlevel10k/powerlevel10k.zsh-theme
+#source ~/powerlevel10k/powerlevel10k.zsh-theme

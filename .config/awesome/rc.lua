@@ -122,7 +122,7 @@ awful.rules.rules = {
                --"nitrogen",
                "blueman-manager",
                "tilix",
-               --"discord",
+               "discord",
                "color-picker",
                "iriumwebcam",
                "amberol",
@@ -355,17 +355,6 @@ mysysload = lain.widget.sysload()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 --WidgetVicious
 wifi_widget = wibox.widget.textbox()
 vicious.register(wifi_widget, vicious.widgets.wifi,
@@ -381,9 +370,6 @@ vicious.register(wifi_widget, vicious.widgets.wifi,
         end
         end, 10, "wlp0s20f3" -- Altere "wlp2s0" para o nome da sua interface Wi-Fi
 )
-
-
-
 
 
 
@@ -554,7 +540,8 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
         --awful.tag({" 󰬺 "," 󰬻 "," 󰬼 "," 󰬽 "," 󰬾 "," 󰬿 "," 󰭀 "," 󰭁 "}, s, awful.layout.layouts[1])
         --awful.tag({" Web "," Term "," Files "," Other "}, s, awful.layout.layouts[1])
         --awful.tag({" 1-Web "," 2-Term "," 3-Files "," 4-Others "}, s, awful.layout.layouts[1])
-        awful.tag({"   www ","   term ","   docs ","   media ", "   [*] "}, s, awful.layout.layouts[1])
+        --awful.tag({"   www ","   term ","   docs ","   media ", "   [*] "}, s, awful.layout.layouts[1])
+        awful.tag({" www "," term "," docs "," media "," [*] "}, s, awful.layout.layouts[1])
         --awful.tag({"  ","  ","  ","  ","  ","  ",}, s, awful.layout.layouts[1])
         --awful.tag({"  ","  ","  ","  ","  ","  ",}, s, awful.layout.layouts[1])
         --awful.tag({" 󰈿 "," 󰈿 "," 󰈿 ",}, s, awful.layout.layouts[1])
@@ -582,105 +569,112 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                              ))
 
 
-        --#### TAGLISTWIDGETS
         -- Create a taglist widget
         s.mytaglist = awful.widget.taglist {
             screen  = s,
             filter  = awful.widget.taglist.filter.all,
-            buttons = taglist_buttons,
-            style = {
-                shape = gears.shape.rounded_rect,--opcional, para adicionar estilo
-            },
-            layout  = {
-                layout  = wibox.layout.fixed.horizontal,
-            },
-            widget_template = {
-                {
-
-                    {
-                        id     = 'text_role',
-                        widget = wibox.widget.textbox,
-                    },
-
-                    {
-                        id     = 'icon_layout',
-                        widget = wibox.widget.imagebox,
-                        layout = wibox.layout.fixed.horizontal, -- Permitir múltiplos ícones
-                        align  = 'center', -- Centralizar verticalmente
-                    },
-
-                    layout = wibox.layout.fixed.horizontal,
-                    valign = 'center', -- Garante o alinhamento vertical dos ícones
-                },
-                id     = 'background_role',
-                widget = wibox.container.background,
-                -- Atualizar os ícones ao selecionar a tag
-                create_callback = function(self, t, index, objects)
-                    local function update_icons()
-                        local clients = t:clients()
-                        local icon_layout = self:get_children_by_id('icon_layout')[1]
-
-                        -- Limpa todos os ícones anteriores
-                        --icon_layout:reset()
-
-
-                        ---- Adiciona os ícones de todos os clientes
-                        --for _, c in ipairs(clients) do
-                        --    if c.icon then
-                        --        local icon_widget = wibox.widget {
-                        --            widget = wibox.widget.imagebox,
-                        --            image = c.icon,
-                        --            resize = true,
-                        --            forced_height = 16,
-                        --            forced_width = 16,
-                        --        }
-                        --        -- Centralizar verticalmente e adicionar margem ao redor de cada ícone
-                        --        local icon_container = wibox.container.margin(
-                        --            wibox.container.place(icon_widget, "center"),
-                        --            0, 0, 0, 0 -- Espaçamento horizontal de 2px entre os ícones
-                        --        )
-                        --        icon_layout:add(icon_container)
-                        --    end
-                        --end
-                    end
-
-                    -- Executa a função de atualização de ícones
-                    update_icons()
-                end,
-                update_callback = function(self, t, index, objects)
-                    local function update_icons()
-                        local clients = t:clients()
-                        local icon_layout = self:get_children_by_id('icon_layout')[1]
-
-                        -- Limpa todos os ícones anteriores
-                        icon_layout:reset()
-
-                        -- Adiciona os ícones de todos os clientes
-                        for _, c in ipairs(clients) do
-                            if c.icon then
-                                local icon_widget = wibox.widget {
-                                    widget = wibox.widget.imagebox,
-                                    image = c.icon,
-                                    resize = true,
-                                    forced_height = 16,
-                                    forced_width = 16,
-                                }
-                                -- Centralizar verticalmente e adicionar margem ao redor de cada ícone
-                                local icon_container = wibox.container.margin(
-                                    wibox.container.place(icon_widget, "center"),
-                                    0, 4, 1, 0 -- Espaçamento horizontal de 2px entre os ícones
-                                )
-                                icon_layout:add(icon_container)
-
-                            end
-                        end
-                    end
-
-                    -- executa a função de atualização de ícones
-                    update_icons()
-                end,
-            },
+            buttons = taglist_buttons
         }
+
+        --#### TAGLISTWIDGETS
+        -- Create a taglist widget
+        --s.mytaglist = awful.widget.taglist {
+        --    screen  = s,
+        --    filter  = awful.widget.taglist.filter.all,
+        --    buttons = taglist_buttons,
+        --    style = {
+        --        shape = gears.shape.rounded_rect,--opcional, para adicionar estilo
+        --    },
+        --    layout  = {
+        --        layout  = wibox.layout.fixed.horizontal,
+        --    },
+        --    widget_template = {
+        --        {
+
+        --            {
+        --                id     = 'text_role',
+        --                widget = wibox.widget.textbox,
+        --            },
+
+        --            {
+        --                id     = 'icon_layout',
+        --                widget = wibox.widget.imagebox,
+        --                layout = wibox.layout.fixed.horizontal, -- Permitir múltiplos ícones
+        --                align  = 'center', -- Centralizar verticalmente
+        --            },
+
+        --            layout = wibox.layout.fixed.horizontal,
+        --            valign = 'center', -- Garante o alinhamento vertical dos ícones
+        --        },
+        --        id     = 'background_role',
+        --        widget = wibox.container.background,
+        --        -- Atualizar os ícones ao selecionar a tag
+        --        create_callback = function(self, t, index, objects)
+        --            local function update_icons()
+        --                local clients = t:clients()
+        --                local icon_layout = self:get_children_by_id('icon_layout')[1]
+
+        --                -- Limpa todos os ícones anteriores
+        --                --icon_layout:reset()
+
+
+        --                ---- Adiciona os ícones de todos os clientes
+        --                --for _, c in ipairs(clients) do
+        --                --    if c.icon then
+        --                --        local icon_widget = wibox.widget {
+        --                --            widget = wibox.widget.imagebox,
+        --                --            image = c.icon,
+        --                --            resize = true,
+        --                --            forced_height = 16,
+        --                --            forced_width = 16,
+        --                --        }
+        --                --        -- Centralizar verticalmente e adicionar margem ao redor de cada ícone
+        --                --        local icon_container = wibox.container.margin(
+        --                --            wibox.container.place(icon_widget, "center"),
+        --                --            0, 0, 0, 0 -- Espaçamento horizontal de 2px entre os ícones
+        --                --        )
+        --                --        icon_layout:add(icon_container)
+        --                --    end
+        --                --end
+        --            end
+
+        --            -- Executa a função de atualização de ícones
+        --            update_icons()
+        --        end,
+        --        update_callback = function(self, t, index, objects)
+        --            local function update_icons()
+        --                local clients = t:clients()
+        --                local icon_layout = self:get_children_by_id('icon_layout')[1]
+
+        --                -- Limpa todos os ícones anteriores
+        --                icon_layout:reset()
+
+        --                -- Adiciona os ícones de todos os clientes
+        --                for _, c in ipairs(clients) do
+        --                    if c.icon then
+        --                        local icon_widget = wibox.widget {
+        --                            widget = wibox.widget.imagebox,
+        --                            image = c.icon,
+        --                            resize = true,
+        --                            forced_height = 16,
+        --                            forced_width = 16,
+        --                        }
+        --                        -- Centralizar verticalmente e adicionar margem ao redor de cada ícone
+        --                        local icon_container = wibox.container.margin(
+        --                            wibox.container.place(icon_widget, "center"),
+        --                            0, 4, 1, 0 -- Espaçamento horizontal de 2px entre os ícones
+        --                        )
+        --                        icon_layout:add(icon_container)
+
+        --                    end
+        --                end
+        --            end
+
+        --            -- executa a função de atualização de ícones
+        --            update_icons()
+        --        end,
+        --    },
+        --}
 
         -- TASLIST STANDARD
         ---- Create a tasklist widget
@@ -694,8 +688,8 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
         -- Create a tasklist widget
         s.mytasklist = awful.widget.tasklist {
             screen  = s,
-            filter  = awful.widget.tasklist.filter.focused,
-            --filter  = awful.widget.tasklist.filter.currenttags,
+            --filter  = awful.widget.tasklist.filter.focused,
+            filter  = awful.widget.tasklist.filter.currenttags,
             buttons = tasklist_buttons,
             style = {
                 shape = gears.shape.rounded_rect,
@@ -765,7 +759,7 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     --s.mylayoutbox,sep,
                     s.mylayoutbox,
                     --mylauncher,sep3,
-                    sep1,
+                    sep,sep1,sep,
                     s.mytaglist,
                     --s.mytasklist,
                     sep,
@@ -787,8 +781,9 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 
                 {   -- Middle widget
                     layout = wibox.layout.flex.horizontal,
+                    s.mytasklist,
                     --s.mytaglist,
-                    mytextclock,
+                    --mytextclock,
                 },
 
                 { -- Right widgets
@@ -811,7 +806,6 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     --mem1,
                     --sep,
                     --fsroothome,
-
                     --fs_widget(),
                     --batteryarc_widget({
                     --    show_current_level = true,
@@ -828,17 +822,16 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     --wifi_widget,
                     sep,sep1,sep,
                     volume_widget{widget_type = 'icon_and_text'},percent_widget,
-                    sep,
-                    battery_widget(),
-                    battery_widget1,
+                    --sep,
+                    --battery_widget(),
+                    --battery_widget1,
                     --sep1,
                     --mykeyboardlayout,
                     --sep1,
-                    --mytextclock,
                     sep,
                     logout_menu_widget(),
-                    --sep,sep1,sep,
-                    --mytextclock,
+                    sep,sep1,sep,
+                    mytextclock,
                 },
             }
 
@@ -1200,18 +1193,12 @@ globalkeys = gears.table.join(
     end, {description = "Alternar visibilidade da barra", group = "Custom"}),
 
     -- Alternar a visibilidade da barra no primeiro monitor
-    awful.key({ modkey }, "w", function()
-        local s = screen[2] -- Substitua por screen.primary se for usar no monitor principal
-        if s.mywibox then
-            s.mywibox.visible = not s.mywibox.visible
-        end
-    end, {description = "Alternar visibilidade da barra", group = "custom"}),
-
-
-
-
-
-
+    --awful.key({ modkey }, "w", function()
+    --    local s = screen[2] -- Substitua por screen.primary se for usar no monitor principal
+    --    if s.mywibox then
+    --        s.mywibox.visible = not s.mywibox.visible
+    --    end
+    --end, {description = "Alternar visibilidade da barra", group = "custom"}),
 
 
     -- Close Clients
@@ -1345,7 +1332,6 @@ globalkeys = gears.table.join(
     end
 
 
-
 ----------------------------------------------------------------------
 ---------------------------- RULES -----------------------------------
 ----------------------------------------------------------------------
@@ -1358,8 +1344,6 @@ globalkeys = gears.table.join(
 function lock_screen()
     awful.spawn.with_shell("gdmflexiserver --lock")
 end
-
-
 
 
 -- Rules to apply to new clients (through the "manage" signal).
@@ -1421,13 +1405,14 @@ awful.rules.rules = {
 
     -- BARRA DE TITULOS
     -- Add titlebars to normal clients and dialogs
-    --{ rule_any = {type = { "normal", "dialog" }
-    --  }, properties = { titlebars_enabled = true }
-    --},
+    { rule_any = {type = { "normal", "dialog" }
+      }, properties = { titlebars_enabled = true }
+    },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { screen = 1, tag = "2" } },
+    { rule = { class = "Firefox" },
+        properties = { screen = 1, tag = "2" } 
+    },
 
 
 -- Regra para APPS DE TAMANHO FIXO
@@ -1499,10 +1484,7 @@ client.connect_signal("manage", function (c)
         awful.placement.no_offscreen(c)
     end
 
-
 end)
-
-
 
 
 -- TITLEBARS
@@ -1527,28 +1509,23 @@ client.connect_signal("request::titlebars", function(c)
             layout  = wibox.layout.fixed.horizontal
         },
         { -- Middle
-            { -- Title
-                align  = "center",
-                widget = awful.titlebar.widget.titlewidget(c)
-            },
+            --{ -- Title
+            --    align  = "center",
+            --    widget = awful.titlebar.widget.titlewidget(c)
+            --},
             buttons = buttons,
             layout  = wibox.layout.flex.horizontal
         },
         { -- Right
             awful.titlebar.widget.floatingbutton (c),
-            --awful.titlebar.widget.maximizedbutton(c),
-            --awful.titlebar.widget.stickybutton   (c),
-            --awful.titlebar.widget.ontopbutton    (c),
+            awful.titlebar.widget.maximizedbutton(c),
+            awful.titlebar.widget.stickybutton   (c),
+            awful.titlebar.widget.ontopbutton    (c),
             awful.titlebar.widget.closebutton    (c),
             layout = wibox.layout.fixed.horizontal()
         },
         layout = wibox.layout.align.horizontal
     }
-end)
-
-client.connect_signal("request::titlebars", function(c)
-    print("Adicionando titlebars para a janela: " .. (c.name or ""))
-    -- Resto do código dos botões
 end)
 
 
@@ -1584,6 +1561,28 @@ beautiful.useless_gap = 6,
 --    end
 --end)
 
+
+----------------------------------------------------------------------
+---------------------------- XRANDR ----------------------------------
+----------------------------------------------------------------------
+--NOTE EM BAIXO
+--awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --rate 75 --pos 0x0 --rotate normal --output eDP-1 --mode 1366x768 --pos 536x1440 --rotate normal --output HDMI-1 --off --output DP-2 --off --output DP-3 --off --output DP-4 --off')
+
+--left
+--awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --rate 75 --pos 1366x0 --rotate normal --output eDP-1 --mode 1366x768 --pos 0x160 --rotate normal --output HDMI-1 --off --output DP-2 --off --output DP-3 --off --output DP-4 --off')
+
+--offnote
+--awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --rate 75  --pos 0x0 --rotate normal --output eDP-1 --off')
+
+--awful.spawn.with_shell('xrandr --output DP-1 --primary') --via displayport
+
+--solo
+--awful.spawn.with_shell('xrandr --output DP-0 --primary --mode 2560x1440 --rate 100  --output eDP-1 --off')--filesystem
+
+awful.spawn.with_shell('xrandr --output DisplayPort-0 --mode 2560x1440 --rate 100 --pos 0x0 --rotate normal --output DisplayPort-1 --off --output DisplayPort-2 --off --output HDMI-A-0 --off')
+
+
+
 ----------------------------------------------------------------------
 ---------------------------- AUTOSTART -------------------------------
 ----------------------------------------------------------------------
@@ -1616,7 +1615,6 @@ awful.spawn.with_shell("xsel --output --primary | xsel --input --clipboard")
 awful.spawn.with_shell("autocutsel -fork")
 awful.spawn.with_shell("nm-applet")
 --awful.spawn.with_shell("easyeffects --hide-window")
-
 --awful.spawn.with_shell('syncthing')
 --awful.spawn.with_shell('pactl load-module module-combine-sink sink_name=COMBINED_SINK')
 --awful.spawn.with_shell('flameshot') --bater print
@@ -1625,20 +1623,6 @@ awful.spawn.with_shell('xpad -h') -- "-h" -> hide "-s" -> show
 --awful.spawn.with_shell('localsend_app') --localsend
 --awful.spawn.with_shell('knotes')
 
---NOTE EM BAIXO
-awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --rate 75 --pos 0x0 --rotate normal --output eDP-1 --mode 1366x768 --pos 536x1440 --rotate normal --output HDMI-1 --off --output DP-2 --off --output DP-3 --off --output DP-4 --off')
-
---left
---awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --rate 75 --pos 1366x0 --rotate normal --output eDP-1 --mode 1366x768 --pos 0x160 --rotate normal --output HDMI-1 --off --output DP-2 --off --output DP-3 --off --output DP-4 --off')
-
-
---offnote
---awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --rate 75  --pos 0x0 --rotate normal --output eDP-1 --off')
-
---awful.spawn.with_shell('xrandr --output DP-1 --primary') --via displayport
-
---solo
---awful.spawn.with_shell('xrandr --output DP-1 --primary --mode 2560x1440 --rate 75  --output eDP-1 --off')--system
 
 
 

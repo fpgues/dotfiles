@@ -1,3 +1,6 @@
+
+
+
 ----------------------------------------------------------
 -- Default awesome theme ---------------------------------
 ----------------------------------------------------------
@@ -30,13 +33,14 @@ theme.font          = "VictorMono                   Bold 10"
 ----------------------------------------------------------
 ---------------BARRA--------------------------------------
 ----------------------------------------------------------
---
+--theme.bg_normal     = "#2C2C2CAF"  --Orchis-dark
+
+--theme.bg_normal     = "#000000AF"
 --theme.bg_normal  = "#644540"
 --theme.bg_normal  = "#1B443C"
 --theme.bg_normal  = "#282C34" --onedark
 --theme.bg_normal  = "#1C2529"
---theme.bg_normal = "#3C4353"
-
+theme.bg_normal = "#1F2329" --igual kitty
 --theme.bg_normal  = "#222222" -- PADRAO
 --theme.bg_normal     = "#263238" -- material blue-gray
 --theme.bg_normal     = "#263238EF" -- material blue-gray
@@ -54,16 +58,17 @@ theme.font          = "VictorMono                   Bold 10"
 --theme.bg_normal     = "#1b2523" --green
 --theme.bg_normal     = "#2E1643"
 --theme.bg_normal     = "#864087"
-theme.bg_normal     = "#000000"
+--theme.bg_normal     = "#000000"
 
 ---------------------------------------------------------
 ----------------------------------------------------------
 ----------------------------------------------------------
 --TAGLISTCOLOR
 --theme.bg_focus      = "#8a8ea8" -- #e9befb" --"#db93f9" --"#535d6c"
-theme.bg_focus = "#282c340F"
+--theme.bg_focus = "#282c340F"
 --theme.bg_focus = "#ffffff1F"
 --theme.bg_focus      = "#535d6c"
+theme.bg_focus      = "#1F2329"
 
 theme.bg_urgent = "#ff0000"
 theme.bg_minimize = "#444444"
@@ -72,6 +77,9 @@ theme.bg_minimize = "#444444"
 --theme.bg_systray    = "#0000001F"
 --theme.bg_systray = theme.bg_normal
 
+
+--COLOR DOT
+theme.fg_normal1 = "#88c0d0"
 ----------------------------------------------------------
 ------------COLOR-FONT------------------------------------
 ----------------------------------------------------------
@@ -87,8 +95,9 @@ theme.fg_normal = "#ffffff"
 ----------------------------------------------------------
 --theme.fg_focus = "#ffffff" --standard
 --theme.fg_focus      = "#000000"
-theme.fg_focus      = "#ff5555"
+--theme.fg_focus      = "#ff5555"
 --theme.fg_focus      = "#b4f9f8"
+theme.fg_focus      = "#88c0d0"
 
 ----------------------------------------------------------
 ----------------------------------------------------------
@@ -98,7 +107,7 @@ theme.fg_minimize = "#ffffff"
 ----------------------------------------------------------
 ----------------------------------------------------------
 theme.useless_gap = dpi(0)
-theme.border_width = dpi(1)
+theme.border_width = dpi(2)
 
 --BORDA DAS JANELAS
 --theme.border_normal  = "#848487" -- Gray
@@ -110,8 +119,8 @@ theme.border_normal = "#000000"
 
 
 -- BORDA FOCUS
---theme.border_focus  = "#88c0d0"
-theme.border_focus = "#848487" -- Gray
+theme.border_focus  = "#88c0d0"
+--theme.border_focus = "#848487" -- Gray
 
 --theme.border_focus = "#7ACCD7"
 --theme.border_focus  = "#535d6F" -- PADRAO
@@ -137,10 +146,28 @@ theme.border_marked = "#91231c" --TokyoNight
 -- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
 -- Example:
 --theme.taglist_bg_focus = "#ff0000"
--- Generate taglist squares:
-local taglist_square_size = dpi(0)
-theme.taglist_squares_sel = theme_assets.taglist_squares_sel(taglist_square_size, theme.fg_normal)
-theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(taglist_square_size, theme.fg_normal)
+
+------ Generate taglist squares:
+--local taglist_square_size = dpi(4)
+--theme.taglist_squares_sel = theme_assets.taglist_squares_sel(taglist_square_size, theme.fg_normal1)
+--theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(taglist_square_size, theme.fg_normal)
+
+---- Generate taglist squares:
+local taglist_square_size = dpi(4)
+theme.taglist_squares_sel = theme_assets.taglist_squares_sel(taglist_square_size, theme.fg_normal1)
+theme.taglist_squares_unsel = theme_assets.taglist_squares_sel(taglist_square_size, theme.fg_normal)
+
+
+
+
+
+
+
+--local taglist_circle_size = dpi(5)
+--theme.taglist_squares_sel = theme_assets.taglist_circles_sel(taglist_circle_size, theme.fg_normal)
+--theme.taglist_squares_unsel = theme_assets.taglist_circles_unsel(taglist_circle_size, theme.fg_normal)
+
+
 
 -- Variables set for theming notifications:
 -- notification_font
