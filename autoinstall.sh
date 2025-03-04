@@ -17,7 +17,9 @@ sudo apt -y install build-essential libpam0g-dev libxcb-xkb-dev libncurses5-dev 
 #                       STANDARD                                       #
 ########################################################################
 
-sudo apt -y install vim curl git mlocate pamixer shotwell xclip htop rofi picom python3-pip pulseaudio pulsemixer alsamixergui pavucontrol gcc blueman ranger wget lxappearance gimp w3m-img awesome awesome-extra xautolock unclutter thunar kitty brightnessctl thunar thunar-volman thunar-archive-plugin duf neofetch zoxide flameshot nitrogen qalc gpick syncthing okular zathura-pdf-poppler network-manager network-manager-gnome gnome-disk-utility easyeffects inkscape obs-studio tree arandr autorandr vlc shotcut gnome-boxes xpad
+sudo apt -y install vim curl git mlocate pamixer shotwell xclip htop rofi picom python3-pip pulseaudio pulsemixer alsamixergui pavucontrol gcc blueman ranger wget lxappearance gimp w3m-img awesome awesome-extra xautolock unclutter thunar kitty brightnessctl thunar thunar-volman thunar-archive-plugin duf neofetch zoxide flameshot nitrogen qalc gpick syncthing okular zathura-pdf-poppler network-manager network-manager-gnome gnome-disk-utility easyeffects inkscape obs-studio tree arandr autorandr vlc shotcut gnome-boxes xpad ncdu xournalpp alacritty 
+
+
 
 
 ########################################################################
@@ -48,6 +50,8 @@ sudo ln -s ~/.dotfiles/all/links-home/.zshrc ~/
 sudo ln -s ~/.dotfiles/all/links-home/.Xresources ~/
 
 sudo ln -s ~/.dotfiles/all/lx-themes/fonts ~/.fonts
+
+sudo ln -s ~/.dotfiles/all/appimages/squashfs-root/usr/bin/nvim /bin
 
 #sudo apt install xinit
 
