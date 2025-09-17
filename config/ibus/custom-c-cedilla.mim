@@ -1,0 +1,12 @@
+(inputmethod
+ (name "cedilla-fix")
+ (longname "Cedilla Fix")
+ (description "Map ´ + c -> ç")
+ (author "Você")
+ (license "GPL")
+ (version "0.1")
+ (maps
+  ("´c" "ç")
+  ("´C" "Ç")
+ )
+)
