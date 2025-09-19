@@ -13,7 +13,7 @@
 # single     single_circle     single_full     single_full_circle     single_rounded     single_text
 
 style="power"
-rofi_command="rofi -theme ~/.local/share/rofi/themes/squared-mY-poweroff.rasi"
+rofi_command="rofi -theme ~/.local/share/rofi/themes/nord-oneline-my.rasi"
 #rofi_command="rofi -theme ~/.local/share/rofi/themes/squared-nord.rasi"
 #rofi_command="rofi -theme ~/.local/share/rofi/themes/nord-oneline-my-poweroff.rasi"
 #rofi_command="rofi -theme ~/.local/share/rofi/themes/my-spotlight-dark.rasi"
@@ -25,11 +25,17 @@ rofi_command="rofi -theme ~/.local/share/rofi/themes/squared-mY-poweroff.rasi"
 #uptime=$(uptime -p)
 #my_hostname=$(hostname)
 
+### options
+#shutdown="  shutdown"
+#reboot="   reboot"
+#logout="   logout"
+#lock="    lock"
+
 ## options
-shutdown="  shutdown"
-reboot="   reboot"
-logout="   logout"
-lock="    lock"
+shutdown="shutdown"
+reboot="reboot"
+logout="logout"
+lock="lock"
 
 # options
 #shutdown="  "
